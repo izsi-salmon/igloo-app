@@ -1,0 +1,112 @@
+$grey-blue: #4d4d4d;
+$grey-cloud: #7d7e7e;
+$grey-superLight: #e7eef0;
+$off-black: #272726;
+$yellow: #f6c603;
+$orange: #f0842d;
+$green: #59b030;
+
+@font-face{
+    font-family: "gothamBold";
+    src: url(../fonts/gotham-bold.otf);
+}
+@font-face{
+    font-family: "gothamLight";
+    src: url(../fonts/gotham-light.otf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    background: url(../images/philipp-kammerer-266322-unsplash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    box-sizing: border-box;
+    padding: 3%;
+}
+
+.header{
+    .logo{
+        width: 30%;
+    }
+}
+
+.top-content{
+    position: fixed;
+    .search-bar{
+        background: #FFF;
+        border: .04em solid $grey-cloud;
+        border-radius: 30px;
+        display: flex;
+            justify-content: flex-end;
+            align-items: center;
+//        height: 35px;
+        width: 100%;
+        input[type=text]{
+            border: none;
+            color: $off-black;
+            display: inline;
+            font-size: 1em;
+            width: 80%;
+        }
+        input[type=text]:focus{
+            outline: none;
+        }
+        #searchButton{
+            background: $grey-superLight;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border-left: .04em solid $grey-cloud;
+            box-sizing: border-box;
+            color: $grey-blue;
+            cursor: pointer;
+            height: 98%;
+            width: 15%;
+            .fa-search{
+                box-sizing: border-box;
+                padding: 25%;
+            }
+        }
+    }
+}
+
+.page-splash{
+    margin: 0 5%;
+    top: 30%;
+}
+
+.flavour-text{
+    color: #FFFFFF;
+    font-size: 9vw;
+    font-family: "gothamBold";
+    line-height: 120%;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.footer{
+    margin: 0 10%;
+    position: fixed;
+        bottom: 15%;
+    text-align: justify;
+    .expl-text{
+        color: #FFF;
+        font-family: "gothamLight";
+        font-size: .8em;
+    }
+    .purenz-logo{
+        width: 10%;
+        position: fixed;
+            bottom: 3%;
+            right: 3%;
+    }
+}
+
+
+

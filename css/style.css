@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "gothamBold";
+  src: url(../fonts/gotham-bold.otf); }
+@font-face {
+  font-family: "gothamLight";
+  src: url(../fonts/gotham-light.otf); }
+* {
+  margin: 0;
+  padding: 0; }
+
+html {
+  background: url(../images/philipp-kammerer-266322-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  box-sizing: border-box;
+  padding: 3%; }
+
+.header .logo {
+  width: 30%; }
+
+.top-content {
+  position: fixed; }
+  .top-content .search-bar {
+    background: #FFF;
+    border: 0.04em solid #7d7e7e;
+    border-radius: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%; }
+    .top-content .search-bar input[type=text] {
+      border: none;
+      color: #272726;
+      display: inline;
+      font-size: 1em;
+      width: 80%; }
+    .top-content .search-bar input[type=text]:focus {
+      outline: none; }
+    .top-content .search-bar #searchButton {
+      background: #e7eef0;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+      border-left: 0.04em solid #7d7e7e;
+      box-sizing: border-box;
+      color: #4d4d4d;
+      cursor: pointer;
+      height: 98%;
+      width: 15%; }
+      .top-content .search-bar #searchButton .fa-search {
+        box-sizing: border-box;
+        padding: 25%; }
+
+.page-splash {
+  margin: 0 5%;
+  top: 30%; }
+
+.flavour-text {
+  color: #FFFFFF;
+  font-size: 9vw;
+  font-family: "gothamBold";
+  line-height: 120%;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 24px; }
+
+.footer {
+  margin: 0 10%;
+  position: fixed;
+  bottom: 15%;
+  text-align: justify; }
+  .footer .expl-text {
+    color: #FFF;
+    font-family: "gothamLight";
+    font-size: .8em; }
+  .footer .purenz-logo {
+    width: 10%;
+    position: fixed;
+    bottom: 3%;
+    right: 3%; }
+
+/*# sourceMappingURL=style.css.map */
