@@ -31,13 +31,26 @@ html{
 }
 
 .header{
+    
+}
+
+.header-index{
     .logo{
         width: 30%;
     }
 }
 
+.header-p2{
+    .logo{
+        width: 20%;
+    }
+}
+
 .top-content{
     position: fixed;
+        top: 30%;
+    margin: 0 auto;
+    width: 90%;
     .search-bar{
         background: #FFF;
         border: .04em solid $grey-cloud;
@@ -45,13 +58,12 @@ html{
         display: flex;
             justify-content: flex-end;
             align-items: center;
-//        height: 35px;
+        height: auto;
         width: 100%;
         input[type=text]{
             border: none;
             color: $off-black;
             display: inline;
-            font-size: 1em;
             width: 80%;
         }
         input[type=text]:focus{
@@ -65,19 +77,39 @@ html{
             box-sizing: border-box;
             color: $grey-blue;
             cursor: pointer;
-            height: 98%;
+//            height: 98%;
+            text-align: center;
             width: 15%;
             .fa-search{
                 box-sizing: border-box;
-                padding: 25%;
+                
             }
         }
     }
+    .sb-index{
+        input[type=text]{
+            font-size: 1em;
+        }
+        #searchButton{
+            padding: 2% 0;
+        }
+    };
+    .sb-p2{
+        input[type=text]{
+            font-size: 0.7em;
+        }
+        #searchButton{
+            padding: 1% 0;
+        }
+    };
 }
 
-.page-splash{
-    margin: 0 5%;
-    top: 30%;
+.tc-index{
+    
+}
+
+.tc-p2{
+    
 }
 
 .flavour-text{

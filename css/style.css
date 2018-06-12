@@ -17,11 +17,17 @@ html {
   box-sizing: border-box;
   padding: 3%; }
 
-.header .logo {
+.header-index .logo {
   width: 30%; }
 
+.header-p2 .logo {
+  width: 20%; }
+
 .top-content {
-  position: fixed; }
+  position: fixed;
+  top: 30%;
+  margin: 0 auto;
+  width: 90%; }
   .top-content .search-bar {
     background: #FFF;
     border: 0.04em solid #7d7e7e;
@@ -29,12 +35,12 @@ html {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    height: auto;
     width: 100%; }
     .top-content .search-bar input[type=text] {
       border: none;
       color: #272726;
       display: inline;
-      font-size: 1em;
       width: 80%; }
     .top-content .search-bar input[type=text]:focus {
       outline: none; }
@@ -46,15 +52,18 @@ html {
       box-sizing: border-box;
       color: #4d4d4d;
       cursor: pointer;
-      height: 98%;
+      text-align: center;
       width: 15%; }
       .top-content .search-bar #searchButton .fa-search {
-        box-sizing: border-box;
-        padding: 25%; }
-
-.page-splash {
-  margin: 0 5%;
-  top: 30%; }
+        box-sizing: border-box; }
+  .top-content .sb-index input[type=text] {
+    font-size: 1em; }
+  .top-content .sb-index #searchButton {
+    padding: 2% 0; }
+  .top-content .sb-p2 input[type=text] {
+    font-size: 0.7em; }
+  .top-content .sb-p2 #searchButton {
+    padding: 1% 0; }
 
 .flavour-text {
   color: #FFFFFF;
