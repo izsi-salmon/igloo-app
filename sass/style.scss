@@ -35,6 +35,8 @@ html{
 
 .header{
     padding: 3%;
+    position: absolute;
+    width: 100%;
 }
 
 .header-index{
@@ -46,10 +48,18 @@ html{
 .header-p2{
     background-color: #97D9E1;
     background-image: linear-gradient(45deg, #97D9E1 0%, #D9AFD9 100%);
-    height: 11vh;
+    height: 14vh;
     .logo{
         width: 20%;
     }
+}
+
+.backdrop-on{
+    background: $grey-superLight;
+    height: 86vh;
+    position: fixed;
+        bottom: 0;
+    width: 100%;
 }
 
 .view-opt{
@@ -62,9 +72,14 @@ html{
         flex: 1;
         padding: 2% 0;
         text-align: center;
+        .fas{
+            display: block;
+        }
         .opt-dscptn{
+            display: block;
             font-family: "gothamLight";
-            font-size: 0.3em;
+            font-size: 0.1em;
+            margin-top: 5px;
             white-space: normal;
         }
     }
@@ -74,11 +89,6 @@ html{
     .v-active{
         color: $off-black;
     }
-}
-
-.backdrop{
-    background: $grey-superLight;
-    height: 76.8vh;
 }
 
 .dropdown{
