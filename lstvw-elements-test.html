@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>IGLOO</title>
+    <link rel="icon" href="images/iglooIcon.png">
+</head>
+<body>
+    <div class="header header-p2"><img src="images/iglooLogoText.svg" alt="Igloo logo" class="logo"><br>List view elements setup</div>
+    <div class="backdrop-on">
+       <div class="view-opt">
+            <span class="view vl v-active"><i class="fas fa-list"></i>
+            <span class="opt-dscptn">LIST VIEW</span></span>
+            <span class="view vr"><i class="fas fa-map-marker-alt"></i>
+            <span class="opt-dscptn">MAP VIEW</span></span>
+       </div>
+       <div class="list-view">
+           <div class="dw-ctnr-flex">
+              <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button">
+                        FILTRE
+                      </button>
+               </div>
+               <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    SORT BY
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Price low–high</a>
+                    <a class="dropdown-item" href="#">Price high–low</a>
+                    <a class="dropdown-item" href="#">Rating</a>
+                    <a class="dropdown-item" href="#">Distance</a>
+                  </div>
+                </div>
+           </div>
+           <div class="opts-fltr-ctnr">
+                <div class="opts-flex">
+                    <div class="opts-coll-left">
+                        <div class="opt-title">price range:</div>
+                    </div>
+                    <div class="opts-coll-right">
+                        <div class="opt-title">accomodation:</div>
+                    </div>
+                </div>
+                <div class="opts-flex">
+                    <div class="opts-coll-left">
+                        <div id="prValue">$250</div>
+                        <input type="range" class="my-range" id="rangePrice">
+                    </div>
+                    <div class="opts-coll-right">
+                        <div class="iconTxt-wrapper">
+                            <img src="images/icons/wifi.svg" alt="wifi svg test">
+                            <div class="icon-title">hotel</div>
+                        </div>
+                        <div class="iconTxt-wrapper">
+                            <img src="images/icons/wifi.svg" alt="wifi svg test">
+                            <div class="icon-title">motel</div>
+                        </div>
+                        <div class="iconTxt-wrapper">
+                            <img src="images/icons/wifi.svg" alt="wifi svg test">
+                            <div class="icon-title">hostel</div>
+                        </div>
+                        <div class="iconTxt-wrapper">
+                            <img src="images/icons/wifi.svg" alt="wifi svg test">
+                            <div class="icon-title">house</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="opts-flex">
+                    <div class="opts-coll-left">
+                        <div class="opt-title">distance:</div>
+                    </div>
+                    <div class="opts-coll-right">
+                        <div class="opt-title">features:</div>
+                    </div>
+                </div>
+                <div class="opts-flex">
+                    <div class="opts-coll-left">
+                        <div id="drValue">150km</div>
+                        <input type="range" class="my-range" id="rangeDistance">
+                    </div>
+                    <div class="opts-coll-right">
+                        <div class="iconTxt-wrapper">
+                            <img src="images/icons/wifi.svg" alt="wifi svg test">
+                            <div class="icon-title">wifi</div>
+                        </div>
+                        <div class="iconTxt-wrapper">
+                            <img src="images/icons/wifi.svg" alt="wifi svg test">
+                            <div class="icon-title">meals</div>
+                        </div>
+                        <div class="iconTxt-wrapper">
+                            <img src="images/icons/wifi.svg" alt="wifi svg test">
+                            <div class="icon-title">scenic</div>
+                        </div>
+                        <div class="iconTxt-wrapper">
+                            <img src="images/icons/wifi.svg" alt="wifi svg test">
+                            <div class="icon-title">spa</div>
+                        </div>                                
+                    </div>
+                </div>
+              </div><!-- END filtre container-->
+              
+            <div class="thumbnail-ctnr">
+               <img src="images/accom2.jpg" alt="picture of window overlooking a lake">
+                <div class="centre-el-ctnr">
+                    <div class="thumbnail-title">lakefront hotel</div>
+                    <div class="txt-distance">120km from Remarkables ski area</div>
+                    <div class="star-ctnr"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <button class="btn btn-modal">view details</button>
+                </div>
+            </div>
+                            
+       </div><!--END list view elements-->
+    </div>
+    <!--ALL MODALS HERE-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

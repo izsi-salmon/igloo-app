@@ -14,6 +14,7 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  font-family: "gothamLight";
   color: #272726; }
 
 .header {
@@ -61,64 +62,105 @@ html {
   .view-opt .v-active {
     color: #272726; }
 
-.dropdown {
+.list-view {
+  padding: 3%; }
+
+.dw-ctnr-flex {
+  display: flex;
+  justify-content: space-between; }
+  .dw-ctnr-flex .btn-secondary {
+    color: #4d4d4d;
+    background-color: #FFF;
+    border: none;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    font-family: "gothamBold";
+    font-size: 0.7em; }
+  .dw-ctnr-flex .dropdown-menu {
+    color: #272726;
+    border: none;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    font-family: "gothamLight";
+    font-size: 0.7em; }
+  .dw-ctnr-flex .btn-secondary:not(:disabled):not(.disabled).active, .dw-ctnr-flex .btn-secondary:not(:disabled):not(.disabled):active, .dw-ctnr-flex .show > .btn-secondary.dropdown-toggle, .dw-ctnr-flex .btn-secondary:not(:disabled):not(.disabled).active, .dw-ctnr-flex .btn:focus {
+    color: #4d4d4d;
+    background-color: #FFF;
+    border: none;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    outline: none; }
+
+.opts-fltr-ctnr {
+  width: 100%;
+  padding: 3%; }
+  .opts-fltr-ctnr .opts-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; }
+    .opts-fltr-ctnr .opts-flex .opt-title {
+      color: #4d4d4d;
+      font-family: "gothamLight";
+      font-size: .7em;
+      margin: 10px 0 5px 0;
+      text-transform: uppercase; }
+    .opts-fltr-ctnr .opts-flex #drValue, .opts-fltr-ctnr .opts-flex #prValue {
+      font-family: "gothamLight";
+      font-size: 0.6em;
+      text-align: right;
+      width: 70%; }
+    .opts-fltr-ctnr .opts-flex input[type=range] {
+      width: 70%; }
+    .opts-fltr-ctnr .opts-flex .opts-coll-right {
+      display: flex; }
+      .opts-fltr-ctnr .opts-flex .opts-coll-right .iconTxt-wrapper {
+        font-family: "gothamBold";
+        font-size: 0.5em;
+        margin: 3px 4px;
+        text-align: center;
+        text-transform: uppercase; }
+        .opts-fltr-ctnr .opts-flex .opts-coll-right .iconTxt-wrapper img {
+          margin: 1px;
+          width: 2.5em; }
+
+.thumbnail-ctnr {
   background: #FFF;
-  -webkit-box-shadow: 3px 3px 14px -2px rgba(0, 0, 0, 0.76);
-  -moz-box-shadow: 3px 3px 14px -2px rgba(0, 0, 0, 0.76);
-  box-shadow: 3px 3px 14px -2px rgba(0, 0, 0, 0.76);
-  font-family: "gothamBold";
-  text-transform: uppercase; }
-
-.custom-select {
-  position: relative;
-  font-family: Arial; }
-
-.custom-select select {
-  display: none;
-  /*hide original SELECT element:*/ }
-
-.select-selected {
-  background-color: DodgerBlue; }
-
-/*style the arrow inside the select element:*/
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent; }
-
-/*point the arrow upwards when the select box is open (active):*/
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px; }
-
-/*style the items (options), including the selected item:*/
-.select-items div, .select-selected {
-  color: #ffffff;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer; }
-
-/*style items (options):*/
-.select-items {
-  position: absolute;
-  background-color: DodgerBlue;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99; }
-
-/*hide the items when the select box is closed:*/
-.select-hide {
-  display: none; }
-
-.select-items div:hover, .same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1); }
+  border-radius: 20px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  height: 100px;
+  position: relative; }
+  .thumbnail-ctnr img {
+    border-radius: 15px;
+    object-fit: cover;
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    height: 90px;
+    width: 90px; }
+  .thumbnail-ctnr .centre-el-ctnr {
+    position: absolute;
+    top: 6%;
+    left: 105px; }
+    .thumbnail-ctnr .centre-el-ctnr .thumbnail-title {
+      font-family: "gothamBold";
+      font-size: 0.7em;
+      text-transform: uppercase;
+      width: 120px; }
+    .thumbnail-ctnr .centre-el-ctnr .txt-distance {
+      color: #4d4d4d;
+      font-family: "gothamLight";
+      font-size: 0.6em;
+      line-height: 10px;
+      width: 120px; }
+    .thumbnail-ctnr .centre-el-ctnr .star-ctnr {
+      color: #f6c603;
+      font-size: 0.8em; }
+    .thumbnail-ctnr .centre-el-ctnr .btn-modal {
+      color: #FFF;
+      background-color: #f0842d;
+      font-family: "gothamLight";
+      font-size: 0.5em;
+      text-transform: uppercase; }
+    .thumbnail-ctnr .centre-el-ctnr .btn-modal:focus {
+      box-shadow: none; }
 
 .top-content {
   position: fixed;
@@ -137,6 +179,7 @@ html {
       border: none;
       color: #272726;
       display: inline;
+      font-family: "gothamLight";
       width: 80%; }
     .top-content .search-bar input[type=text]:focus {
       outline: none; }
