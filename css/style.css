@@ -90,7 +90,8 @@ html {
 
 .opts-fltr-ctnr {
   width: 100%;
-  padding: 3%; }
+  padding: 3%;
+  margin-bottom: 15px; }
   .opts-fltr-ctnr .opts-flex {
     display: flex;
     align-items: center;
@@ -142,6 +143,7 @@ html {
     .thumbnail-ctnr .centre-el-ctnr .thumbnail-title {
       font-family: "gothamBold";
       font-size: 0.7em;
+      margin-bottom: 2px;
       text-transform: uppercase;
       width: 120px; }
     .thumbnail-ctnr .centre-el-ctnr .txt-distance {
@@ -149,18 +151,33 @@ html {
       font-family: "gothamLight";
       font-size: 0.6em;
       line-height: 10px;
+      margin-bottom: 2px;
       width: 120px; }
     .thumbnail-ctnr .centre-el-ctnr .star-ctnr {
       color: #f6c603;
-      font-size: 0.8em; }
+      font-size: 0.8em;
+      margin-bottom: 2px; }
     .thumbnail-ctnr .centre-el-ctnr .btn-modal {
       color: #FFF;
       background-color: #f0842d;
-      font-family: "gothamLight";
+      font-family: "gothamBold";
       font-size: 0.5em;
       text-transform: uppercase; }
     .thumbnail-ctnr .centre-el-ctnr .btn-modal:focus {
       box-shadow: none; }
+  .thumbnail-ctnr .txt-price {
+    color: #4d4d4d;
+    font-family: "gothamLight";
+    font-size: 0.6em;
+    position: absolute;
+    top: 10%;
+    right: 10px; }
+  .thumbnail-ctnr .btn-map {
+    color: #7d7e7e;
+    font-size: 1.5em;
+    position: absolute;
+    bottom: 12%;
+    right: 20px; }
 
 .top-content {
   position: fixed;
