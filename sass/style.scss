@@ -169,7 +169,7 @@ html{
 .thumbnail-ctnr{
     background: #FFF;
     border-radius: 20px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.08);
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.16);
     height: 100px;
     position: relative;
     img{
@@ -338,6 +338,105 @@ html{
 .footer-hidden{
     display: none;
 }
+
+// MODAL STYLES
+
+.modal{
+    .modal-content{
+        border: none;
+        border-radius: 15px;
+        padding: 3%;
+        .modal-header-flex{
+            display: flex;
+            margin-bottom: 10px;
+             img{
+                border-radius: 15px;
+                object-fit: cover;
+                height: 100px;
+                width: 100px;
+                margin-right: 7px
+            }
+            .modal-title{
+                font-family: "gothamBold";
+                text-transform: uppercase;
+                margin-bottom: 3px;
+            }
+            .txt-distance{
+                color: $grey-cloud;
+                font-family: "gothamLight";
+                font-size: 0.6em;
+                margin-bottom: 3px;
+            }
+            .txt-price{
+                color: $grey-blue;
+                font-family: "gothamLight";
+                font-size: 0.7em;
+                margin-bottom: 5px;
+            }
+            .price-green{
+                color: $green;
+            }
+            .star-ctnr{
+                color: $yellow;
+                .fas{
+                    margin-right: 2px;
+                }
+            }
+        }
+        .modal-dscptn{
+            font-family: "gothamLight";
+            font-size: .7em;
+            margin-bottom: 10px;
+        }
+        .modal-footer-flex{
+            display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+            margin-bottom: 5px;
+            .ft-title{
+                color: $grey-cloud;
+                font-family: "gothamLight";
+                font-size: 0.6em;
+                text-transform: uppercase;
+            }
+            .ft-flex{
+                display: flex;
+                .iconTxt-wrapper{
+                    margin: 3px 6px 0 0;
+                    img{
+                        width: 1.5em;
+                    }
+                    .icon-title{
+                        font-family: "gothamBold";
+                        font-size: 0.33em;
+                        text-transform: uppercase;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        .btn-modal{
+            color: #FFF;
+            background-color: $orange;
+            font-family: "gothamBold";
+            font-size: 0.8em;
+            text-transform: uppercase;
+        }
+        .dropdown-toggle::after{
+            font-size: 1.3em;
+        }
+        .btn-modal:focus{
+            box-shadow: none;
+        }
+    }
+}
+
+
+
+
+
+
+
 
 
 

@@ -125,7 +125,7 @@ html {
 .thumbnail-ctnr {
   background: #FFF;
   border-radius: 20px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.16);
   height: 100px;
   position: relative; }
   .thumbnail-ctnr img {
@@ -254,5 +254,74 @@ html {
 
 .footer-hidden {
   display: none; }
+
+.modal .modal-content {
+  border: none;
+  border-radius: 15px;
+  padding: 3%; }
+  .modal .modal-content .modal-header-flex {
+    display: flex;
+    margin-bottom: 10px; }
+    .modal .modal-content .modal-header-flex img {
+      border-radius: 15px;
+      object-fit: cover;
+      height: 100px;
+      width: 100px;
+      margin-right: 7px; }
+    .modal .modal-content .modal-header-flex .modal-title {
+      font-family: "gothamBold";
+      text-transform: uppercase;
+      margin-bottom: 3px; }
+    .modal .modal-content .modal-header-flex .txt-distance {
+      color: #7d7e7e;
+      font-family: "gothamLight";
+      font-size: 0.6em;
+      margin-bottom: 3px; }
+    .modal .modal-content .modal-header-flex .txt-price {
+      color: #4d4d4d;
+      font-family: "gothamLight";
+      font-size: 0.7em;
+      margin-bottom: 5px; }
+    .modal .modal-content .modal-header-flex .price-green {
+      color: #59b030; }
+    .modal .modal-content .modal-header-flex .star-ctnr {
+      color: #f6c603; }
+      .modal .modal-content .modal-header-flex .star-ctnr .fas {
+        margin-right: 2px; }
+  .modal .modal-content .modal-dscptn {
+    font-family: "gothamLight";
+    font-size: .7em;
+    margin-bottom: 10px; }
+  .modal .modal-content .modal-footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 5px; }
+    .modal .modal-content .modal-footer-flex .ft-title {
+      color: #7d7e7e;
+      font-family: "gothamLight";
+      font-size: 0.6em;
+      text-transform: uppercase; }
+    .modal .modal-content .modal-footer-flex .ft-flex {
+      display: flex; }
+      .modal .modal-content .modal-footer-flex .ft-flex .iconTxt-wrapper {
+        margin: 3px 6px 0 0; }
+        .modal .modal-content .modal-footer-flex .ft-flex .iconTxt-wrapper img {
+          width: 1.5em; }
+        .modal .modal-content .modal-footer-flex .ft-flex .iconTxt-wrapper .icon-title {
+          font-family: "gothamBold";
+          font-size: 0.33em;
+          text-transform: uppercase;
+          text-align: center; }
+  .modal .modal-content .btn-modal {
+    color: #FFF;
+    background-color: #f0842d;
+    font-family: "gothamBold";
+    font-size: 0.8em;
+    text-transform: uppercase; }
+  .modal .modal-content .dropdown-toggle::after {
+    font-size: 1.3em; }
+  .modal .modal-content .btn-modal:focus {
+    box-shadow: none; }
 
 /*# sourceMappingURL=style.css.map */
