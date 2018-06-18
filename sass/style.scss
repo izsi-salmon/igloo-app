@@ -340,26 +340,40 @@ html{
 }
 
 // MODAL STYLES
-
 .modal{
     .modal-content{
         border: none;
         border-radius: 15px;
+        max-height: 300px;
         padding: 3%;
+        overflow: scroll;
         .modal-header-flex{
             display: flex;
             margin-bottom: 10px;
+            position: relative;
              img{
                 border-radius: 15px;
+                display: inline;
+                height: 90px;
                 object-fit: cover;
-                height: 100px;
-                width: 100px;
-                margin-right: 7px
+                width: 90px;
+                margin-right: 7px;
+            }
+            .img-booking{
+                border-radius: 7.5px;
+                height: 50px;
+                width: 50px;
+            }
+            .wrap-text{
+                display: inline;
             }
             .modal-title{
                 font-family: "gothamBold";
                 text-transform: uppercase;
                 margin-bottom: 3px;
+            }
+            .title-booking{
+                font-size: .7em;
             }
             .txt-distance{
                 color: $grey-cloud;
@@ -382,11 +396,55 @@ html{
                     margin-right: 2px;
                 }
             }
+            .fa-times{
+                color: $grey-cloud;
+                font-size: 0.8em;
+                position: absolute;
+                    top: 0;
+                    right: 0;
+            }
         }
         .modal-dscptn{
             font-family: "gothamLight";
             font-size: .7em;
             margin-bottom: 10px;
+        }
+        .modal-form{
+            .input-title{
+                color: $grey-blue;
+                font-family: "gothamBold";
+                font-size: .6em;
+                margin-bottom: 5px;
+                text-transform: uppercase;
+            }
+            input{
+                color: $off-black;
+                border: 0.05em solid $grey-superLight;
+                border-radius: 7px;
+                font-size: 0.8em;
+                margin-bottom: 14px;
+                padding: 2px;
+            }
+            input:focus{
+                outline: none;
+            }
+            .form-flex{
+                display: flex;
+                input{
+                    width: 90%;
+                }
+            }
+        }
+        .txt-extras{
+            color: $grey-blue;
+            display: flex;
+                justify-content: space-between;
+            font-family: "gothamLight";
+            font-size: 0.5em;
+            width: 50%;
+            input{
+                transform: scale(0.75);
+            }
         }
         .modal-footer-flex{
             display: flex;
@@ -414,6 +472,7 @@ html{
                     }
                 }
             }
+            
         }
         .btn-modal{
             color: #FFF;
@@ -431,7 +490,9 @@ html{
     }
 }
 
-
+.green{
+    color: $green !important;
+}
 
 
 

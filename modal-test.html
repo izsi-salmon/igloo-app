@@ -21,7 +21,10 @@
        <div class="list-view">
            <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-              Launch demo modal
+              Details modal
+            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalBooking">
+              Booking modal
             </button>
        </div>
     </div>
@@ -37,18 +40,21 @@
     </div>
     <!--ALL MODALS HERE-->
 
-    <!-- Modal -->
+    <!-- Modal 1-->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header-flex">
-              <div><img src="images/accom2.jpg" alt="image" class=""></div>
+              <div><img src="images/accom2.jpg" alt="image"></div>
               <div>
                   <div class="modal-title">lakefront hotel</div>
                   <div class="txt-distance">120km from Remarkables ski area</div>
                   <div class="txt-price"><span class="price-green">$197 NZD</span> / night</div>
                   <div class="star-ctnr"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
               </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fas fa-times"></i>
+              </button>
           </div>
           <div class="modal-dscptn">
               Real nice hotel with a lake n yum breakfast, you'll have a good time ay.
@@ -83,7 +89,58 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> <!--END Modal 1-->
+    <!-- Modal 2-->
+    <div class="modal fade" id="modalBooking" tabindex="-1" role="dialog" aria-labelledby="modalBooking" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+         <div> <!-- Prevents form for doing weird things-->
+          <div class="modal-header-flex">
+              <img src="images/accom2.jpg" alt="image" class="img-booking">
+              <div>
+                  <div class="modal-title title-booking">lakefront hotel</div>
+                  <div class="txt-price"><span class="price-green">$197 NZD</span> / night</div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          </div>
+          <div class="modal-form">
+                <div class="input-title">check in:</div>
+                <input type="text">
+                <div class="input-title">check out:</div>
+                <input type="text">
+                <div class="form-flex">
+                  <div class="form-col-left">
+                      <div class="input-title">adults:</div>
+                      <input type="number">
+                  </div>
+                  <div class="form-col-right">
+                      <div class="input-title">children:</div>
+                      <input type="number">
+                  </div>
+                </div> <!-- END form flex-->
+                <div class="input-title">name:</div>
+                <input type="text">
+                <div class="input-title">email:</div>
+                <input type="text">
+          </div><!-- END form-->
+          <div>
+              <span class="txt-extras"><input type="checkbox"> Include breakfast <span class="green"> + $10.00 NZD</span></span>
+          </div>
+          <div class="modal-footer-flex">
+          <div>
+          </div>
+           <div class="btn-group">
+              <button type="button" class="btn btn-modal">
+                confirm
+              </button>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div> <!--END Modal 2-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
