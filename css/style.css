@@ -37,13 +37,13 @@ html {
 .header-p2 {
   background-color: #97D9E1;
   background-image: linear-gradient(45deg, #97D9E1 0%, #D9AFD9 100%);
-  height: 20vh; }
+  height: 25vh; }
   .header-p2 .logo {
     width: 20%; }
 
 .backdrop-on {
   background: #e7eef0;
-  height: 80vh;
+  height: 75vh;
   max-height: 500px;
   position: fixed;
   bottom: 0;

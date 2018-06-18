@@ -64,7 +64,7 @@ html{
 .header-p2{
     background-color: #97D9E1;
     background-image: linear-gradient(45deg, #97D9E1 0%, #D9AFD9 100%);
-    height: 20vh;
+    height: 25vh;
     .logo{
         width: 20%;
     }
@@ -72,7 +72,7 @@ html{
 
 .backdrop-on{
     background: $grey-superLight;
-    height: 80vh;
+    height: 75vh;
     max-height: 500px;
     position: fixed;
         bottom: 0;
