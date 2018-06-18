@@ -73,7 +73,9 @@ html {
     color: #272726; }
 
 .list-view {
-  padding: 3%; }
+  height: 100%;
+  padding: 3%;
+  overflow: scroll; }
 
 .dw-ctnr-flex {
   display: flex;
@@ -137,6 +139,7 @@ html {
   border-radius: 20px;
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.16);
   height: 100px;
+  margin-bottom: 10px;
   position: relative; }
   .thumbnail-ctnr img {
     border-radius: 15px;
@@ -349,7 +352,7 @@ html {
     align-items: center;
     font-family: "gothamLight";
     font-size: 0.6em;
-    width: 60%; }
+    width: 55%; }
     .modal .modal-content .txt-extras input {
       transform: scale(0.75); }
   .modal .modal-content .modal-footer-flex {
