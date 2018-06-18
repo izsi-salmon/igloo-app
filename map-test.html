@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <title>IGLOO</title>
+    <link rel="icon" href="images/iglooIcon.png">
+</head>
+<body>
+    <div class="header header-p2"><img src="images/iglooLogoText.svg" alt="Igloo logo" class="logo"><br>List view elements setup <a href="modal-test.html">modal-test.html</a></div>
+    <div class="backdrop-on">
+       <div class="view-opt">
+            <span class="view vl"><i class="fas fa-list"></i>
+            <span class="opt-dscptn">LIST VIEW</span></span>
+            <span class="view vr v-active"><i class="fas fa-map-marker-alt"></i>
+            <span class="opt-dscptn">MAP VIEW</span></span>
+       </div>
+    </div>
+    <div class="map-view">
+        <div id='map'></div>
+    </div>
+    <!--ALL MODALS HERE-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaXpzaSIsImEiOiJjamkzbjQxMWQwMGFzM2tvNDM5NTB6cmlrIn0.a5L-XDDBNFQ-0BrqtQpNCg';
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+            center: [168.697751, -45.026377], // starting position [lng, lat]
+            zoom: 11 // starting zoom
+        });
+        
+    </script>
+</body>
+</html>
