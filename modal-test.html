@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="pickadate.js-3.5.6/lib/compressed/themes/classic.css">
+    <link rel="stylesheet" href="pickadate.js-3.5.6/lib/compressed/themes/classic.date.css">
     <link rel="stylesheet" href="css/style.css">
     <title>IGLOO</title>
     <link rel="icon" href="images/iglooIcon.png">
@@ -19,7 +21,7 @@
             <span class="opt-dscptn">MAP VIEW</span></span>
        </div>
        <div class="list-view">
-           <!-- Button trigger modal -->
+            <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
               Details modal
             </button>
@@ -60,34 +62,34 @@
               Real nice hotel with a lake n yum breakfast, you'll have a good time ay.
           </div>
           <div class="modal-footer-flex">
-          <div>
-              <div class="ft-title">features:</div>
-              <div class="ft-flex">
-                <div class="iconTxt-wrapper">
-                    <img src="images/icons/wifi.svg" alt="wifi svg test">
-                    <div class="icon-title">wifi</div>
-                </div>
-                <div class="iconTxt-wrapper">
-                    <img src="images/icons/wifi.svg" alt="wifi svg test">
-                    <div class="icon-title">meals</div>
-                </div>
-                <div class="iconTxt-wrapper">
-                    <img src="images/icons/wifi.svg" alt="wifi svg test">
-                    <div class="icon-title">scenic</div>
-                </div>
-                <div class="iconTxt-wrapper">
-                    <img src="images/icons/wifi.svg" alt="wifi svg test">
-                    <div class="icon-title">spa</div>
-                </div>
+              <div>
+                  <div class="ft-title">features:</div>
+                  <div class="ft-flex">
+                    <div class="iconTxt-wrapper">
+                        <img src="images/icons/wifi.svg" alt="wifi svg test">
+                        <div class="icon-title">wifi</div>
+                    </div>
+                    <div class="iconTxt-wrapper">
+                        <img src="images/icons/wifi.svg" alt="wifi svg test">
+                        <div class="icon-title">meals</div>
+                    </div>
+                    <div class="iconTxt-wrapper">
+                        <img src="images/icons/wifi.svg" alt="wifi svg test">
+                        <div class="icon-title">scenic</div>
+                    </div>
+                    <div class="iconTxt-wrapper">
+                        <img src="images/icons/wifi.svg" alt="wifi svg test">
+                        <div class="icon-title">spa</div>
+                    </div>
+                  </div>
+              </div>
+              <div class="btn-group dropright">
+                  <button type="button" class="btn btn-modal dropdown-toggle">
+                    book now
+                  </button>
               </div>
           </div>
-           <div class="btn-group dropright">
-              <button type="button" class="btn btn-modal dropdown-toggle">
-                book now
-              </button>
-           </div>
-          </div>
-        </div>
+        </div> <!-- END modal-content -->
       </div>
     </div> <!--END Modal 1-->
     <!-- Modal 2-->
@@ -108,9 +110,9 @@
           </div>
           <div class="modal-form">
                 <div class="input-title">check in:</div>
-                <input type="text">
+                <input type="text" class="datepicker">
                 <div class="input-title">check out:</div>
-                <input type="text">
+                <input type="text" class="datepicker2">
                 <div class="form-flex">
                   <div class="form-col-left">
                       <div class="input-title">adults:</div>
@@ -141,7 +143,17 @@
         </div>
       </div>
     </div> <!--END Modal 2-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="pickadate.js-3.5.6/lib/compressed/picker.js"></script>
+    <script src="pickadate.js-3.5.6/lib/compressed/picker.date.js"></script>
+    <script>
+        
+        $(document).ready(function(){
+            $('.datepicker').pickadate();
+            $('.datepicker2').pickadate();
+        });
+        
+    </script>
 </body>
 </html>

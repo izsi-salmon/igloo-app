@@ -17,6 +17,13 @@ html {
   font-family: "gothamLight";
   color: #272726; }
 
+.picker__holder {
+  font-size: .7em;
+  width: 80%; }
+
+.picker__footer {
+  display: none; }
+
 .header {
   padding: 3%;
   position: absolute;
@@ -28,13 +35,14 @@ html {
 .header-p2 {
   background-color: #97D9E1;
   background-image: linear-gradient(45deg, #97D9E1 0%, #D9AFD9 100%);
-  height: 14vh; }
+  height: 20vh; }
   .header-p2 .logo {
     width: 20%; }
 
 .backdrop-on {
   background: #e7eef0;
-  height: 86vh;
+  height: 80vh;
+  max-height: 500px;
   position: fixed;
   bottom: 0;
   width: 100%; }
@@ -226,7 +234,7 @@ html {
   top: 30%; }
 
 .tc-p2 {
-  top: 7.5%; }
+  top: 10%; }
 
 .flavour-text {
   color: #FFFFFF;
@@ -258,7 +266,7 @@ html {
 .modal .modal-content {
   border: none;
   border-radius: 15px;
-  max-height: 300px;
+  max-height: 350px;
   padding: 3%;
   overflow: scroll; }
   .modal .modal-content .modal-header-flex {
@@ -308,7 +316,7 @@ html {
       right: 0; }
   .modal .modal-content .modal-dscptn {
     font-family: "gothamLight";
-    font-size: .7em;
+    font-size: .8em;
     margin-bottom: 10px; }
   .modal .modal-content .modal-form .input-title {
     color: #4d4d4d;

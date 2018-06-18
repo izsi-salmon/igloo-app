@@ -30,9 +30,17 @@ html{
     color: $off-black;
 }
 
-//body{
-//    height: 100vw;
-//}
+// Picker styles
+
+.picker__holder{
+    font-size: .7em;
+    width: 80%;
+}
+.picker__footer{
+    display: none;
+}
+
+// END Picker styles
 
 .header{
     padding: 3%;
@@ -49,7 +57,7 @@ html{
 .header-p2{
     background-color: #97D9E1;
     background-image: linear-gradient(45deg, #97D9E1 0%, #D9AFD9 100%);
-    height: 14vh;
+    height: 20vh;
     .logo{
         width: 20%;
     }
@@ -57,7 +65,8 @@ html{
 
 .backdrop-on{
     background: $grey-superLight;
-    height: 86vh;
+    height: 80vh;
+    max-height: 500px;
     position: fixed;
         bottom: 0;
     width: 100%;
@@ -304,7 +313,7 @@ html{
 }
 
 .tc-p2{
-    top: 7.5%;
+    top: 10%;
 }
 
 .flavour-text{
@@ -344,7 +353,7 @@ html{
     .modal-content{
         border: none;
         border-radius: 15px;
-        max-height: 300px;
+        max-height: 350px;
         padding: 3%;
         overflow: scroll;
         .modal-header-flex{
@@ -406,7 +415,7 @@ html{
         }
         .modal-dscptn{
             font-family: "gothamLight";
-            font-size: .7em;
+            font-size: .8em;
             margin-bottom: 10px;
         }
         .modal-form{
