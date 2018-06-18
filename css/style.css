@@ -266,8 +266,7 @@ html {
 .modal .modal-content {
   border: none;
   border-radius: 15px;
-  padding: 3%;
-  overflow: scroll; }
+  padding: 3%; }
   .modal .modal-content .modal-header-flex {
     display: flex;
     margin-bottom: 10px;
