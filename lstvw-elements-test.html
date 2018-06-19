@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
     <link rel="stylesheet" href="css/style.css">
     <title>IGLOO</title>
     <link rel="icon" href="images/iglooIcon.png">
@@ -21,7 +27,7 @@
        <div class="view-opt">
             <span class="view vl v-active"><i class="fas fa-list"></i>
             <span class="opt-dscptn">LIST VIEW</span></span>
-            <span class="view vr"><i class="fas fa-map-marker-alt"></i>
+            <span class="view vr btn-map"><i class="fas fa-map-marker-alt"></i>
             <span class="opt-dscptn">MAP VIEW</span></span>
        </div>
        <div class="list-view">
@@ -155,7 +161,14 @@
                 <div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>
             </div>
        </div><!--END list view elements-->
-    </div>
+        <!--MAP BOX-->
+        <div class="map-view">
+            <div id='map' class=""></div>
+        </div>
+        <!--END MAP BOX-->
+    </div><!--END backdrop-->
+    
+    
     
     <!--ALL MODALS HERE-->
     
@@ -451,6 +464,26 @@
             $("#filtreToggle").click(function(){
                 $('.opts-fltr-ctnr').toggleClass('fltr-shut');
             });
+            
+            $('.btn-map').click(function(){
+                $('#map').addClass('map-on');
+                $('.btn-map').addClass('v-active');
+                $('.vl').removeClass('v-active');
+            });
+            
+            $('.vl').click(function(){
+                $('#map').removeClass('map-on');
+                $('.btn-map').removeClass('v-active');
+                $('.vl').addClass('v-active');
+            });
+        });
+        
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaXpzaSIsImEiOiJjamkzbjQxMWQwMGFzM2tvNDM5NTB6cmlrIn0.a5L-XDDBNFQ-0BrqtQpNCg';
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+            center: [168.697751, -45.026377], // starting position [lng, lat]
+            zoom: 11 // starting zoom
         });
         
     </script>

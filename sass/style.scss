@@ -146,10 +146,10 @@ html{
     height: auto;
     margin-top: -10px;
     margin-bottom: 15px;
-    max-height: 300px;
+    max-height: 140px;
     padding: 0 3%;
     overflow: hidden;
-    transition: max-height 3s ease-out;
+    transition: max-height 0.3s ease-in-out;
     width: 100%;
     .opts-flex{
         display: flex;
@@ -192,7 +192,7 @@ html{
 }
 
 .fltr-shut{
-    height: 0;
+    max-height: 0;
 }
 
 .thumbnail-ctnr{
@@ -273,9 +273,15 @@ html{
 }
 
 #map{
-    position: fixed;
-        top: 27.6vh;
+    position: absolute;
+        top: 47px;
         bottom: 0;
+    transform: translateX(1000px);
+    transition: transform 0.5s ease-out;
+}
+
+.map-on{
+    transform: translate(0) !important;
 }
 
 .top-content{
