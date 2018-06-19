@@ -143,10 +143,14 @@ html{
 }
 
 .opts-fltr-ctnr{
-    width: 100%;
-    padding: 0 3%;
+    height: auto;
     margin-top: -10px;
     margin-bottom: 15px;
+    max-height: 300px;
+    padding: 0 3%;
+    overflow: hidden;
+    transition: max-height 3s ease-out;
+    width: 100%;
     .opts-flex{
         display: flex;
             align-items: center;
@@ -171,6 +175,7 @@ html{
         .opts-coll-right{
             display: flex;
             .iconTxt-wrapper{
+                color: $grey-cloud;
                 font-family: "gothamBold";
                 font-size: 0.5em;
                 margin: 3px 4px;
@@ -187,7 +192,7 @@ html{
 }
 
 .fltr-shut{
-    display: none;
+    height: 0;
 }
 
 .thumbnail-ctnr{
@@ -497,6 +502,7 @@ html{
                         width: 1.5em;
                     }
                     .icon-title{
+                        color: $grey-cloud;
                         font-family: "gothamBold";
                         font-size: 0.33em;
                         text-transform: uppercase;
@@ -504,7 +510,6 @@ html{
                     }
                 }
             }
-            
         }
         .btn-modal{
             color: #FFF;

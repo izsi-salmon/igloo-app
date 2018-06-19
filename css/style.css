@@ -102,10 +102,14 @@ html {
     outline: none; }
 
 .opts-fltr-ctnr {
-  width: 100%;
-  padding: 0 3%;
+  height: auto;
   margin-top: -10px;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  max-height: 300px;
+  padding: 0 3%;
+  overflow: hidden;
+  transition: max-height 3s ease-out;
+  width: 100%; }
   .opts-fltr-ctnr .opts-flex {
     display: flex;
     align-items: center;
@@ -127,6 +131,7 @@ html {
     .opts-fltr-ctnr .opts-flex .opts-coll-right {
       display: flex; }
       .opts-fltr-ctnr .opts-flex .opts-coll-right .iconTxt-wrapper {
+        color: #7d7e7e;
         font-family: "gothamBold";
         font-size: 0.5em;
         margin: 3px 4px;
@@ -137,7 +142,7 @@ html {
           width: 2.5em; }
 
 .fltr-shut {
-  display: none; }
+  height: 0; }
 
 .thumbnail-ctnr {
   background: #FFF;
@@ -377,6 +382,7 @@ html {
         .modal .modal-content .modal-footer-flex .ft-flex .iconTxt-wrapper img {
           width: 1.5em; }
         .modal .modal-content .modal-footer-flex .ft-flex .iconTxt-wrapper .icon-title {
+          color: #7d7e7e;
           font-family: "gothamBold";
           font-size: 0.33em;
           text-transform: uppercase;
