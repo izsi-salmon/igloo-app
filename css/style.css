@@ -74,12 +74,13 @@ html {
 
 .list-view {
   height: 100%;
-  padding: 3%;
+  padding: 3% 3% 15% 3%;
   overflow: scroll; }
 
 .dw-ctnr-flex {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  margin-bottom: 15px; }
   .dw-ctnr-flex .btn-secondary {
     color: #4d4d4d;
     background-color: #FFF;
@@ -102,7 +103,8 @@ html {
 
 .opts-fltr-ctnr {
   width: 100%;
-  padding: 3%;
+  padding: 0 3%;
+  margin-top: -10px;
   margin-bottom: 15px; }
   .opts-fltr-ctnr .opts-flex {
     display: flex;
@@ -134,12 +136,15 @@ html {
           margin: 1px;
           width: 2.5em; }
 
+.fltr-shut {
+  display: none; }
+
 .thumbnail-ctnr {
   background: #FFF;
   border-radius: 20px;
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.16);
   height: 100px;
-  margin-bottom: 10px;
+  margin: 10px 0;
   position: relative; }
   .thumbnail-ctnr img {
     border-radius: 15px;

@@ -21,7 +21,7 @@
        <div class="list-view">
            <div class="dw-ctnr-flex">
               <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="filtreToggle">
                         FILTRE
                       </button>
                </div>
@@ -37,7 +37,7 @@
                   </div>
                 </div>
            </div>
-           <div class="opts-fltr-ctnr">
+           <div class="opts-fltr-ctnr fltr-shut">
                 <div class="opts-flex">
                     <div class="opts-coll-left">
                         <div class="opt-title">price range:</div>
@@ -110,7 +110,7 @@
                     <div class="thumbnail-title">lakefront hotel</div>
                     <div class="txt-distance">120km from Remarkables ski area</div>
                     <div class="star-ctnr"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <button class="btn btn-modal">view details</button>
+                    <button class="btn btn-modal"  data-toggle="modal" data-target="#detailsLakefront">view details</button>
                 </div>
                 <div class="txt-price">
                     <div>$197 NZD</div>
@@ -125,20 +125,327 @@
                     <div class="thumbnail-title">alpine lodge</div>
                     <div class="txt-distance">100km from Remarkables ski area</div>
                     <div class="star-ctnr"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <button class="btn btn-modal">view details</button>
+                    <button class="btn btn-modal"  data-toggle="modal" data-target="#detailsAlpine">view details</button>
                 </div>
                 <div class="txt-price">
-                    <div>$197 NZD</div>
+                    <div>$50 NZD</div>
                     <div>/ night</div>
                 </div>
                 <div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>
             </div>
-                           
+                          
+            <div class="thumbnail-ctnr">
+               <img src="images/acom3.jpeg" alt="picture of window overlooking a lake">
+                <div class="centre-el-ctnr">
+                    <div class="thumbnail-title">ski qt house</div>
+                    <div class="txt-distance">50km from Remarkables ski area</div>
+                    <div class="star-ctnr"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <button class="btn btn-modal"  data-toggle="modal" data-target="#detailsSkiqt">view details</button>
+                </div>
+                <div class="txt-price">
+                    <div>$150 NZD</div>
+                    <div>/ night</div>
+                </div>
+                <div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>
+            </div>
        </div><!--END list view elements-->
     </div>
     <!--ALL MODALS HERE-->
+    
+    <!-- Modal: details | lakefront-->
+    <div class="modal fade" id="detailsLakefront" tabindex="-1" role="dialog" aria-labelledby="detailsLakefront" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header-flex">
+              <div><img src="images/accom2.jpg" alt="image"></div>
+              <div>
+                  <div class="modal-title">lakefront hotel</div>
+                  <div class="txt-distance">120km from Remarkables ski area</div>
+                  <div class="txt-price"><span class="price-green">$197 NZD</span> / night</div>
+                  <div class="star-ctnr"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          <div class="modal-dscptn">
+              Real nice hotel with a lake n yum breakfast, you'll have a good time ay.
+          </div>
+          <div class="modal-footer-flex">
+              <div>
+                  <div class="ft-title">features:</div>
+                  <div class="ft-flex">
+                    <div class="iconTxt-wrapper">
+                        <img src="images/icons/wifi.svg" alt="wifi svg test">
+                        <div class="icon-title">wifi</div>
+                    </div>
+                    <div class="iconTxt-wrapper">
+                        <img src="images/icons/wifi.svg" alt="wifi svg test">
+                        <div class="icon-title">meals</div>
+                    </div>
+                    <div class="iconTxt-wrapper">
+                        <img src="images/icons/wifi.svg" alt="wifi svg test">
+                        <div class="icon-title">scenic</div>
+                    </div>
+                    <div class="iconTxt-wrapper">
+                        <img src="images/icons/wifi.svg" alt="wifi svg test">
+                        <div class="icon-title">spa</div>
+                    </div>
+                  </div>
+              </div>
+              <div class="btn-group dropright">
+                  <button type="button" class="btn btn-modal dropdown-toggle" data-toggle="modal" data-target="#bookingLakefront">
+                    book now
+                  </button>
+              </div>
+          </div>
+        </div> <!--END modal-content-->
+      </div>
+    </div> <!--END Modal: details | lakefront-->
+    
+    <!-- Modal: booking | lakefront-->
+    <div class="modal fade" id="bookingLakefront" tabindex="-1" role="dialog" aria-labelledby="bookingLakefront" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+         <div> <!--Prevents form for doing weird things-->
+          <div class="modal-header-flex">
+              <img src="images/accom2.jpg" alt="image" class="img-booking">
+              <div>
+                  <div class="modal-title title-booking">lakefront hotel</div>
+                  <div class="txt-price"><span class="price-green">$197 NZD</span> / night</div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          </div>
+          <div class="modal-form">
+                <div class="input-title">check in:</div>
+                <input type="text" class="datepicker">
+                <div class="input-title">check out:</div>
+                <input type="text" class="datepicker2">
+                <div class="form-flex">
+                  <div class="form-col-left">
+                      <div class="input-title">adults:</div>
+                      <input type="number">
+                  </div>
+                  <div class="form-col-right">
+                      <div class="input-title">children:</div>
+                      <input type="number">
+                  </div>
+                </div> <!-- END form flex-->
+                <div class="input-title">name:</div>
+                <input type="text">
+                <div class="input-title">email:</div>
+                <input type="text">
+          </div><!-- END form-->
+          <div>
+              <span class="txt-extras"><input type="checkbox"> Include breakfast <span class="green"> + $10.00 NZD</span></span>
+          </div>
+          <div class="modal-footer-flex">
+          <div>
+          </div>
+           <div class="btn-group">
+              <button type="button" class="btn btn-modal">
+                confirm
+              </button>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div> <!--END Modal: booking | lakefront-->
+    
+    <!-- Modal: details | Alpine-->
+    <div class="modal fade" id="detailsAlpine" tabindex="-1" role="dialog" aria-labelledby="detailsAlpine" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header-flex">
+              <div><img src="images/accom1.jpeg" alt="image"></div>
+              <div>
+                  <div class="modal-title">alpine lodge</div>
+                  <div class="txt-distance">100km from Remarkables ski area</div>
+                  <div class="txt-price"><span class="price-green">$50 NZD</span> / night</div>
+                  <div class="star-ctnr"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          <div class="modal-dscptn">
+              Real nice hotel with a lake n yum breakfast, you'll have a good time ay.
+          </div>
+          <div class="modal-footer-flex">
+              <div>
+                  <div class="ft-title">features:</div>
+                  <div class="ft-flex">
+                    <div class="iconTxt-wrapper">
+                        <img src="images/icons/wifi.svg" alt="wifi svg test">
+                        <div class="icon-title">wifi</div>
+                    </div>
+                    <div class="iconTxt-wrapper">
+                        <img src="images/icons/wifi.svg" alt="wifi svg test">
+                        <div class="icon-title">scenic</div>
+                    </div>
+                  </div>
+              </div>
+              <div class="btn-group dropright">
+                  <button type="button" class="btn btn-modal dropdown-toggle" data-toggle="modal" data-target="#bookingAlpine">
+                    book now
+                  </button>
+              </div>
+          </div>
+        </div> <!--END modal-content-->
+      </div>
+    </div> <!--END Modal: details | Alpine-->
+    
+    <!-- Modal: booking | Alpine-->
+    <div class="modal fade" id="bookingAlpine" tabindex="-1" role="dialog" aria-labelledby="bookingAlpine" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+         <div> <!--Prevents form for doing weird things-->
+          <div class="modal-header-flex">
+              <img src="images/accom1.jpeg" alt="image" class="img-booking">
+              <div>
+                  <div class="modal-title title-booking">Alpine Lodge</div>
+                  <div class="txt-price"><span class="price-green">$50 NZD</span> / night</div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          </div>
+          <div class="modal-form">
+                <div class="input-title">check in:</div>
+                <input type="text" class="datepicker">
+                <div class="input-title">check out:</div>
+                <input type="text" class="datepicker2">
+                <div class="form-flex">
+                  <div class="form-col-left">
+                      <div class="input-title">adults:</div>
+                      <input type="number">
+                  </div>
+                  <div class="form-col-right">
+                      <div class="input-title">children:</div>
+                      <input type="number">
+                  </div>
+                </div> <!-- END form flex-->
+                <div class="input-title">name:</div>
+                <input type="text">
+                <div class="input-title">email:</div>
+                <input type="text">
+          </div><!-- END form-->
+          <div class="modal-footer-flex">
+          <div>
+          </div>
+           <div class="btn-group">
+              <button type="button" class="btn btn-modal">
+                confirm
+              </button>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div> <!--END Modal: booking | Alpine-->
+    
+    <!-- Modal: details | Skiqt-->
+    <div class="modal fade" id="detailsSkiqt" tabindex="-1" role="dialog" aria-labelledby="detailsSkiqt" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header-flex">
+              <div><img src="images/accom1.jpeg" alt="image"></div>
+              <div>
+                  <div class="modal-title">ski qt house</div>
+                  <div class="txt-distance">50km from Remarkables ski area</div>
+                  <div class="txt-price"><span class="price-green">$150 NZD</span> / night</div>
+                  <div class="star-ctnr"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          <div class="modal-dscptn">
+              Real nice hotel with a lake n yum breakfast, you'll have a good time ay.
+          </div>
+          <div class="modal-footer-flex">
+              <div>
+                  <div class="ft-title">features:</div>
+                  <div class="ft-flex">
+                    <div class="iconTxt-wrapper">
+                        <img src="images/icons/wifi.svg" alt="wifi svg test">
+                        <div class="icon-title">wifi</div>
+                    </div>
+                  </div>
+              </div>
+              <div class="btn-group dropright">
+                  <button type="button" class="btn btn-modal dropdown-toggle" data-toggle="modal" data-target="#bookingSkiqt">
+                    book now
+                  </button>
+              </div>
+          </div>
+        </div> <!--END modal-content-->
+      </div>
+    </div> <!--END Modal: details | Skiqt-->
+    
+    <!-- Modal: booking | Skiqt-->
+    <div class="modal fade" id="bookingSkiqt" tabindex="-1" role="dialog" aria-labelledby="bookingSkiqt" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+         <div> <!--Prevents form for doing weird things-->
+          <div class="modal-header-flex">
+              <img src="images/acom3.jpeg" alt="image" class="img-booking">
+              <div>
+                  <div class="modal-title title-booking">Ski qt house</div>
+                  <div class="txt-price"><span class="price-green">$50 NZD</span> / night</div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          </div>
+          <div class="modal-form">
+                <div class="input-title">check in:</div>
+                <input type="text" class="datepicker">
+                <div class="input-title">check out:</div>
+                <input type="text" class="datepicker2">
+                <div class="form-flex">
+                  <div class="form-col-left">
+                      <div class="input-title">adults:</div>
+                      <input type="number">
+                  </div>
+                  <div class="form-col-right">
+                      <div class="input-title">children:</div>
+                      <input type="number">
+                  </div>
+                </div> <!-- END form flex-->
+                <div class="input-title">name:</div>
+                <input type="text">
+                <div class="input-title">email:</div>
+                <input type="text">
+          </div><!-- END form-->
+          <div class="modal-footer-flex">
+          <div>
+          </div>
+           <div class="btn-group">
+              <button type="button" class="btn btn-modal">
+                confirm
+              </button>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div> <!--END Modal: booking | Skiqt-->
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        
+        $(document).ready(function(){
+            $("#filtreToggle").click(function(){
+                $('.opts-fltr-ctnr').toggleClass('fltr-shut');
+            });
+        });
+        
+    </script>
 </body>
 </html>
