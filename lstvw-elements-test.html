@@ -168,8 +168,6 @@
         <!--END MAP BOX-->
     </div><!--END backdrop-->
     
-    
-    
     <!--ALL MODALS HERE-->
     
     <!-- Modal: details | lakefront-->
@@ -469,12 +467,14 @@
                 $('#map').addClass('map-on');
                 $('.btn-map').addClass('v-active');
                 $('.vl').removeClass('v-active');
+                $('.list-view').addClass('lv-translate');
             });
             
             $('.vl').click(function(){
                 $('#map').removeClass('map-on');
                 $('.btn-map').removeClass('v-active');
                 $('.vl').addClass('v-active');
+                $('.list-view').removeClass('lv-translate');
             });
         });
         
