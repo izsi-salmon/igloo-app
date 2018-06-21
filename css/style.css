@@ -77,7 +77,7 @@ html {
   padding: 3% 3% 15% 3%;
   overflow: scroll;
   transform: translateX(0);
-  transition: transform 0.5s ease-out; }
+  transition: transform 0.2s ease-in; }
 
 .lv-translate {
   transform: translateX(-1000px); }
@@ -209,10 +209,10 @@ html {
 
 #map {
   position: absolute;
-  top: 47px;
+  top: 45px;
   bottom: 0;
   transform: translateX(1000px);
-  transition: transform 0.5s ease-out; }
+  transition: transform 0.2s ease-in; }
 
 .map-on {
   transform: translate(0) !important; }
@@ -397,6 +397,18 @@ html {
           font-size: 0.33em;
           text-transform: uppercase;
           text-align: center; }
+  .modal .modal-content .total-title {
+    font-family: "gothamBold";
+    margin-bottom: 10px;
+    text-transform: uppercase; }
+  .modal .modal-content .total-text {
+    font-family: "gothamLight";
+    font-size: 0.8em;
+    margin: 3px 1px; }
+  .modal .modal-content .hr {
+    border-bottom: 1px solid #7d7e7e;
+    margin: 5px 0;
+    width: 50%; }
   .modal .modal-content .btn-modal {
     color: #FFF;
     background-color: #f0842d;

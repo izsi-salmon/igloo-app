@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="pickadate.js-3.5.6/lib/compressed/themes/classic.css">
+    <link rel="stylesheet" href="pickadate.js-3.5.6/lib/compressed/themes/classic.date.css">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
     <style>
@@ -264,7 +266,7 @@
           <div>
           </div>
            <div class="btn-group">
-              <button type="button" class="btn btn-modal">
+              <button type="button" class="btn btn-modal" data-toggle="modal" data-target="#confirmationLakefront" data-dismiss="modal" aria-label="Close">
                 confirm
               </button>
            </div>
@@ -272,6 +274,45 @@
         </div>
       </div>
     </div> <!--END Modal: booking | lakefront-->
+    
+    <!-- Modal: confirmation | lakefront-->
+    <div class="modal fade" id="confirmationLakefront" tabindex="-1" role="dialog" aria-labelledby="confirmationLakefront" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+         <div> <!--Prevents form for doing weird things-->
+          <div class="modal-header-flex">
+              <img src="images/accom2.jpg" alt="image" class="img-booking">
+              <div>
+                  <div class="modal-title title-booking">lakefront hotel</div>
+                  <div class="txt-price"><span class="price-green">$197 NZD</span> / night</div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          </div>
+          <div class="modal-form">
+                <div class="total-title">total:</div>
+                <div class="total-text"><span id="totalNights">3</span> Nights</div>
+                <div class="total-text"><span id="totalAdults">2</span> Adults</div>
+                <div class="total-text"><span id="totalAdults">1</span> Child</div>
+                <div class="total-text">$197.00 NZD / night</div>
+                <div class="total-text">+ $10.00 breakfast per person</div>
+                <div class="hr"></div>
+                <div class="total-text green">$<span id="priceTotal">621</span>.00 NZD</div>
+          </div><!-- END form-->
+          <div class="modal-footer-flex">
+          <div>
+          </div>
+           <div class="btn-group">
+              <button type="button" class="btn btn-modal">
+                Reserve
+              </button>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div> <!--END Modal: confirmation | lakefront-->
     
     <!-- Modal: details | Alpine-->
     <div class="modal fade" id="detailsAlpine" tabindex="-1" role="dialog" aria-labelledby="detailsAlpine" aria-hidden="true">
@@ -356,7 +397,7 @@
           <div>
           </div>
            <div class="btn-group">
-              <button type="button" class="btn btn-modal">
+              <button type="button" class="btn btn-modal" data-toggle="modal" data-target="#confirmationAlpine" data-dismiss="modal" aria-label="Close">
                 confirm
               </button>
            </div>
@@ -364,6 +405,45 @@
         </div>
       </div>
     </div> <!--END Modal: booking | Alpine-->
+    
+    <!-- Modal: confirmation | Alpine-->
+    <div class="modal fade" id="confirmationAlpine" tabindex="-1" role="dialog" aria-labelledby="confirmationAlpine" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+         <div> <!--Prevents form for doing weird things-->
+          <div class="modal-header-flex">
+              <img src="images/accom1.jpeg" alt="image" class="img-booking">
+              <div>
+                  <div class="modal-title title-booking">Alpine Lodge</div>
+                  <div class="txt-price"><span class="price-green">$50 NZD</span> / night</div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          </div>
+          <div class="modal-form">
+                <div class="total-title">total:</div>
+                <div class="total-text"><span id="totalNights">3</span> Nights</div>
+                <div class="total-text"><span id="totalAdults">2</span> Adults</div>
+                <div class="total-text"><span id="totalAdults">1</span> Child</div>
+                <div class="total-text">$50.00 NZD / night</div>
+                <div class="total-text">+ $10.00 breakfast per person</div>
+                <div class="hr"></div>
+                <div class="total-text green">$<span id="priceTotal">750</span>.00 NZD</div>
+          </div><!-- END form-->
+          <div class="modal-footer-flex">
+          <div>
+          </div>
+           <div class="btn-group">
+              <button type="button" class="btn btn-modal">
+                Reserve
+              </button>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div> <!--END Modal: confirmation | Alpine-->
     
     <!-- Modal: details | Skiqt-->
     <div class="modal fade" id="detailsSkiqt" tabindex="-1" role="dialog" aria-labelledby="detailsSkiqt" aria-hidden="true">
@@ -444,7 +524,7 @@
           <div>
           </div>
            <div class="btn-group">
-              <button type="button" class="btn btn-modal">
+              <button type="button" class="btn btn-modal" data-toggle="modal" data-target="#confirmationSkiqt" data-dismiss="modal" aria-label="Close">
                 confirm
               </button>
            </div>
@@ -453,12 +533,56 @@
       </div>
     </div> <!--END Modal: booking | Skiqt-->
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <!-- Modal: confirmation | Skiqt-->
+    <div class="modal fade" id="confirmationSkiqt" tabindex="-1" role="dialog" aria-labelledby="confirmationSkiqt" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+         <div> <!--Prevents form for doing weird things-->
+          <div class="modal-header-flex">
+              <img src="images/acom3.jpeg" alt="image" class="img-booking">
+              <div>
+                  <div class="modal-title title-booking">Ski qt house</div>
+                  <div class="txt-price"><span class="price-green">$50 NZD</span> / night</div>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          </div>
+          <div class="modal-form">
+                <div class="total-title">total:</div>
+                <div class="total-text"><span id="totalNights">3</span> Nights</div>
+                <div class="total-text"><span id="totalAdults">2</span> Adults</div>
+                <div class="total-text"><span id="totalAdults">1</span> Child</div>
+                <div class="total-text">$50.00 NZD / night</div>
+                <div class="total-text">+ $10.00 breakfast per person</div>
+                <div class="hr"></div>
+                <div class="total-text green">$<span id="priceTotal">750</span>.00 NZD</div>
+          </div><!-- END form-->
+          <div class="modal-footer-flex">
+          <div>
+          </div>
+           <div class="btn-group">
+              <button type="button" class="btn btn-modal">
+                Reserve
+              </button>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div> <!--END Modal: confirmation | Skiqt-->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="pickadate.js-3.5.6/lib/compressed/picker.js"></script>
+    <script src="pickadate.js-3.5.6/lib/compressed/picker.date.js"></script>
     <script>
         
         $(document).ready(function(){
+            $('.datepicker').pickadate();
+            $('.datepicker2').pickadate();
+            
             $("#filtreToggle").click(function(){
                 $('.opts-fltr-ctnr').toggleClass('fltr-shut');
             });
