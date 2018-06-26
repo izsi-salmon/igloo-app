@@ -365,6 +365,12 @@ html {
     display: flex; }
     .modal .modal-content .modal-form .form-flex input {
       width: 90%; }
+  .modal .modal-content .warning {
+    color: #E64443;
+    font-size: .7em;
+    margin-top: -7px;
+    margin-left: 3px;
+    margin-bottom: 14px; }
   .modal .modal-content .txt-extras {
     color: #4d4d4d;
     display: flex;

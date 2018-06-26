@@ -237,36 +237,38 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <i class="fas fa-times"></i>
               </button>
-          </div>
+           </div>
           </div>
           <div class="modal-form">
                 <div class="input-title">check in:</div>
-                <input type="text" class="datepickerHotelIn">
+                <input type="text" class="datepickerHotelIn check-in" required>
                 <div class="input-title">check out:</div>
-                <input type="text" class="datepickerHotelOut" readonly>
-                <div class="form-flex">
+                <input type="text" class="datepickerHotelOut check-out" required readonly>
+                <div class="form-flex cpcty-input-hotel">
                   <div class="form-col-left">
                       <div class="input-title">adults:</div>
-                      <input type="number">
+                      <input type="number" class="inputAdult" value="1">
                   </div>
                   <div class="form-col-right">
                       <div class="input-title">children:</div>
-                      <input type="number">
+                      <input type="number" class="inputChild" value="0">
                   </div>
                 </div> <!-- END form flex-->
+                <div class="warning input-warning"></div>
                 <div class="input-title">full name:</div>
-                <input type="text">
+                <input type="text" class="input-name" required>
                 <div class="input-title">email:</div>
-                <input type="text">
+                <input type="email" class="input-email" required>
+                <div class="warning email-warning"></div>
           </div><!-- END form-->
           <div>
               <span class="txt-extras"><input type="checkbox"> Include breakfast <span class="green"> + $10.00 NZD</span></span>
           </div>
           <div class="modal-footer-flex">
           <div>
-          </div>
+          </div> <!--Keeps flex in tact-->
            <div class="btn-group">
-              <button type="button" class="btn btn-modal" data-toggle="modal" data-target="#confirmationLakefront" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="btn btn-modal confirm-trigger">
                 confirm
               </button>
            </div>
@@ -371,33 +373,35 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <i class="fas fa-times"></i>
               </button>
-          </div>
+           </div>
           </div>
           <div class="modal-form">
                 <div class="input-title">check in:</div>
-                <input type="text" class="datepicker">
+                <input type="text" class="datepickerHostelIn check-in" required>
                 <div class="input-title">check out:</div>
-                <input type="text" class="datepicker2">
-                <div class="form-flex">
+                <input type="text" class="datepickerHostelOut check-out" required readonly>
+                <div class="form-flex cpcty-input-hostel">
                   <div class="form-col-left">
                       <div class="input-title">adults:</div>
-                      <input type="number">
+                      <input type="number" class="inputAdult" value="1">
                   </div>
                   <div class="form-col-right">
                       <div class="input-title">children:</div>
-                      <input type="number">
+                      <input type="number" class="inputChild" value="0">
                   </div>
                 </div> <!-- END form flex-->
+                <div class="warning input-warning"></div>
                 <div class="input-title">full name:</div>
-                <input type="text">
+                <input type="text" class="input-name" required>
                 <div class="input-title">email:</div>
-                <input type="text">
+                <input type="email" class="input-email" required>
+                <div class="warning email-warning"></div>
           </div><!-- END form-->
           <div class="modal-footer-flex">
           <div>
-          </div>
+          </div> <!--Keeps flex in tact-->
            <div class="btn-group">
-              <button type="button" class="btn btn-modal" data-toggle="modal" data-target="#confirmationAlpine" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="btn btn-modal confirm-trigger">
                 confirm
               </button>
            </div>
@@ -450,7 +454,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header-flex">
-              <div><img src="images/accom1.jpeg" alt="image"></div>
+              <div><img src="images/acom3.jpeg" alt="image"></div>
               <div>
                   <div class="modal-title">ski qt house</div>
                   <div class="txt-distance">50km from Remarkables ski area</div>
@@ -498,33 +502,35 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <i class="fas fa-times"></i>
               </button>
-          </div>
+           </div>
           </div>
           <div class="modal-form">
                 <div class="input-title">check in:</div>
-                <input type="text" class="datepicker">
+                <input type="text" class="datepickerHouseIn check-in" required>
                 <div class="input-title">check out:</div>
-                <input type="text" class="datepicker2">
-                <div class="form-flex">
+                <input type="text" class="datepickerHouseOut check-out" required readonly>
+                <div class="form-flex cpcty-input-house">
                   <div class="form-col-left">
                       <div class="input-title">adults:</div>
-                      <input type="number">
+                      <input type="number" class="inputAdult" value="1">
                   </div>
                   <div class="form-col-right">
                       <div class="input-title">children:</div>
-                      <input type="number">
+                      <input type="number" class="inputChild" value="0">
                   </div>
                 </div> <!-- END form flex-->
+                <div class="warning input-warning"></div>
                 <div class="input-title">full name:</div>
-                <input type="text">
+                <input type="text" class="input-name" required>
                 <div class="input-title">email:</div>
-                <input type="text">
+                <input type="email" class="input-email" required>
+                <div class="warning email-warning"></div>
           </div><!-- END form-->
           <div class="modal-footer-flex">
           <div>
           </div>
            <div class="btn-group">
-              <button type="button" class="btn btn-modal" data-toggle="modal" data-target="#confirmationSkiqt" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="btn btn-modal confirm-trigger">
                 confirm
               </button>
            </div>
