@@ -27,6 +27,14 @@ $(document).ready(function(){
         breakfast: false
     };
     
+    // Dom elements to write data into
+    // Lakefront:
+    var spanTotalNightsLakefront = document.getElementById('totalNightsLakefront');
+    var spanTotalAdultsLakefront = document.getElementById('totalAdultsLakefront');
+    var spanTotalChildrenLakefront = document.getElementById('totalChildrenLakefront');
+    var spanBreakfastOptLakefront = document.getElementById('breakfastOptLakefront');
+    var spanTotalCostLakefront = document.getElementById('priceTotalLakefront');
+    
     // DATE PICKER FOR HOTEL
     $('.datepickerHotelIn').pickadate({
         format: 'd/m/yyyy',
@@ -207,6 +215,8 @@ $(document).ready(function(){
             console.log('Booking data:');
             calcualteStayDuration();
             console.dir(bookingData);
+            console.log('total cost:');
+            calculateData();
         } else{
             confirmBtn[arrayNo].removeAttribute('data-toggle');
             confirmBtn[arrayNo].removeAttribute('data-target');
@@ -241,6 +251,27 @@ $(document).ready(function(){
         }
     }
     breakfastCheck[0].addEventListener('click', function(){breakfastBoolean(0);}, false);
+    
+    // Calculate booking data
+    function calculateData(){
+        var breakfast;
+        if (bookingData.breakfast === true){
+            var breakfast = 10;
+        } else{
+            var breakfast = 0;
+        }
+        var totalCost = ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * accomodation.hotel.price) + (bookingData.stayDuration * breakfast);
+        console.log(totalCost);
+    }
+    
+    // Write booking data into the dom
+    function displayData(){
+        spanTotalNightsLakefront.textContent = bookingData.stayDuration;
+        spanTotalAdultsLakefront.textContent = bookingData.totalAdults;
+        spanTotalChildrenLakefront.textContent = bookingData.totalChildren;
+//        spanBreakfastOptLakefront.textContent = '+ $10 breakfast per person';
+        spanTotalCostLakefront.textContent = 'noodle';
+    }
     
     // Toggle filtre view
     $('#filtreToggle').click(function(){
