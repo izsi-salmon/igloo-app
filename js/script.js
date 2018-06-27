@@ -3,31 +3,52 @@
 // Start js
 $(document).ready(function(){
     
+    // Data variables
     var config = {};
     var hotelObj = accomodation.hotel;
     var hostelObj = accomodation.hostel;
     var houseObj = accomodation.house;
     var motelObj = accomodation.motel;
     
+    // Input variables
+    var checkInInput =  document.getElementsByClassName('check-in');
+    var checkOutInput = document.getElementsByClassName('check-out');
+    var adultInput =    document.getElementsByClassName('inputAdult');
+    var childInput =    document.getElementsByClassName('inputChild');
+    var nameInput =     document.getElementsByClassName('input-name');
+    var emailInput =    document.getElementsByClassName('input-email');
+    var breakfastCheck = document.getElementsByClassName('breakfast-option');
+    // Confirm button
+    var confirmBtn =    document.getElementsByClassName('confirm-trigger');
+    
+    // Variables to store user data
+    var bookingDates = {};
+    var bookingData = {
+        breakfast: false
+    };
+    
     // DATE PICKER FOR HOTEL
     $('.datepickerHotelIn').pickadate({
         format: 'd/m/yyyy',
         min: 1,
         onSet: function(context) {
-            var selectedDate = context;
-            var date = new Date(selectedDate.select);
-            console.log(date);
+            var selectedDate = context.select;
+            var date = new Date(selectedDate);
             if (date != 'Invalid Date'){
                 var dayCheckIn = date.getDate();
                 var monthCheckIn = date.getMonth();
                 var yearCheckIn = date.getFullYear();
+                bookingDates.checkInDate = selectedDate;
                 $('.datepickerHotelOut').pickadate({
                     format: 'd/m/yyyy',
                     disable: [
                         true,
                         [2018, 10, 21, 'inverted'],
                         { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hotelObj.maxNights - 1) }
-                    ]
+                    ],
+                    onSet: function(context){
+                        bookingDates.checkOutDate = context.select;
+                    }
                 });
             }
         }
@@ -38,20 +59,24 @@ $(document).ready(function(){
         format: 'd/m/yyyy',
         min: 1,
         onSet: function(context) {
-            var selectedDate = context;
-            var date = new Date(selectedDate.select);
+            var selectedDate = context.select;
+            var date = new Date(selectedDate);
             console.log(date);
             if (date != 'Invalid Date'){
                 var dayCheckIn = date.getDate();
                 var monthCheckIn = date.getMonth();
                 var yearCheckIn = date.getFullYear();
+                bookingDates.checkInDate = selectedDate;
                 $('.datepickerHostelOut').pickadate({
                     format: 'd/m/yyyy',
                     disable: [
                         true,
                         [2018, 10, 21, 'inverted'],
                         { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hostelObj.maxNights - 1) }
-                    ]
+                    ],
+                    onSet: function(context){
+                        bookingDates.checkOutDate = context.select;
+                    }
                 });
             }
         }
@@ -62,20 +87,24 @@ $(document).ready(function(){
         format: 'd/m/yyyy',
         min: 1,
         onSet: function(context) {
-            var selectedDate = context;
-            var date = new Date(selectedDate.select);
+            var selectedDate = context.select;
+            var date = new Date(selectedDate);
             console.log(date);
             if (date != 'Invalid Date'){
                 var dayCheckIn = date.getDate();
                 var monthCheckIn = date.getMonth();
                 var yearCheckIn = date.getFullYear();
+                bookingDates.checkInDate = selectedDate;
                 $('.datepickerMotelOut').pickadate({
                     format: 'd/m/yyyy',
                     disable: [
                         true,
                         [2018, 10, 21, 'inverted'],
                         { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+3)), to: (motelObj.maxNights - 3) }
-                    ]
+                    ],
+                    onSet: function(context){
+                        bookingDates.checkOutDate = context.select;
+                    }
                 });
             }
         }
@@ -86,20 +115,24 @@ $(document).ready(function(){
         format: 'd/m/yyyy',
         min: 1,
         onSet: function(context) {
-            var selectedDate = context;
-            var date = new Date(selectedDate.select);
+            var selectedDate = context.select;
+            var date = new Date(selectedDate);
             console.log(date);
             if (date != 'Invalid Date'){
                 var dayCheckIn = date.getDate();
                 var monthCheckIn = date.getMonth();
                 var yearCheckIn = date.getFullYear();
+                bookingDates.checkInDate = selectedDate;
                 $('.datepickerHouseOut').pickadate({
                     format: 'd/m/yyyy',
                     disable: [
                         true,
                         [2018, 10, 21, 'inverted'],
                         { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+2)), to: (houseObj.maxNights - 2)}
-                    ]
+                    ],
+                    onSet: function(context){
+                        bookingDates.checkOutDate = context.select;
+                    }
                 });
             }
         }
@@ -131,18 +164,21 @@ $(document).ready(function(){
         } else{
             warningDiv.innerHTML = null;
             logic = true;
+            // Store the successful values into the booking object
+            bookingData.totalAdults = numAdults;
+            bookingData.totalChildren = numChildren;
         }
         config.logic = logic;
         console.log(logic + ': inside inputValid()');
     }
-
+    
+    // inputValidation() event listeners:
     document.getElementsByClassName('cpcty-input-hotel')[0].addEventListener('mouseleave', function(){inputValidation(hotelObj.maxCapacity, hotelObj.minCapacity, 0);}, false);
     document.getElementsByClassName('cpcty-input-hostel')[0].addEventListener('mouseleave', function(){inputValidation(hostelObj.maxCapacity, hostelObj.minCapacity, 1);}, false);
     document.getElementsByClassName('cpcty-input-house')[0].addEventListener('mouseleave', function(){inputValidation(houseObj.maxCapacity, houseObj.minCapacity, 2);}, false);
     //document.getElementsByClassName('cpcty-input-motel')[0].addEventListener('mouseleave', function(){inputValidation(motelObj.maxCapacity, motelObj.minCapacity, 3);}, false);
     
     // Email validation
-    var emailInput = document.getElementsByClassName('input-email');
     function emailValidation(arrayNo){
         var warningDiv = document.getElementsByClassName('email-warning')[arrayNo];
         if (emailInput[arrayNo].validity.valid){
@@ -156,13 +192,6 @@ $(document).ready(function(){
     emailInput[2].addEventListener('mouseleave', function(){emailValidation(2);}, false);
     
     // Confirm form
-    var checkInInput =  document.getElementsByClassName('check-in');
-    var checkOutInput = document.getElementsByClassName('check-out');
-    var adultInput =    document.getElementsByClassName('inputAdult');
-    var childInput =    document.getElementsByClassName('inputChild');
-    var nameInput =     document.getElementsByClassName('input-name');
-    var confirmBtn =    document.getElementsByClassName('confirm-trigger');
-    
     function confirmForm(arrayNo, modalName){
         var inputAdults = config.logic;
         console.log(config.logic);
@@ -175,26 +204,43 @@ $(document).ready(function(){
             confirmBtn[arrayNo].setAttribute('data-target','#confirmation' + modalName);
             confirmBtn[arrayNo].setAttribute('data-dismiss','modal');
             confirmBtn[arrayNo].setAttribute('aria-label','Close');
-            console.log('working');
+            console.log('Booking data:');
+            calcualteStayDuration();
+            console.dir(bookingData);
         } else{
             confirmBtn[arrayNo].removeAttribute('data-toggle');
             confirmBtn[arrayNo].removeAttribute('data-target');
             confirmBtn[arrayNo].removeAttribute('data-dismiss');
             confirmBtn[arrayNo].removeAttribute('aria-label');
             console.log('not working');
+            console.log('Booking data:');
+            calcualteStayDuration();
+            console.dir(bookingData);
         }
     }
     
+    // confirmForm() Event listeners:
     confirmBtn[0].addEventListener('click', function(){confirmForm(0, 'Lakefront');}, false);
     confirmBtn[1].addEventListener('click', function(){confirmForm(1, 'Alpine');}, false);
     confirmBtn[2].addEventListener('click', function(){confirmForm(2, 'Skiqt');}, false);
     
-    var userBooking = {};
-    
-    // Store data
-    function storeData(){
-        
+    // Calculate nights of stay and store into booking obj
+    function calcualteStayDuration(){
+        // Variable that minuses the stored inputed time stamps from each other to find their difference
+        var dateResult = (bookingDates.checkOutDate - bookingDates.checkInDate);
+        // Variable that converts the timestamp outputed by dateResult into days
+        var resultConverted = Math.floor(dateResult / (1000 * 60 * 60 * 24));
+        bookingData.stayDuration = resultConverted;
     }
+    
+    // Add breakfast option to booking data
+    function breakfastBoolean(arrayNo){
+        console.log('working');
+        if (breakfastCheck[arrayNo].checked === true){
+            bookingData.breakfast = true;
+        }
+    }
+    breakfastCheck[0].addEventListener('click', function(){breakfastBoolean(0);}, false);
     
     // Toggle filtre view
     $('#filtreToggle').click(function(){
