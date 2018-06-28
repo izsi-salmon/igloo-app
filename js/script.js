@@ -1,25 +1,47 @@
-
+console.log(locations.queenstown);
 
 // Start js
 $(document).ready(function(){
     
     // Data variables
     var config = {};
-    var hotelObj = accomodation.hotel;
-    var hostelObj = accomodation.hostel;
-    var houseObj = accomodation.house;
-    var motelObj = accomodation.motel;
+    var hotelObj = data.hotel;
+    var hostelObj = data.hostel;
+    var houseObj = data.house;
+    var motelObj = data.motel;
     
+    // content containers
+    
+    // Anchor for creating thumbnails
+    var thumbnailAnchor =   document.getElementsByClassName('opts-fltr-ctnr')[0];
+    // Thumbnail containers
+    var thumbnailImg =      document.getElementsByClassName('image-ctnr');
+    var thumbnailTitle =    document.getElementsByClassName('thumbnail-title');
+    var thumbnailDistance = document.getElementsByClassName('distance-number');
+    var thumbnailPrice =    document.getElementsByClassName('price-number');
+    var thumbnailStars =    document.getElementsByClassName('star-ctnr');
+    
+    // Modal containers
+    
+    // Details modal
+    var modalImg =          document.getElementsByClassName('modal-img')[0];
+    var modalTitle =        document.getElementsByClassName('modal-title')[0];
+    var modalDistance =     document.getElementsByClassName('modal-distance')[0];
+    var modalPrice =        document.getElementsByClassName('modal-price')[0];
+    var modalStars =        document.getElementsByClassName('star-ctnr-modal')[0];
+    var modalDescription =  document.getElementsByClassName('modal-dscptn')[0];
+    var modalFeatures =     document.getElementsByClassName('ft-flex')[0];
+        
     // Input variables
-    var checkInInput =  document.getElementsByClassName('check-in');
-    var checkOutInput = document.getElementsByClassName('check-out');
-    var adultInput =    document.getElementsByClassName('inputAdult');
-    var childInput =    document.getElementsByClassName('inputChild');
-    var nameInput =     document.getElementsByClassName('input-name');
-    var emailInput =    document.getElementsByClassName('input-email');
+    var checkInInput =   document.getElementsByClassName('check-in');
+    var checkOutInput =  document.getElementsByClassName('check-out');
+    var adultInput =     document.getElementsByClassName('inputAdult');
+    var childInput =     document.getElementsByClassName('inputChild');
+    var nameInput =      document.getElementsByClassName('input-name');
+    var emailInput =     document.getElementsByClassName('input-email');
     var breakfastCheck = document.getElementsByClassName('breakfast-option');
     // Confirm button
-    var confirmBtn =    document.getElementsByClassName('confirm-trigger');
+    var confirmBtn =     document.getElementsByClassName('confirm-trigger');
     
     // Variables to store user data
     var bookingDates = {};
@@ -28,6 +50,7 @@ $(document).ready(function(){
     };
     
     // Dom elements to write data into
+    
     // Lakefront:
     var spanTotalNightsLakefront = document.getElementById('totalNightsLakefront');
     var spanTotalAdultsLakefront = document.getElementById('totalAdultsLakefront');
@@ -35,7 +58,59 @@ $(document).ready(function(){
     var spanBreakfastOptLakefront = document.getElementById('breakfastOptLakefront');
     var spanTotalCostLakefront = document.getElementById('priceTotalLakefront');
     
-    // DATE PICKER FOR HOTEL
+    // Function that creates the thumbnails for the accomodation options
+    function loadThumbnails(){
+        for (var i = 0; i < locations.queenstown.length; i++){
+            // Creating the div to contain the thumbnail
+            var thumbnailContainer = document.createElement('div');
+            thumbnailContainer.setAttribute('class','thumbnail-ctnr');
+            thumbnailContainer.innerHTML = '<div class="image-ctnr"></div><div class="centre-el-ctnr"><div class="thumbnail-title"></div><div class="txt-distance"><span class="distance-number"></span>km from Remarkables ski area</div><div class="star-ctnr"></div><button class="btn btn-modal view-details"  data-toggle="modal" data-target="#detailsLakefront">view details</button></div><div class="txt-price"><div>$<span class="price-number"></span> NZD</div><div>/ night</div></div><div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>';
+            // Placing the code into the DOM
+            thumbnailAnchor.after(thumbnailContainer);
+            // Injecting relevant data into each thumbnail by using i as the argument
+            writeThumbnails(i);
+            setDetailButton(i);
+        }
+    }
+    loadThumbnails();
+    
+    // Function that writes thumbnail data
+    function writeThumbnails(arrayNo){
+        console.log('Function fired: ' + arrayNo);
+        thumbnailImg[0].innerHTML = locations.queenstown[arrayNo].img;
+        thumbnailTitle[0].innerHTML = locations.queenstown[arrayNo].title;
+        thumbnailDistance[0].innerHTML = locations.queenstown[arrayNo].distance;
+        thumbnailPrice[0].innerHTML = locations.queenstown[arrayNo].price;
+        for (var i = 0; i < locations.queenstown[arrayNo].stars; i++){
+            thumbnailStars[0].innerHTML += elements.stars[arrayNo];
+        }
+        
+    }
+    
+    // Function that sets relevant event listeners to each thumbnail button
+    function setDetailButton(arrayNo){ // by numbering the buttons we can target them one by one
+        var detailsBtn = document.getElementsByClassName('view-details');
+        detailsBtn[arrayNo].addEventListener('click', function(){writeModal(arrayNo);}, false);
+        console.log('Running setDeleteBtn(): ' + arrayNo);
+        // Because this function is run in a for loop using parameters, we have a one dynamic funcation
+        // that runs uniquely for each button
+    }
+    
+    // Function that writes data into the modal depending on which option is clicked
+    function writeModal(arrayNo){
+        console.log('writeModal(): ' + arrayNo)
+        modalImg.innerHTML = locations.queenstown[arrayNo].img;
+        modalTitle.innerHTML = locations.queenstown[arrayNo].title;
+        modalDistance.innerHTML = locations.queenstown[arrayNo].distance;
+        modalPrice.innerHTML = locations.queenstown[arrayNo].price;
+        modalDescription.innerHTML = locations.queenstown[arrayNo].description;
+//        modalFeatures.innerHTML = ;
+//        for (var i = 0; i < locations.queenstown[arrayNo].stars; i++){
+//            thumbnailStars[0].innerHTML += elements.stars[arrayNo];
+//        }
+    }
+    
+//     DATE PICKER FOR HOTEL
     $('.datepickerHotelIn').pickadate({
         format: 'd/m/yyyy',
         min: 1,
@@ -182,8 +257,8 @@ $(document).ready(function(){
     
     // inputValidation() event listeners:
     document.getElementsByClassName('cpcty-input-hotel')[0].addEventListener('mouseleave', function(){inputValidation(hotelObj.maxCapacity, hotelObj.minCapacity, 0);}, false);
-    document.getElementsByClassName('cpcty-input-hostel')[0].addEventListener('mouseleave', function(){inputValidation(hostelObj.maxCapacity, hostelObj.minCapacity, 1);}, false);
-    document.getElementsByClassName('cpcty-input-house')[0].addEventListener('mouseleave', function(){inputValidation(houseObj.maxCapacity, houseObj.minCapacity, 2);}, false);
+//    document.getElementsByClassName('cpcty-input-hostel')[0].addEventListener('mouseleave', function(){inputValidation(hostelObj.maxCapacity, hostelObj.minCapacity, 1);}, false);
+//    document.getElementsByClassName('cpcty-input-house')[0].addEventListener('mouseleave', function(){inputValidation(houseObj.maxCapacity, houseObj.minCapacity, 2);}, false);
     //document.getElementsByClassName('cpcty-input-motel')[0].addEventListener('mouseleave', function(){inputValidation(motelObj.maxCapacity, motelObj.minCapacity, 3);}, false);
     
     // Email validation
@@ -196,8 +271,8 @@ $(document).ready(function(){
         }
     }
     emailInput[0].addEventListener('mouseleave', function(){emailValidation(0);}, false);
-    emailInput[1].addEventListener('mouseleave', function(){emailValidation(1);}, false);
-    emailInput[2].addEventListener('mouseleave', function(){emailValidation(2);}, false);
+//    emailInput[1].addEventListener('mouseleave', function(){emailValidation(1);}, false);
+//    emailInput[2].addEventListener('mouseleave', function(){emailValidation(2);}, false);
     
     // Confirm form
     function confirmForm(arrayNo, modalName){
@@ -231,8 +306,8 @@ $(document).ready(function(){
     
     // confirmForm() Event listeners:
     confirmBtn[0].addEventListener('click', function(){confirmForm(0, 'Lakefront');}, false);
-    confirmBtn[1].addEventListener('click', function(){confirmForm(1, 'Alpine');}, false);
-    confirmBtn[2].addEventListener('click', function(){confirmForm(2, 'Skiqt');}, false);
+//    confirmBtn[1].addEventListener('click', function(){confirmForm(1, 'Alpine');}, false);
+//    confirmBtn[2].addEventListener('click', function(){confirmForm(2, 'Skiqt');}, false);
     
     // Calculate nights of stay and store into booking obj
     function calcualteStayDuration(){
@@ -260,8 +335,9 @@ $(document).ready(function(){
         } else{
             var breakfast = 0;
         }
-        var totalCost = ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * accomodation.hotel.price) + (bookingData.stayDuration * breakfast);
+        var totalCost = ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * accomodation.hotel.price) + ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * breakfast);
         console.log(totalCost);
+//        displayData();
     }
     
     // Write booking data into the dom
@@ -270,7 +346,7 @@ $(document).ready(function(){
         spanTotalAdultsLakefront.textContent = bookingData.totalAdults;
         spanTotalChildrenLakefront.textContent = bookingData.totalChildren;
 //        spanBreakfastOptLakefront.textContent = '+ $10 breakfast per person';
-        spanTotalCostLakefront.textContent = 'noodle';
+        spanTotalCostLakefront.textContent = totalCost;
     }
     
     // Toggle filtre view
