@@ -31,6 +31,9 @@ $(document).ready(function(){
     var modalStars =        document.getElementsByClassName('star-ctnr-modal')[0];
     var modalDescription =  document.getElementsByClassName('modal-dscptn')[0];
     var modalFeatures =     document.getElementsByClassName('ft-flex')[0];
+    // Booking modal
+    var modalCheckInCtnr =  document.getElementsByClassName('check-in-ctnr')[0];
+    var modalCheckOutCtnr = document.getElementsByClassName('check-out-ctnr')[0];
         
     // Input variables
     var checkInInput =   document.getElementsByClassName('check-in');
@@ -125,123 +128,127 @@ $(document).ready(function(){
     function setUpBooking(arrayNo){
         console.log(checkInInput[0]);
         console.log(checkOutInput[0]);
+        // Set inputs to default each time the loop runs
+        modalCheckInCtnr.innerHTML = '<input type="text" class="check-in" required>';
+        modalCheckOutCtnr.innerHTML = '<input type="text" class="check-out" required readonly>';
+        // Add datepicker class after reset
         checkInInput[0].classList.add('datepicker' + locations.queenstown[arrayNo].type + 'In');
         checkOutInput[0].classList.add('datepicker' + locations.queenstown[arrayNo].type + 'Out');
-        console.log(checkInInput[0]);
-        console.log(checkOutInput[0]);
+        initDatePickers();
     }
     
 //     DATE PICKER FOR HOTEL
-    $('.datepickerHotelIn').pickadate({
-        format: 'd/m/yyyy',
-        min: 1,
-        onSet: function(context) {
-            var selectedDate = context.select;
-            var date = new Date(selectedDate);
-            if (date != 'Invalid Date'){
-                var dayCheckIn = date.getDate();
-                var monthCheckIn = date.getMonth();
-                var yearCheckIn = date.getFullYear();
-                bookingDates.checkInDate = selectedDate;
-                $('.datepickerHotelOut').pickadate({
-                    format: 'd/m/yyyy',
-                    disable: [
-                        true,
-                        [2018, 10, 21, 'inverted'],
-                        { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hotelObj.maxNights - 1) }
-                    ],
-                    onSet: function(context){
-                        bookingDates.checkOutDate = context.select;
-                    }
-                });
+    function initDatePickers(){
+        $('.datepickerHotelIn').pickadate({
+            format: 'd/m/yyyy',
+            min: 1,
+            onSet: function(context) {
+                var selectedDate = context.select;
+                var date = new Date(selectedDate);
+                if (date != 'Invalid Date'){
+                    var dayCheckIn = date.getDate();
+                    var monthCheckIn = date.getMonth();
+                    var yearCheckIn = date.getFullYear();
+                    bookingDates.checkInDate = selectedDate;
+                    $('.datepickerHotelOut').pickadate({
+                        format: 'd/m/yyyy',
+                        disable: [
+                            true,
+                            [2018, 10, 21, 'inverted'],
+                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hotelObj.maxNights - 1) }
+                        ],
+                        onSet: function(context){
+                            bookingDates.checkOutDate = context.select;
+                        }
+                    });
+                }
             }
-        }
-    });
-    
-    // DATE PICKER FOR HOSTEL
-    $('.datepickerHostelIn').pickadate({
-        format: 'd/m/yyyy',
-        min: 1,
-        onSet: function(context) {
-            var selectedDate = context.select;
-            var date = new Date(selectedDate);
-            console.log(date);
-            if (date != 'Invalid Date'){
-                var dayCheckIn = date.getDate();
-                var monthCheckIn = date.getMonth();
-                var yearCheckIn = date.getFullYear();
-                bookingDates.checkInDate = selectedDate;
-                $('.datepickerHostelOut').pickadate({
-                    format: 'd/m/yyyy',
-                    disable: [
-                        true,
-                        [2018, 10, 21, 'inverted'],
-                        { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hostelObj.maxNights - 1) }
-                    ],
-                    onSet: function(context){
-                        bookingDates.checkOutDate = context.select;
-                    }
-                });
+        });
+
+        // DATE PICKER FOR HOSTEL
+        $('.datepickerHostelIn').pickadate({
+            format: 'd/m/yyyy',
+            min: 1,
+            onSet: function(context) {
+                var selectedDate = context.select;
+                var date = new Date(selectedDate);
+                console.log(date);
+                if (date != 'Invalid Date'){
+                    var dayCheckIn = date.getDate();
+                    var monthCheckIn = date.getMonth();
+                    var yearCheckIn = date.getFullYear();
+                    bookingDates.checkInDate = selectedDate;
+                    $('.datepickerHostelOut').pickadate({
+                        format: 'd/m/yyyy',
+                        disable: [
+                            true,
+                            [2018, 10, 21, 'inverted'],
+                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hostelObj.maxNights - 1) }
+                        ],
+                        onSet: function(context){
+                            bookingDates.checkOutDate = context.select;
+                        }
+                    });
+                }
             }
-        }
-    });
-    
-    // DATE PICKER FOR MOTEL
-    $('.datepickerMotelIn').pickadate({
-        format: 'd/m/yyyy',
-        min: 1,
-        onSet: function(context) {
-            var selectedDate = context.select;
-            var date = new Date(selectedDate);
-            console.log(date);
-            if (date != 'Invalid Date'){
-                var dayCheckIn = date.getDate();
-                var monthCheckIn = date.getMonth();
-                var yearCheckIn = date.getFullYear();
-                bookingDates.checkInDate = selectedDate;
-                $('.datepickerMotelOut').pickadate({
-                    format: 'd/m/yyyy',
-                    disable: [
-                        true,
-                        [2018, 10, 21, 'inverted'],
-                        { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+3)), to: (motelObj.maxNights - 3) }
-                    ],
-                    onSet: function(context){
-                        bookingDates.checkOutDate = context.select;
-                    }
-                });
+        });
+
+        // DATE PICKER FOR MOTEL
+        $('.datepickerMotelIn').pickadate({
+            format: 'd/m/yyyy',
+            min: 1,
+            onSet: function(context) {
+                var selectedDate = context.select;
+                var date = new Date(selectedDate);
+                console.log(date);
+                if (date != 'Invalid Date'){
+                    var dayCheckIn = date.getDate();
+                    var monthCheckIn = date.getMonth();
+                    var yearCheckIn = date.getFullYear();
+                    bookingDates.checkInDate = selectedDate;
+                    $('.datepickerMotelOut').pickadate({
+                        format: 'd/m/yyyy',
+                        disable: [
+                            true,
+                            [2018, 10, 21, 'inverted'],
+                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+3)), to: (motelObj.maxNights - 3) }
+                        ],
+                        onSet: function(context){
+                            bookingDates.checkOutDate = context.select;
+                        }
+                    });
+                }
             }
-        }
-    });
-    
-    // DATE PICKER FOR HOUSE
-    $('.datepickerHouseIn').pickadate({
-        format: 'd/m/yyyy',
-        min: 1,
-        onSet: function(context) {
-            var selectedDate = context.select;
-            var date = new Date(selectedDate);
-            console.log(date);
-            if (date != 'Invalid Date'){
-                var dayCheckIn = date.getDate();
-                var monthCheckIn = date.getMonth();
-                var yearCheckIn = date.getFullYear();
-                bookingDates.checkInDate = selectedDate;
-                $('.datepickerHouseOut').pickadate({
-                    format: 'd/m/yyyy',
-                    disable: [
-                        true,
-                        [2018, 10, 21, 'inverted'],
-                        { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+2)), to: (houseObj.maxNights - 2)}
-                    ],
-                    onSet: function(context){
-                        bookingDates.checkOutDate = context.select;
-                    }
-                });
+        });
+
+        // DATE PICKER FOR HOUSE
+        $('.datepickerHouseIn').pickadate({
+            format: 'd/m/yyyy',
+            min: 1,
+            onSet: function(context) {
+                var selectedDate = context.select;
+                var date = new Date(selectedDate);
+                console.log(date);
+                if (date != 'Invalid Date'){
+                    var dayCheckIn = date.getDate();
+                    var monthCheckIn = date.getMonth();
+                    var yearCheckIn = date.getFullYear();
+                    bookingDates.checkInDate = selectedDate;
+                    $('.datepickerHouseOut').pickadate({
+                        format: 'd/m/yyyy',
+                        disable: [
+                            true,
+                            [2018, 10, 21, 'inverted'],
+                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+2)), to: (houseObj.maxNights - 2)}
+                        ],
+                        onSet: function(context){
+                            bookingDates.checkOutDate = context.select;
+                        }
+                    });
+                }
             }
-        }
-    });
-    
+        });
+    }
     // Group number validation
     function inputValidation(max, min, arrayNo){
         var numAdults = parseInt(document.getElementsByClassName('inputAdult')[arrayNo].value);
