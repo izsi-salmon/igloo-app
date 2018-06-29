@@ -308,7 +308,7 @@ html {
       object-fit: cover;
       width: 90px;
       margin-right: 7px; }
-    .modal .modal-content .modal-header-flex .img-booking {
+    .modal .modal-content .modal-header-flex .img-booking img {
       border-radius: 7.5px;
       height: 50px;
       width: 50px; }

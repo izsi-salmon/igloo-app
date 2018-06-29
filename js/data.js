@@ -42,7 +42,7 @@ var elements = {
 var locations = {
     queenstown: [
             {
-                type: 'Hotel',
+                type: 'hotel',
                 img : '<img src="images/accom2.jpg" alt="picture of window overlooking a lake">',
                 title: 'Lakefront Hotel',
                 distance: 120,
@@ -52,7 +52,7 @@ var locations = {
                 features: [elements.features.wifi, elements.features.meals, elements.features.scenic, elements.features.spa]
             },
             {
-                type: 'Hostel',
+                type: 'hostel',
                 img : '<img src="images/accom1.jpeg" alt="picture of a balcony overviewing mountains">',
                 title: 'Alpine Lodge',
                 distance: 100,
@@ -62,7 +62,7 @@ var locations = {
                 features: [elements.features.wifi, elements.features.scenic]
             },
             {
-                type: 'House',
+                type: 'house',
                 img : '<img src="images/acom3.jpeg" alt="picture of house in the snow">',
                 title: 'Ski QT House',
                 distance: 50,

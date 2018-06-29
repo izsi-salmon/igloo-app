@@ -1,14 +1,11 @@
-console.log(locations.queenstown);
-
-// Start js
 $(document).ready(function(){
     
     // Data variables
     var config = {};
-    var hotelObj = data.hotel;
-    var hostelObj = data.hostel;
-    var houseObj = data.house;
-    var motelObj = data.motel;
+    var hotel = data.hotel;
+    var hostel = data.hostel;
+    var house = data.house;
+    var motel = data.motel;
     
     // content containers
     
@@ -24,8 +21,8 @@ $(document).ready(function(){
     // Modal containers
     
     // Details modal
-    var modalImg =          document.getElementsByClassName('modal-img')[0];
-    var modalTitle =        document.getElementsByClassName('modal-title')[0];
+    var modalImg =          document.getElementsByClassName('modal-img');
+    var modalTitle =        document.getElementsByClassName('modal-title');
     var modalDistance =     document.getElementsByClassName('modal-distance')[0];
     var modalPrice =        document.getElementsByClassName('modal-price')[0];
     var modalStars =        document.getElementsByClassName('star-ctnr-modal')[0];
@@ -34,32 +31,35 @@ $(document).ready(function(){
     // Booking modal
     var modalCheckInCtnr =  document.getElementsByClassName('check-in-ctnr')[0];
     var modalCheckOutCtnr = document.getElementsByClassName('check-out-ctnr')[0];
+    var modalInputCtnr =    document.getElementsByClassName('form-flex')[0];
+    var modalAdultCtnr =    document.getElementsByClassName('adult-input-ctnr')[0];
+    var modalChildCtnr =    document.getElementsByClassName('child-input-ctnr')[0];
+    var warningDiv =        document.getElementsByClassName('input-warning');
+    var modalNameCtnr =     document.getElementsByClassName('name-ctnr')[0];
+    var modalEmailCtnr =    document.getElementsByClassName('email-ctnr')[0];
+    var modalExtrasCtnr =   document.getElementsByClassName('txt-extras')[0];
         
     // Input variables
     var checkInInput =   document.getElementsByClassName('check-in');
     var checkOutInput =  document.getElementsByClassName('check-out');
-    var adultInput =     document.getElementsByClassName('inputAdult');
-    var childInput =     document.getElementsByClassName('inputChild');
-    var nameInput =      document.getElementsByClassName('input-name');
-    var emailInput =     document.getElementsByClassName('input-email');
-    var breakfastCheck = document.getElementsByClassName('breakfast-option');
+//    var adultInput =     document.getElementsByClassName('inputAdult')[0];
+//    var childInput =     document.getElementsByClassName('inputChild')[0];
+//    var nameInput =      document.getElementsByClassName('input-name')[0];
+//    ;
+    
     // Confirm button
-    var confirmBtn =     document.getElementsByClassName('confirm-trigger');
+    var confirmBtn =     document.getElementsByClassName('confirm-trigger')[0];
     
     // Variables to store user data
     var bookingDates = {};
-    var bookingData = {
-        breakfast: false
-    };
+    var bookingData = {};
     
     // Dom elements to write data into
-    
-    // Lakefront:
-    var spanTotalNightsLakefront = document.getElementById('totalNightsLakefront');
-    var spanTotalAdultsLakefront = document.getElementById('totalAdultsLakefront');
-    var spanTotalChildrenLakefront = document.getElementById('totalChildrenLakefront');
-    var spanBreakfastOptLakefront = document.getElementById('breakfastOptLakefront');
-    var spanTotalCostLakefront = document.getElementById('priceTotalLakefront');
+    var spanTotalNights =   document.getElementById('totalNights');
+    var spanTotalAdults =   document.getElementById('totalAdults');
+    var spanTotalChildren = document.getElementById('totalChildren');
+    var spanBreakfastOpt =  document.getElementById('breakfastOpt');
+    var spanTotalCost =     document.getElementById('priceTotal');
     
     // Function that creates the thumbnails for the accomodation options
     function loadThumbnails(){
@@ -67,7 +67,7 @@ $(document).ready(function(){
             // Creating the div to contain the thumbnail
             var thumbnailContainer = document.createElement('div');
             thumbnailContainer.setAttribute('class','thumbnail-ctnr');
-            thumbnailContainer.innerHTML = '<div class="image-ctnr"></div><div class="centre-el-ctnr"><div class="thumbnail-title"></div><div class="txt-distance"><span class="distance-number"></span>km from Remarkables ski area</div><div class="star-ctnr"></div><button class="btn btn-modal view-details"  data-toggle="modal" data-target="#detailsLakefront">view details</button></div><div class="txt-price"><div>$<span class="price-number"></span> NZD</div><div>/ night</div></div><div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>';
+            thumbnailContainer.innerHTML = '<div class="image-ctnr"></div><div class="centre-el-ctnr"><div class="thumbnail-title"></div><div class="txt-distance"><span class="distance-number"></span>km from Remarkables ski area</div><div class="star-ctnr"></div><button class="btn btn-modal view-details"  data-toggle="modal" data-target="#details">view details</button></div><div class="txt-price"><div>$<span class="price-number"></span> NZD</div><div>/ night</div></div><div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>';
             // Placing the code into the DOM
             thumbnailAnchor.after(thumbnailContainer);
             // Injecting relevant data into each thumbnail by using i as the argument
@@ -79,7 +79,6 @@ $(document).ready(function(){
     
     // Function that writes thumbnail data
     function writeThumbnails(arrayNo){
-        console.log('Function fired: ' + arrayNo);
         thumbnailImg[0].innerHTML = locations.queenstown[arrayNo].img;
         thumbnailTitle[0].innerHTML = locations.queenstown[arrayNo].title;
         thumbnailDistance[0].innerHTML = locations.queenstown[arrayNo].distance;
@@ -98,9 +97,8 @@ $(document).ready(function(){
     
     // Function that writes data into the modal depending on which option is clicked
     function writeModal(arrayNo){
-//        console.log('writeModal(): ' + arrayNo)
-        modalImg.innerHTML = locations.queenstown[arrayNo].img;
-        modalTitle.innerHTML = locations.queenstown[arrayNo].title;
+        modalImg[0].innerHTML = locations.queenstown[arrayNo].img;
+        modalTitle[0].innerHTML = locations.queenstown[arrayNo].title;
         modalDistance.innerHTML = locations.queenstown[arrayNo].distance;
         modalPrice.innerHTML = locations.queenstown[arrayNo].price;
         modalDescription.innerHTML = locations.queenstown[arrayNo].description;
@@ -112,7 +110,6 @@ $(document).ready(function(){
         modalStars.innerHTML = '';
         for (var i = 0; i < locations.queenstown[arrayNo].stars; i++){
             modalStars.innerHTML += elements.stars[arrayNo];
-            console.log('stars for loop working');
         }
         setBookingButton(arrayNo);
     }
@@ -124,22 +121,62 @@ $(document).ready(function(){
         bookingBtn.addEventListener('click', function(){setUpBooking(arrayNo);}, false);
     }
     
-    // NOT WORKING
+    // Function that sets up the booking modal
     function setUpBooking(arrayNo){
-        console.log(checkInInput[0]);
-        console.log(checkOutInput[0]);
-        // Set inputs to default each time the loop runs
+        // Set identity
+        modalTitle[1].innerHTML = locations.queenstown[arrayNo].title;
+        modalImg[1].innerHTML = locations.queenstown[arrayNo].img;
+        
+        // SET UP DATE INPUTS
+        // Set inputs to blank/default each time the loop runs
         modalCheckInCtnr.innerHTML = '<input type="text" class="check-in" required>';
         modalCheckOutCtnr.innerHTML = '<input type="text" class="check-out" required readonly>';
-        // Add datepicker class after reset
+        // Add datepicker class after reset so it is always the approprate picker
         checkInInput[0].classList.add('datepicker' + locations.queenstown[arrayNo].type + 'In');
         checkOutInput[0].classList.add('datepicker' + locations.queenstown[arrayNo].type + 'Out');
         initDatePickers();
-    }
+        
+        // SET UP NUMBER INPUTS
+        modalInputCtnr.setAttribute('class','form-flex');
+        modalAdultCtnr.innerHTML = '<input type="number" class="inputAdult">';
+        modalChildCtnr.innerHTML = '<input type="number" class="inputChild">';
+        warningDiv[0].innerHTML = null;
+        // Adding a new event listener(EL) class so it gets reset each time the function is invoked
+        modalInputCtnr.classList.add('EL-class');
+        var elElement = document.getElementsByClassName('EL-class')[0];
+        // Eval converts the string returned from: locations.queenstown[arrayNo].type into code (removing the '')
+        var accomodationShortcut = eval(locations.queenstown[arrayNo].type);
+        var max = accomodationShortcut.maxCapacity;
+        var min = accomodationShortcut.minCapacity;
+        elElement.addEventListener('mouseleave', function(){inputValidation(max, min);}, false);
+        
+        // SET UP TEXT INPUTS
+        modalNameCtnr.innerHTML = '<input type="text" class="input-name" required>';
+        modalEmailCtnr.innerHTML = '<input type="email" class="input-email" required>';
+        var nameInput = document.getElementsByClassName('input-name')[0];
+        var emailInput = document.getElementsByClassName('input-email')[0];
+        warningDiv[1].innerHTML = null;
+        emailInput.addEventListener('mouseleave', function(){emailValidation(emailInput);}, false);
+        
+        // SET BREAKFAST OPTION
+        modalExtrasCtnr.innerHTML = '';
+        bookingData.breakfast = false;
+        for (var i = 0; i < locations.queenstown[arrayNo].features.length; i++){
+                if (locations.queenstown[arrayNo].features[i] === '<div class="iconTxt-wrapper"><img src="images/icons/meal.svg" alt="meal svg test"><div class="icon-title">meals</div></div>'){
+                    modalExtrasCtnr.innerHTML = '<input type="checkbox" class="breakfast-option"> Include breakfast <span class="green"> + $10.00 NZD</span>';
+                    var breakfastInput = document.getElementsByClassName('breakfast-option')[0];
+                    breakfastInput.addEventListener('click', function(){breakfastBoolean(breakfastInput);}, false);
+                }
+            }
+        
+        // SET CONFIRM EVENT LISTENER
+        confirmBtn.addEventListener('click', function(){confirmForm(emailInput, nameInput);}, false);
+        
+        }
     
-//     DATE PICKER FOR HOTEL
+    // Function that initialises date picker plugin
     function initDatePickers(){
-        $('.datepickerHotelIn').pickadate({
+        $('.datepickerhotelIn').pickadate({
             format: 'd/m/yyyy',
             min: 1,
             onSet: function(context) {
@@ -150,12 +187,12 @@ $(document).ready(function(){
                     var monthCheckIn = date.getMonth();
                     var yearCheckIn = date.getFullYear();
                     bookingDates.checkInDate = selectedDate;
-                    $('.datepickerHotelOut').pickadate({
+                    $('.datepickerhotelOut').pickadate({
                         format: 'd/m/yyyy',
                         disable: [
                             true,
                             [2018, 10, 21, 'inverted'],
-                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hotelObj.maxNights - 1) }
+                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hotel.maxNights - 1) }
                         ],
                         onSet: function(context){
                             bookingDates.checkOutDate = context.select;
@@ -166,7 +203,7 @@ $(document).ready(function(){
         });
 
         // DATE PICKER FOR HOSTEL
-        $('.datepickerHostelIn').pickadate({
+        $('.datepickerhostelIn').pickadate({
             format: 'd/m/yyyy',
             min: 1,
             onSet: function(context) {
@@ -178,12 +215,12 @@ $(document).ready(function(){
                     var monthCheckIn = date.getMonth();
                     var yearCheckIn = date.getFullYear();
                     bookingDates.checkInDate = selectedDate;
-                    $('.datepickerHostelOut').pickadate({
+                    $('.datepickerhostelOut').pickadate({
                         format: 'd/m/yyyy',
                         disable: [
                             true,
                             [2018, 10, 21, 'inverted'],
-                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hostelObj.maxNights - 1) }
+                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hostel.maxNights - 1) }
                         ],
                         onSet: function(context){
                             bookingDates.checkOutDate = context.select;
@@ -194,7 +231,7 @@ $(document).ready(function(){
         });
 
         // DATE PICKER FOR MOTEL
-        $('.datepickerMotelIn').pickadate({
+        $('.datepickermotelIn').pickadate({
             format: 'd/m/yyyy',
             min: 1,
             onSet: function(context) {
@@ -206,12 +243,12 @@ $(document).ready(function(){
                     var monthCheckIn = date.getMonth();
                     var yearCheckIn = date.getFullYear();
                     bookingDates.checkInDate = selectedDate;
-                    $('.datepickerMotelOut').pickadate({
+                    $('.datepickermotelOut').pickadate({
                         format: 'd/m/yyyy',
                         disable: [
                             true,
                             [2018, 10, 21, 'inverted'],
-                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+3)), to: (motelObj.maxNights - 3) }
+                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+3)), to: (motel.maxNights - 3) }
                         ],
                         onSet: function(context){
                             bookingDates.checkOutDate = context.select;
@@ -222,7 +259,7 @@ $(document).ready(function(){
         });
 
         // DATE PICKER FOR HOUSE
-        $('.datepickerHouseIn').pickadate({
+        $('.datepickerhouseIn').pickadate({
             format: 'd/m/yyyy',
             min: 1,
             onSet: function(context) {
@@ -234,12 +271,12 @@ $(document).ready(function(){
                     var monthCheckIn = date.getMonth();
                     var yearCheckIn = date.getFullYear();
                     bookingDates.checkInDate = selectedDate;
-                    $('.datepickerHouseOut').pickadate({
+                    $('.datepickerhouseOut').pickadate({
                         format: 'd/m/yyyy',
                         disable: [
                             true,
                             [2018, 10, 21, 'inverted'],
-                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+2)), to: (houseObj.maxNights - 2)}
+                            { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+2)), to: (house.maxNights - 2)}
                         ],
                         onSet: function(context){
                             bookingDates.checkOutDate = context.select;
@@ -249,82 +286,74 @@ $(document).ready(function(){
             }
         });
     }
+    
     // Group number validation
-    function inputValidation(max, min, arrayNo){
-        var numAdults = parseInt(document.getElementsByClassName('inputAdult')[arrayNo].value);
-        var numChildren = parseInt(document.getElementsByClassName('inputChild')[arrayNo].value);
+    function inputValidation(max, min){
+        // Get the number from the user input
+        var numAdults = parseInt(document.getElementsByClassName('inputAdult')[0].value);
+        var numChildren = parseInt(document.getElementsByClassName('inputChild')[0].value);
         // Prevent var from returning NaN:
         // This syntax tells the variable to be itself if it has a value, or to be 0 if it is NaN
         numChildren = numChildren || 0;
         numAdults = numAdults || 0;
         var groupTotal = numChildren + numAdults;
-        var warningDiv = document.getElementsByClassName('input-warning')[arrayNo];
         // Logic stores the value of true or false to determine whether the input is valid or not
         var logic;
-        
+        console.log('max: ' + max);
+        console.log('min: ' + min);
+        console.log(groupTotal);
         if (groupTotal > max){
-            warningDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Maximum group number is ' + max + ' persons';
+            warningDiv[0].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Maximum group number is ' + max + ' persons';
             logic = false;
         } else if (groupTotal < min){
-            warningDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Group must be atleast ' + min + ' person(s)';
+            warningDiv[0].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Group must be atleast ' + min + ' person(s)';
             logic = false;
         }
         else if (numAdults === 0){
-            warningDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Group must contain atleast one adult';
+            warningDiv[0].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Group must contain atleast one adult';
             logic = false;
         } else{
-            warningDiv.innerHTML = null;
+            warningDiv[0].innerHTML = null;
             logic = true;
             // Store the successful values into the booking object
             bookingData.totalAdults = numAdults;
             bookingData.totalChildren = numChildren;
         }
         config.logic = logic;
-        console.log(logic + ': inside inputValid()');
     }
-    
-    // inputValidation() event listeners:
-    document.getElementsByClassName('cpcty-input-hotel')[0].addEventListener('mouseleave', function(){inputValidation(hotelObj.maxCapacity, hotelObj.minCapacity, 0);}, false);
-//    document.getElementsByClassName('cpcty-input-hostel')[0].addEventListener('mouseleave', function(){inputValidation(hostelObj.maxCapacity, hostelObj.minCapacity, 1);}, false);
-//    document.getElementsByClassName('cpcty-input-house')[0].addEventListener('mouseleave', function(){inputValidation(houseObj.maxCapacity, houseObj.minCapacity, 2);}, false);
-    //document.getElementsByClassName('cpcty-input-motel')[0].addEventListener('mouseleave', function(){inputValidation(motelObj.maxCapacity, motelObj.minCapacity, 3);}, false);
     
     // Email validation
-    function emailValidation(arrayNo){
-        var warningDiv = document.getElementsByClassName('email-warning')[arrayNo];
-        if (emailInput[arrayNo].validity.valid){
-            warningDiv.innerHTML = null;
+    function emailValidation(emailInput){
+        if (emailInput.validity.valid){
+            warningDiv[1].innerHTML = null;
         } else{
-            warningDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please enter a valid email';
+            warningDiv[1].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please enter a valid email';
         }
     }
-    emailInput[0].addEventListener('mouseleave', function(){emailValidation(0);}, false);
-//    emailInput[1].addEventListener('mouseleave', function(){emailValidation(1);}, false);
-//    emailInput[2].addEventListener('mouseleave', function(){emailValidation(2);}, false);
     
     // Confirm form
-    function confirmForm(arrayNo, modalName){
+    function confirmForm(emailInput, nameInput){
         var inputAdults = config.logic;
         console.log(config.logic);
-        if (emailInput[arrayNo].validity.valid
-            && nameInput[arrayNo].validity.valid 
+        if (emailInput.validity.valid
+            && nameInput.validity.valid 
             && inputAdults
-            && checkOutInput[arrayNo].value 
-            && checkInInput[arrayNo].value){
-            confirmBtn[arrayNo].setAttribute('data-toggle','modal');
-            confirmBtn[arrayNo].setAttribute('data-target','#confirmation' + modalName);
-            confirmBtn[arrayNo].setAttribute('data-dismiss','modal');
-            confirmBtn[arrayNo].setAttribute('aria-label','Close');
+            && checkOutInput[0].value 
+            && checkInInput[0].value){
+            confirmBtn.setAttribute('data-toggle','modal');
+            confirmBtn.setAttribute('data-target','#confirmation');
+            confirmBtn.setAttribute('data-dismiss','modal');
+            confirmBtn.setAttribute('aria-label','Close');
             console.log('Booking data:');
             calcualteStayDuration();
             console.dir(bookingData);
             console.log('total cost:');
             calculateData();
         } else{
-            confirmBtn[arrayNo].removeAttribute('data-toggle');
-            confirmBtn[arrayNo].removeAttribute('data-target');
-            confirmBtn[arrayNo].removeAttribute('data-dismiss');
-            confirmBtn[arrayNo].removeAttribute('aria-label');
+            confirmBtn.removeAttribute('data-toggle');
+            confirmBtn.removeAttribute('data-target');
+            confirmBtn.removeAttribute('data-dismiss');
+            confirmBtn.removeAttribute('aria-label');
             console.log('not working');
             console.log('Booking data:');
             calcualteStayDuration();
@@ -332,10 +361,6 @@ $(document).ready(function(){
         }
     }
     
-    // confirmForm() Event listeners:
-//    confirmBtn[0].addEventListener('click', function(){confirmForm(0, 'Lakefront');}, false);
-//    confirmBtn[1].addEventListener('click', function(){confirmForm(1, 'Alpine');}, false);
-//    confirmBtn[2].addEventListener('click', function(){confirmForm(2, 'Skiqt');}, false);
     
     // Calculate nights of stay and store into booking obj
     function calcualteStayDuration(){
@@ -346,14 +371,13 @@ $(document).ready(function(){
         bookingData.stayDuration = resultConverted;
     }
     
-    // Add breakfast option to booking data
-    function breakfastBoolean(arrayNo){
+     // Add breakfast option to booking data
+    function breakfastBoolean(breakfastInput){
         console.log('working');
-        if (breakfastCheck[arrayNo].checked === true){
+        if (breakfastInput.checked === true){
             bookingData.breakfast = true;
         }
     }
-    breakfastCheck[0].addEventListener('click', function(){breakfastBoolean(0);}, false);
     
     // Calculate booking data
     function calculateData(){
@@ -363,18 +387,22 @@ $(document).ready(function(){
         } else{
             var breakfast = 0;
         }
-        var totalCost = ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * accomodation.hotel.price) + ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * breakfast);
+        var totalCost = ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * data.hotel.price) + ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * breakfast);
         console.log(totalCost);
-//        displayData();
+        displayData(totalCost);
     }
     
     // Write booking data into the dom
-    function displayData(){
-        spanTotalNightsLakefront.textContent = bookingData.stayDuration;
-        spanTotalAdultsLakefront.textContent = bookingData.totalAdults;
-        spanTotalChildrenLakefront.textContent = bookingData.totalChildren;
-//        spanBreakfastOptLakefront.textContent = '+ $10 breakfast per person';
-        spanTotalCostLakefront.textContent = totalCost;
+    function displayData(totalCost){
+        spanTotalNights.textContent = bookingData.stayDuration;
+        spanTotalAdults.textContent = bookingData.totalAdults;
+        spanTotalChildren.textContent = bookingData.totalChildren;
+        if (bookingData.breakfast){
+            spanBreakfastOpt.textContent = '+ $10 breakfast per person';
+        } else{
+            spanBreakfastOpt.textContent = null;
+        }
+        spanTotalCost.textContent = totalCost;
     }
     
     // Toggle filtre view

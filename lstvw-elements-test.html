@@ -173,8 +173,8 @@
     
     <!--ALL MODALS HERE-->
     
-    <!-- Modal: details | lakefront-->
-    <div class="modal fade" id="detailsLakefront" tabindex="-1" role="dialog" aria-labelledby="detailsLakefront" aria-hidden="true">
+    <!-- Modal: details-->
+    <div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="details" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header-flex">
@@ -217,22 +217,22 @@
                   </div>
               </div>
               <div class="btn-group dropright">
-                  <button type="button" class="btn btn-modal dropdown-toggle book-now" data-toggle="modal" data-target="#bookingLakefront">
+                  <button type="button" class="btn btn-modal dropdown-toggle book-now" data-toggle="modal" data-target="#booking">
                     book now
                   </button>
               </div>
           </div>
         </div> <!--END modal-content-->
       </div>
-    </div> <!--END Modal: details | lakefront-->
+    </div> <!--END Modal: details-->
     
-    <!-- Modal: booking | lakefront-->
-    <div class="modal fade" id="bookingLakefront" tabindex="-1" role="dialog" aria-labelledby="bookingLakefront" aria-hidden="true">
+    <!-- Modal: booking-->
+    <div class="modal fade" id="booking" tabindex="-1" role="dialog" aria-labelledby="booking" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
          <div> <!--Prevents form for doing weird things-->
           <div class="modal-header-flex">
-              <img src="images/accom2.jpg" alt="image" class="img-booking">
+             <div class="modal-img img-booking"></div>
               <div>
                   <div class="modal-title title-booking">lakefront hotel</div>
                   <div class="txt-price"><span class="price-green">$197 NZD</span> / night</div>
@@ -247,25 +247,25 @@
                 <div class="check-in-ctnr"></div>
                 <div class="input-title">check out:</div>
                 <div class="check-out-ctnr"></div>
-                <div class="form-flex cpcty-input-hotel">
+                <div class="form-flex">
                   <div class="form-col-left">
                       <div class="input-title">adults:</div>
-                      <input type="number" class="inputAdult">
+                      <div class="adult-input-ctnr"></div>
                   </div>
                   <div class="form-col-right">
                       <div class="input-title">children:</div>
-                      <input type="number" class="inputChild">
+                      <div class="child-input-ctnr"></div>
                   </div>
                 </div> <!-- END form flex-->
                 <div class="warning input-warning"></div>
                 <div class="input-title">full name:</div>
-                <input type="text" class="input-name" required>
+                <div class="name-ctnr"></div>
                 <div class="input-title">email:</div>
-                <input type="email" class="input-email" required>
-                <div class="warning email-warning"></div>
+                <div class="email-ctnr"></div>
+                <div class="warning input-warning"></div>
           </div><!-- END form-->
           <div>
-              <span class="txt-extras"><input type="checkbox" class="breakfast-option"> Include breakfast <span class="green"> + $10.00 NZD</span></span>
+              <span class="txt-extras"></span>
           </div>
           <div class="modal-footer-flex">
           <div>
@@ -278,10 +278,10 @@
           </div>
         </div>
       </div>
-    </div> <!--END Modal: booking | lakefront-->
+    </div> <!--END Modal: booking-->
     
-    <!-- Modal: confirmation | lakefront-->
-    <div class="modal fade" id="confirmationLakefront" tabindex="-1" role="dialog" aria-labelledby="confirmationLakefront" aria-hidden="true">
+    <!-- Modal: confirmation-->
+    <div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="confirmation" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
          <div> <!--Prevents form for doing weird things-->
@@ -298,13 +298,13 @@
           </div>
           <div class="modal-form">
                 <div class="total-title">total:</div>
-                <div class="total-text"><span id="totalNightsLakefront">3</span> Nights</div>
-                <div class="total-text"><span id="totalAdultsLakefront">2</span> Adults</div>
-                <div class="total-text"><span id="totalChildrenLakefront">1</span> Child</div>
+                <div class="total-text"><span id="totalNights"></span> Nights</div>
+                <div class="total-text"><span id="totalAdults"></span> Adults</div>
+                <div class="total-text"><span id="totalChildren"></span> Children</div>
                 <div class="total-text">$197.00 NZD / night</div>
-                <div class="total-text" id="breakfastOptLakefront">+ $10.00 breakfast per person</div>
+                <div class="total-text" id="breakfastOpt"></div>
                 <div class="hr"></div>
-                <div class="total-text green">$<span id="priceTotalLakefront">621</span>.00 NZD</div>
+                <div class="total-text green">$<span id="priceTotal"></span>.00 NZD</div>
           </div><!-- END form-->
           <div class="modal-footer-flex">
           <div>
