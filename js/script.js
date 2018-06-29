@@ -84,30 +84,51 @@ $(document).ready(function(){
         for (var i = 0; i < locations.queenstown[arrayNo].stars; i++){
             thumbnailStars[0].innerHTML += elements.stars[arrayNo];
         }
-        
     }
     
     // Function that sets relevant event listeners to each thumbnail button
     function setDetailButton(arrayNo){ // by numbering the buttons we can target them one by one
-        var detailsBtn = document.getElementsByClassName('view-details');
-        detailsBtn[arrayNo].addEventListener('click', function(){writeModal(arrayNo);}, false);
-        console.log('Running setDeleteBtn(): ' + arrayNo);
-        // Because this function is run in a for loop using parameters, we have a one dynamic funcation
-        // that runs uniquely for each button
+        var detailsBtn = document.getElementsByClassName('view-details')[0];
+        detailsBtn.addEventListener('click', function(){writeModal(arrayNo);}, false);
+        // This function gives a counter to the event listeners so they inject the corresponding data into the DOM
     }
     
     // Function that writes data into the modal depending on which option is clicked
     function writeModal(arrayNo){
-        console.log('writeModal(): ' + arrayNo)
+//        console.log('writeModal(): ' + arrayNo)
         modalImg.innerHTML = locations.queenstown[arrayNo].img;
         modalTitle.innerHTML = locations.queenstown[arrayNo].title;
         modalDistance.innerHTML = locations.queenstown[arrayNo].distance;
         modalPrice.innerHTML = locations.queenstown[arrayNo].price;
         modalDescription.innerHTML = locations.queenstown[arrayNo].description;
-//        modalFeatures.innerHTML = ;
-//        for (var i = 0; i < locations.queenstown[arrayNo].stars; i++){
-//            thumbnailStars[0].innerHTML += elements.stars[arrayNo];
-//        }
+        modalFeatures.innerHTML = '';
+        // FEATURES FOR LOOP
+        for (var c = 0; c < locations.queenstown[arrayNo].features.length; c++){
+            modalFeatures.innerHTML += locations.queenstown[arrayNo].features[c];
+        }
+        modalStars.innerHTML = '';
+        for (var i = 0; i < locations.queenstown[arrayNo].stars; i++){
+            modalStars.innerHTML += elements.stars[arrayNo];
+            console.log('stars for loop working');
+        }
+        setBookingButton(arrayNo);
+    }
+    
+    /* Function that sets up booking button event listener with a relevant argument so
+       when clicked it injects appropriate data into the booking modal*/
+    function setBookingButton(arrayNo){
+        var bookingBtn = document.getElementsByClassName('book-now')[0];
+        bookingBtn.addEventListener('click', function(){setUpBooking(arrayNo);}, false);
+    }
+    
+    // NOT WORKING
+    function setUpBooking(arrayNo){
+        console.log(checkInInput[0]);
+        console.log(checkOutInput[0]);
+        checkInInput[0].classList.add('datepicker' + locations.queenstown[arrayNo].type + 'In');
+        checkOutInput[0].classList.add('datepicker' + locations.queenstown[arrayNo].type + 'Out');
+        console.log(checkInInput[0]);
+        console.log(checkOutInput[0]);
     }
     
 //     DATE PICKER FOR HOTEL
@@ -305,7 +326,7 @@ $(document).ready(function(){
     }
     
     // confirmForm() Event listeners:
-    confirmBtn[0].addEventListener('click', function(){confirmForm(0, 'Lakefront');}, false);
+//    confirmBtn[0].addEventListener('click', function(){confirmForm(0, 'Lakefront');}, false);
 //    confirmBtn[1].addEventListener('click', function(){confirmForm(1, 'Alpine');}, false);
 //    confirmBtn[2].addEventListener('click', function(){confirmForm(2, 'Skiqt');}, false);
     
