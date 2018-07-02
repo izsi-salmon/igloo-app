@@ -117,52 +117,7 @@
                     </div>
                 </div>
               </div><!-- END filtre container-->
-             <!--
-            <div class="thumbnail-ctnr">
-                <div class="image-ctnr"></div> 
-                <div class="centre-el-ctnr">
-                    <div class="thumbnail-title"></div>
-                    <div class="txt-distance"><span class="distance-number"></span>km from Remarkables ski area</div>
-                    <div class="star-ctnr"></div>
-                    <button class="btn btn-modal"  data-toggle="modal" data-target="#detailsLakefront">view details</button>
-                </div>
-                <div class="txt-price">
-                    <div>$<span class="price-number"></span> NZD</div>
-                    <div>/ night</div>
-                </div>
-                <div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>
-            </div>
-            
-            <div class="thumbnail-ctnr">
-               <img src="images/accom1.jpeg" alt="picture of window overlooking a lake">
-                <div class="centre-el-ctnr">
-                    <div class="thumbnail-title">alpine lodge</div>
-                    <div class="txt-distance">100km from Remarkables ski area</div>
-                    <div class="star-ctnr"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <button class="btn btn-modal"  data-toggle="modal" data-target="#detailsAlpine">view details</button>
-                </div>
-                <div class="txt-price">
-                    <div>$50 NZD</div>
-                    <div>/ night</div>
-                </div>
-                <div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>
-            </div>
-                          
-            <div class="thumbnail-ctnr">
-               <img src="images/acom3.jpeg" alt="picture of window overlooking a lake">
-                <div class="centre-el-ctnr">
-                    <div class="thumbnail-title">ski qt house</div>
-                    <div class="txt-distance">50km from Remarkables ski area</div>
-                    <div class="star-ctnr"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <button class="btn btn-modal"  data-toggle="modal" data-target="#detailsSkiqt">view details</button>
-                </div>
-                <div class="txt-price">
-                    <div>$150 NZD</div>
-                    <div>/ night</div>
-                </div>
-                <div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>
-            </div>
-            -->
+             
        </div><!--END list view elements-->
         <!--MAP BOX-->
         <div class="map-view">
@@ -230,12 +185,12 @@
     <div class="modal fade" id="booking" tabindex="-1" role="dialog" aria-labelledby="booking" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-         <div> <!--Prevents form for doing weird things-->
+         <div> <!--Prevents form from doing weird things-->
           <div class="modal-header-flex">
              <div class="modal-img img-booking"></div>
               <div>
-                  <div class="modal-title title-booking">lakefront hotel</div>
-                  <div class="txt-price"><span class="price-green">$197 NZD</span> / night</div>
+                  <div class="modal-title title-booking"></div>
+                  <div class="txt-price"><span class="price-green">$<span class="modal-price"></span> NZD</span> / night</div>
               </div>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <i class="fas fa-times"></i>
@@ -286,38 +241,39 @@
         <div class="modal-content">
          <div> <!--Prevents form for doing weird things-->
           <div class="modal-header-flex">
-              <img src="images/accom2.jpg" alt="image" class="img-booking">
+             <div class="modal-img img-booking"></div>
               <div>
-                  <div class="modal-title title-booking">lakefront hotel</div>
-                  <div class="txt-price"><span class="price-green">$197 NZD</span> / night</div>
+                  <div class="modal-title title-booking"></div>
+                  <div class="txt-price"><span class="price-green">$<span class="modal-price"></span> NZD</span> / night</div>
               </div>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <i class="fas fa-times"></i>
               </button>
-          </div>
+           </div>
           </div>
           <div class="modal-form">
                 <div class="total-title">total:</div>
                 <div class="total-text"><span id="totalNights"></span> Nights</div>
                 <div class="total-text"><span id="totalAdults"></span> Adults</div>
                 <div class="total-text"><span id="totalChildren"></span> Children</div>
-                <div class="total-text">$197.00 NZD / night</div>
+                <div class="total-text">$<span class="modal-price"></span> NZD / night</div>
                 <div class="total-text" id="breakfastOpt"></div>
                 <div class="hr"></div>
                 <div class="total-text green">$<span id="priceTotal"></span>.00 NZD</div>
           </div><!-- END form-->
           <div class="modal-footer-flex">
-          <div>
-          </div>
+             <div>
+              <div class="confirmation-txt"><div class="strong-txt">Thank you!</div> You have been sent an email confirming your reservation.</div>
+             </div>
            <div class="btn-group">
-              <button type="button" class="btn btn-modal">
+              <button type="button" class="btn btn-modal" id="reserve-btn">
                 Reserve
               </button>
            </div>
           </div>
         </div>
       </div>
-    </div> <!--END Modal: confirmation | lakefront-->
+    </div> <!--END Modal: confirmation-->
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

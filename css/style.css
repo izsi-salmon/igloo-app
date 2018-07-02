@@ -403,6 +403,18 @@ html {
           font-size: 0.33em;
           text-transform: uppercase;
           text-align: center; }
+    .modal .modal-content .modal-footer-flex .confirmation-txt {
+      color: #272726;
+      display: none;
+      font-size: 0.65em;
+      font-family: gothamLight;
+      width: 70%;
+      margin-top: 0.7em; }
+    .modal .modal-content .modal-footer-flex .strong-txt {
+      font-family: gothamBold; }
+    .modal .modal-content .modal-footer-flex .green-btn {
+      background-color: #59b030;
+      transition: background-color 0.5s ease-in-out; }
   .modal .modal-content .total-title {
     font-family: "gothamBold";
     margin-bottom: 10px;

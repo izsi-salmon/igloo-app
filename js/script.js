@@ -7,7 +7,11 @@ $(document).ready(function(){
     var house = data.house;
     var motel = data.motel;
     
-    // content containers
+    // Search bar
+    var searchInput =  document.getElementById('searchInput');
+    var searchButton = document.getElementById('searchButton');
+    
+    // CONTENT CONTAINERS
     
     // Anchor for creating thumbnails
     var thumbnailAnchor =   document.getElementsByClassName('opts-fltr-ctnr')[0];
@@ -24,7 +28,7 @@ $(document).ready(function(){
     var modalImg =          document.getElementsByClassName('modal-img');
     var modalTitle =        document.getElementsByClassName('modal-title');
     var modalDistance =     document.getElementsByClassName('modal-distance')[0];
-    var modalPrice =        document.getElementsByClassName('modal-price')[0];
+    var modalPrice =        document.getElementsByClassName('modal-price');
     var modalStars =        document.getElementsByClassName('star-ctnr-modal')[0];
     var modalDescription =  document.getElementsByClassName('modal-dscptn')[0];
     var modalFeatures =     document.getElementsByClassName('ft-flex')[0];
@@ -60,6 +64,24 @@ $(document).ready(function(){
     var spanTotalChildren = document.getElementById('totalChildren');
     var spanBreakfastOpt =  document.getElementById('breakfastOpt');
     var spanTotalCost =     document.getElementById('priceTotal');
+    
+    // ---------------------- END DOM QUIERIES ----------------------
+    
+    // Function that initiates thumbnails after location search
+    function search(){
+        var searchInputValue = searchInput.value;
+        console.log(searchInputValue);
+        if (searchInputValue == 'queenstown' /*|| 'cadrona' || 'remarkables' || 'coronet peak' */){
+            console.log('Queenstown');
+            } else if (searchInputValue == 'christchurch' /*|| 'mt hutt' || 'temple basin' || 'athur\'s pass' || 'cheeseman' || 'porters' || 'broken river'*/){
+                console.log('Christchurch');
+            } else if (searchInputValue == 'whakapapa' /*|| 'ruapehu' || 'tongariro' || 'ohakune' || 'national park' || 'turoa'*/){
+                console.log('Whakapapa');
+            } else {
+                console.log('No results');
+            }
+    }
+    searchButton.addEventListener('click', search, false);
     
     // Function that creates the thumbnails for the accomodation options
     function loadThumbnails(){
@@ -100,7 +122,7 @@ $(document).ready(function(){
         modalImg[0].innerHTML = locations.queenstown[arrayNo].img;
         modalTitle[0].innerHTML = locations.queenstown[arrayNo].title;
         modalDistance.innerHTML = locations.queenstown[arrayNo].distance;
-        modalPrice.innerHTML = locations.queenstown[arrayNo].price;
+        modalPrice[0].innerHTML = locations.queenstown[arrayNo].price;
         modalDescription.innerHTML = locations.queenstown[arrayNo].description;
         modalFeatures.innerHTML = '';
         // FEATURES FOR LOOP
@@ -126,6 +148,7 @@ $(document).ready(function(){
         // Set identity
         modalTitle[1].innerHTML = locations.queenstown[arrayNo].title;
         modalImg[1].innerHTML = locations.queenstown[arrayNo].img;
+        modalPrice[1].innerHTML = locations.queenstown[arrayNo].price;
         
         // SET UP DATE INPUTS
         // Set inputs to blank/default each time the loop runs
@@ -165,12 +188,12 @@ $(document).ready(function(){
                 if (locations.queenstown[arrayNo].features[i] === '<div class="iconTxt-wrapper"><img src="images/icons/meal.svg" alt="meal svg test"><div class="icon-title">meals</div></div>'){
                     modalExtrasCtnr.innerHTML = '<input type="checkbox" class="breakfast-option"> Include breakfast <span class="green"> + $10.00 NZD</span>';
                     var breakfastInput = document.getElementsByClassName('breakfast-option')[0];
-                    breakfastInput.addEventListener('click', function(){breakfastBoolean(breakfastInput);}, false);
+                    confirmBtn.addEventListener('click', function(){breakfastBoolean(breakfastInput);}, false);
                 }
             }
         
         // SET CONFIRM EVENT LISTENER
-        confirmBtn.addEventListener('click', function(){confirmForm(emailInput, nameInput);}, false);
+        confirmBtn.addEventListener('click', function(){confirmForm(emailInput, nameInput, arrayNo);}, false);
         
         }
     
@@ -209,7 +232,6 @@ $(document).ready(function(){
             onSet: function(context) {
                 var selectedDate = context.select;
                 var date = new Date(selectedDate);
-                console.log(date);
                 if (date != 'Invalid Date'){
                     var dayCheckIn = date.getDate();
                     var monthCheckIn = date.getMonth();
@@ -237,7 +259,6 @@ $(document).ready(function(){
             onSet: function(context) {
                 var selectedDate = context.select;
                 var date = new Date(selectedDate);
-                console.log(date);
                 if (date != 'Invalid Date'){
                     var dayCheckIn = date.getDate();
                     var monthCheckIn = date.getMonth();
@@ -265,7 +286,6 @@ $(document).ready(function(){
             onSet: function(context) {
                 var selectedDate = context.select;
                 var date = new Date(selectedDate);
-                console.log(date);
                 if (date != 'Invalid Date'){
                     var dayCheckIn = date.getDate();
                     var monthCheckIn = date.getMonth();
@@ -299,9 +319,6 @@ $(document).ready(function(){
         var groupTotal = numChildren + numAdults;
         // Logic stores the value of true or false to determine whether the input is valid or not
         var logic;
-        console.log('max: ' + max);
-        console.log('min: ' + min);
-        console.log(groupTotal);
         if (groupTotal > max){
             warningDiv[0].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Maximum group number is ' + max + ' persons';
             logic = false;
@@ -332,9 +349,8 @@ $(document).ready(function(){
     }
     
     // Confirm form
-    function confirmForm(emailInput, nameInput){
+    function confirmForm(emailInput, nameInput, arrayNo){
         var inputAdults = config.logic;
-        console.log(config.logic);
         if (emailInput.validity.valid
             && nameInput.validity.valid 
             && inputAdults
@@ -344,20 +360,29 @@ $(document).ready(function(){
             confirmBtn.setAttribute('data-target','#confirmation');
             confirmBtn.setAttribute('data-dismiss','modal');
             confirmBtn.setAttribute('aria-label','Close');
-            console.log('Booking data:');
+            bookingData.arrayNumber = arrayNo;
             calcualteStayDuration();
+            console.log('Booking data:');
             console.dir(bookingData);
             console.log('total cost:');
             calculateData();
+        } else if (emailInput.validity.valid === false
+            && nameInput.validity.valid 
+            && inputAdults
+            && checkOutInput[0].value 
+            && checkInInput[0].value){
+            confirmBtn.removeAttribute('data-toggle');
+            confirmBtn.removeAttribute('data-target');
+            confirmBtn.removeAttribute('data-dismiss');
+            confirmBtn.removeAttribute('aria-label');
+            warningDiv[1].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please enter a valid email';
         } else{
             confirmBtn.removeAttribute('data-toggle');
             confirmBtn.removeAttribute('data-target');
             confirmBtn.removeAttribute('data-dismiss');
             confirmBtn.removeAttribute('aria-label');
-            console.log('not working');
-            console.log('Booking data:');
-            calcualteStayDuration();
-            console.dir(bookingData);
+            warningDiv[1].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please complete all fields';
+            console.log('error');
         }
     }
     
@@ -373,7 +398,6 @@ $(document).ready(function(){
     
      // Add breakfast option to booking data
     function breakfastBoolean(breakfastInput){
-        console.log('working');
         if (breakfastInput.checked === true){
             bookingData.breakfast = true;
         }
@@ -394,9 +418,14 @@ $(document).ready(function(){
     
     // Write booking data into the dom
     function displayData(totalCost){
+        var arrayNo = bookingData.arrayNumber;
+        modalTitle[2].innerHTML = locations.queenstown[arrayNo].title;
+        modalImg[2].innerHTML = locations.queenstown[arrayNo].img;
         spanTotalNights.textContent = bookingData.stayDuration;
         spanTotalAdults.textContent = bookingData.totalAdults;
         spanTotalChildren.textContent = bookingData.totalChildren;
+        modalPrice[2].textContent = locations.queenstown[arrayNo].price;
+        modalPrice[3].textContent = locations.queenstown[arrayNo].price;
         if (bookingData.breakfast){
             spanBreakfastOpt.textContent = '+ $10 breakfast per person';
         } else{
@@ -404,6 +433,8 @@ $(document).ready(function(){
         }
         spanTotalCost.textContent = totalCost;
     }
+    
+    // PAGE ANIMATIONS
     
     // Toggle filtre view
     $('#filtreToggle').click(function(){
@@ -418,13 +449,27 @@ $(document).ready(function(){
         $('.vl').removeClass('v-active');
         $('.list-view').addClass('lv-translate');
     });
-
+    // Toggle map and list view
     $('.vl').click(function(){
         $('#map').removeClass('map-on');
         $('.btn-map').removeClass('v-active');
         $('.vl').addClass('v-active');
         $('.list-view').removeClass('lv-translate');
     });
+    // Reservation confirmation animation
+    $('#reserve-btn').click(function(){
+        $('.confirmation-txt').show(500);
+        $(this).addClass('green-btn');
+        $(this).text('reserved');
+    });
+    // Reset reserve button to default when modal is closed
+    $('#confirmation').on('hidden.bs.modal', function () {
+        console.log('working');
+        $('.confirmation-txt').hide(500);
+        $('#reserve-btn').removeClass('green-btn');
+        $('#reserve-btn').text('reserve');
+    });
+    
 }); // END jquery doc.ready
 
 // Map box code

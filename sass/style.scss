@@ -529,6 +529,21 @@ html{
                     }
                 }
             }
+            .confirmation-txt{
+                color: $off-black;
+                display: none;
+                font-size: 0.65em;
+                font-family: gothamLight;
+                width: 70%;
+                margin-top: 0.7em;
+            }
+            .strong-txt{
+                font-family: gothamBold;
+            }
+            .green-btn{
+                background-color: $green;
+                transition: background-color 0.5s ease-in-out;
+            }
         }
         .total-title{
             font-family: "gothamBold";
