@@ -43,9 +43,10 @@ var locations = {
     queenstown: [
             {
                 type: 'hotel',
-                img : '<img src="images/accom2.jpg" alt="picture of window overlooking a lake">',
+                img : '<img src="images/queenstown_hotel.jpg" alt="picture of window overlooking a lake">',
                 title: 'Lakefront Hotel',
                 distance: 120,
+                field: 'Coronet Peak',
                 price: data.hotel.price,
                 stars: 4,
                 description: 'The Lakefront hotel offers stunning views of Lake Wakatipu and snowy mountains, to be enjoyed from your luxurious room.',
@@ -53,9 +54,10 @@ var locations = {
             },
             {
                 type: 'hostel',
-                img : '<img src="images/accom1.jpeg" alt="picture of a balcony overviewing mountains">',
+                img : '<img src="images/queenstown_hostel.jpeg" alt="picture of a balcony overviewing mountains">',
                 title: 'Alpine Lodge',
                 distance: 100,
+                field: 'Coronet Peak',
                 price: data.hostel.price,
                 stars: 3,
                 description: 'The most beautiful hostel in queenstown.',
@@ -63,13 +65,38 @@ var locations = {
             },
             {
                 type: 'house',
-                img : '<img src="images/acom3.jpeg" alt="picture of house in the snow">',
+                img : '<img src="images/queenstown_house.jpeg" alt="picture of house in the snow">',
                 title: 'Ski QT House',
                 distance: 50,
+                field: 'Remarkables Ski Area',
                 price: data.house.price,
                 stars: 3,
                 description: 'A cosy home base for a ski holiday.',
                 features: [elements.features.wifi]
             }
+    ],
+    christchurch: [
+            {
+                type: 'hotel',
+                img: '<img src="images/christchurch_hotel.jpg" alt="picture of window overlooking a lake">',
+                title: 'Cathedral Square Hotel',
+                distance: 100,
+                field: 'Mt. Olympus',
+                price: data.hotel.price,
+                stars: 3,
+                description: 'Excellent hotel in the Christchurch CBD overlooking Cathedral square. Buffet breakfast available.',
+                features: [elements.features.wifi, elements.features.meals]
+            },
+            {
+                type: 'hostel',
+                img: '<img src="images/christchurch_hostel.jpg" alt="picture of window overlooking a lake">',
+                title: 'Dunstan House',
+                distance: 100,
+                field: 'Mt. Olympus',
+                price: data.hostel.price,
+                stars: 2,
+                description: 'Cosy hostel in the quiet suburbs of Christchurch.',
+                features: [elements.features.wifi, elements.features.meals]
+            },
     ]
 }

@@ -70,12 +70,34 @@ $(document).ready(function(){
     // Function that initiates thumbnails after location search
     function search(){
         var searchInputValue = searchInput.value;
-        console.log(searchInputValue);
-        if (searchInputValue == 'queenstown' /*|| 'cadrona' || 'remarkables' || 'coronet peak' */){
-            console.log('Queenstown');
-            } else if (searchInputValue == 'christchurch' /*|| 'mt hutt' || 'temple basin' || 'athur\'s pass' || 'cheeseman' || 'porters' || 'broken river'*/){
-                console.log('Christchurch');
-            } else if (searchInputValue == 'whakapapa' /*|| 'ruapehu' || 'tongariro' || 'ohakune' || 'national park' || 'turoa'*/){
+        var uppercaseValue = searchInputValue.toUpperCase();
+        if (uppercaseValue == 'QUEENSTOWN' || 
+            uppercaseValue == 'CADRONA' || 
+            uppercaseValue == 'REMARKABLES' || 
+            uppercaseValue == 'THE REMARKABLES' ||
+            uppercaseValue == 'THE REMARKS' ||
+            uppercaseValue == 'CORONET PEAK' ){
+            loadThumbnails(locations.queenstown);
+            } else if (uppercaseValue == 'CHRISTCHURCH'||
+                       uppercaseValue == 'CANTERBURY'||
+                       uppercaseValue == 'MT HUTT' || 
+                       uppercaseValue == 'MOUNT HUTT' || 
+                       uppercaseValue == 'TEMPLE BASIN' || 
+                       uppercaseValue == 'ARTHUR\'S PASS' || 
+                       uppercaseValue == 'CHEESEMAN' || 
+                       uppercaseValue == 'PORTERS' || 
+                       uppercaseValue == 'MT OLYMPUS' ||
+                       uppercaseValue == 'MOUNT OLYMPUS' ||
+                       uppercaseValue == 'BROKEN RIVER'){
+                loadThumbnails(locations.christchurch);
+            } else if (uppercaseValue == 'WHAKAPAPA' || 
+                       uppercaseValue == 'RUAPEHU' || 
+                       uppercaseValue == 'MOUNT RUAPEHU' || 
+                       uppercaseValue == 'MT RUAPEHU' ||
+                       uppercaseValue == 'TONGARIRO' || 
+                       uppercaseValue == 'OHAKUNE' || 
+                       uppercaseValue == 'NATIONAL PARK' || 
+                       uppercaseValue == 'TUROA'){
                 console.log('Whakapapa');
             } else {
                 console.log('No results');
@@ -84,8 +106,8 @@ $(document).ready(function(){
     searchButton.addEventListener('click', search, false);
     
     // Function that creates the thumbnails for the accomodation options
-    function loadThumbnails(){
-        for (var i = 0; i < locations.queenstown.length; i++){
+    function loadThumbnails(getLocation){
+        for (var i = 0; i < getLocation.length; i++){
             // Creating the div to contain the thumbnail
             var thumbnailContainer = document.createElement('div');
             thumbnailContainer.setAttribute('class','thumbnail-ctnr');
@@ -93,70 +115,69 @@ $(document).ready(function(){
             // Placing the code into the DOM
             thumbnailAnchor.after(thumbnailContainer);
             // Injecting relevant data into each thumbnail by using i as the argument
-            writeThumbnails(i);
-            setDetailButton(i);
+            writeThumbnails(i, getLocation);
+            setDetailButton(i, getLocation);
         }
     }
-    loadThumbnails();
     
     // Function that writes thumbnail data
-    function writeThumbnails(arrayNo){
-        thumbnailImg[0].innerHTML = locations.queenstown[arrayNo].img;
-        thumbnailTitle[0].innerHTML = locations.queenstown[arrayNo].title;
-        thumbnailDistance[0].innerHTML = locations.queenstown[arrayNo].distance;
-        thumbnailPrice[0].innerHTML = locations.queenstown[arrayNo].price;
-        for (var i = 0; i < locations.queenstown[arrayNo].stars; i++){
+    function writeThumbnails(arrayNo, getLocation){
+        thumbnailImg[0].innerHTML = getLocation[arrayNo].img;
+        thumbnailTitle[0].innerHTML = getLocation[arrayNo].title;
+        thumbnailDistance[0].innerHTML = getLocation[arrayNo].distance;
+        thumbnailPrice[0].innerHTML = getLocation[arrayNo].price;
+        for (var i = 0; i < getLocation[arrayNo].stars; i++){
             thumbnailStars[0].innerHTML += elements.stars[arrayNo];
         }
     }
     
     // Function that sets relevant event listeners to each thumbnail button
-    function setDetailButton(arrayNo){ // by numbering the buttons we can target them one by one
+    function setDetailButton(arrayNo, getLocation){ // by numbering the buttons we can target them one by one
         var detailsBtn = document.getElementsByClassName('view-details')[0];
-        detailsBtn.addEventListener('click', function(){writeModal(arrayNo);}, false);
+        detailsBtn.addEventListener('click', function(){writeModal(arrayNo, getLocation);}, false);
         // This function gives a counter to the event listeners so they inject the corresponding data into the DOM
     }
     
     // Function that writes data into the modal depending on which option is clicked
-    function writeModal(arrayNo){
-        modalImg[0].innerHTML = locations.queenstown[arrayNo].img;
-        modalTitle[0].innerHTML = locations.queenstown[arrayNo].title;
-        modalDistance.innerHTML = locations.queenstown[arrayNo].distance;
-        modalPrice[0].innerHTML = locations.queenstown[arrayNo].price;
-        modalDescription.innerHTML = locations.queenstown[arrayNo].description;
+    function writeModal(arrayNo, getLocation){
+        modalImg[0].innerHTML = getLocation[arrayNo].img;
+        modalTitle[0].innerHTML = getLocation[arrayNo].title;
+        modalDistance.innerHTML = getLocation[arrayNo].distance;
+        modalPrice[0].innerHTML = getLocation[arrayNo].price;
+        modalDescription.innerHTML = getLocation[arrayNo].description;
         modalFeatures.innerHTML = '';
         // FEATURES FOR LOOP
-        for (var c = 0; c < locations.queenstown[arrayNo].features.length; c++){
-            modalFeatures.innerHTML += locations.queenstown[arrayNo].features[c];
+        for (var c = 0; c < getLocation[arrayNo].features.length; c++){
+            modalFeatures.innerHTML += getLocation[arrayNo].features[c];
         }
         modalStars.innerHTML = '';
-        for (var i = 0; i < locations.queenstown[arrayNo].stars; i++){
+        for (var i = 0; i < getLocation[arrayNo].stars; i++){
             modalStars.innerHTML += elements.stars[arrayNo];
         }
-        setBookingButton(arrayNo);
+        setBookingButton(arrayNo, getLocation);
     }
     
     /* Function that sets up booking button event listener with a relevant argument so
        when clicked it injects appropriate data into the booking modal*/
-    function setBookingButton(arrayNo){
+    function setBookingButton(arrayNo, getLocation){
         var bookingBtn = document.getElementsByClassName('book-now')[0];
-        bookingBtn.addEventListener('click', function(){setUpBooking(arrayNo);}, false);
+        bookingBtn.addEventListener('click', function(){setUpBooking(arrayNo, getLocation);}, false);
     }
     
     // Function that sets up the booking modal
-    function setUpBooking(arrayNo){
+    function setUpBooking(arrayNo, getLocation){
         // Set identity
-        modalTitle[1].innerHTML = locations.queenstown[arrayNo].title;
-        modalImg[1].innerHTML = locations.queenstown[arrayNo].img;
-        modalPrice[1].innerHTML = locations.queenstown[arrayNo].price;
+        modalTitle[1].innerHTML = getLocation[arrayNo].title;
+        modalImg[1].innerHTML = getLocation[arrayNo].img;
+        modalPrice[1].innerHTML = getLocation[arrayNo].price;
         
         // SET UP DATE INPUTS
         // Set inputs to blank/default each time the loop runs
         modalCheckInCtnr.innerHTML = '<input type="text" class="check-in" required>';
         modalCheckOutCtnr.innerHTML = '<input type="text" class="check-out" required readonly>';
         // Add datepicker class after reset so it is always the approprate picker
-        checkInInput[0].classList.add('datepicker' + locations.queenstown[arrayNo].type + 'In');
-        checkOutInput[0].classList.add('datepicker' + locations.queenstown[arrayNo].type + 'Out');
+        checkInInput[0].classList.add('datepicker' + getLocation[arrayNo].type + 'In');
+        checkOutInput[0].classList.add('datepicker' + getLocation[arrayNo].type + 'Out');
         initDatePickers();
         
         // SET UP NUMBER INPUTS
@@ -167,8 +188,8 @@ $(document).ready(function(){
         // Adding a new event listener(EL) class so it gets reset each time the function is invoked
         modalInputCtnr.classList.add('EL-class');
         var elElement = document.getElementsByClassName('EL-class')[0];
-        // Eval converts the string returned from: locations.queenstown[arrayNo].type into code (removing the '')
-        var accomodationShortcut = eval(locations.queenstown[arrayNo].type);
+        // Eval converts the string returned from: getLocation[arrayNo].type into code (removing the '')
+        var accomodationShortcut = eval(getLocation[arrayNo].type);
         var max = accomodationShortcut.maxCapacity;
         var min = accomodationShortcut.minCapacity;
         elElement.addEventListener('mouseleave', function(){inputValidation(max, min);}, false);
@@ -184,8 +205,8 @@ $(document).ready(function(){
         // SET BREAKFAST OPTION
         modalExtrasCtnr.innerHTML = '';
         bookingData.breakfast = false;
-        for (var i = 0; i < locations.queenstown[arrayNo].features.length; i++){
-                if (locations.queenstown[arrayNo].features[i] === '<div class="iconTxt-wrapper"><img src="images/icons/meal.svg" alt="meal svg test"><div class="icon-title">meals</div></div>'){
+        for (var i = 0; i < getLocation[arrayNo].features.length; i++){
+                if (getLocation[arrayNo].features[i] === '<div class="iconTxt-wrapper"><img src="images/icons/meal.svg" alt="meal svg test"><div class="icon-title">meals</div></div>'){
                     modalExtrasCtnr.innerHTML = '<input type="checkbox" class="breakfast-option"> Include breakfast <span class="green"> + $10.00 NZD</span>';
                     var breakfastInput = document.getElementsByClassName('breakfast-option')[0];
                     confirmBtn.addEventListener('click', function(){breakfastBoolean(breakfastInput);}, false);
@@ -193,7 +214,7 @@ $(document).ready(function(){
             }
         
         // SET CONFIRM EVENT LISTENER
-        confirmBtn.addEventListener('click', function(){confirmForm(emailInput, nameInput, arrayNo);}, false);
+        confirmBtn.addEventListener('click', function(){confirmForm(emailInput, nameInput, arrayNo, getLocation);}, false);
         
         }
     
@@ -349,7 +370,7 @@ $(document).ready(function(){
     }
     
     // Confirm form
-    function confirmForm(emailInput, nameInput, arrayNo){
+    function confirmForm(emailInput, nameInput, arrayNo, getLocation){
         var inputAdults = config.logic;
         if (emailInput.validity.valid
             && nameInput.validity.valid 
@@ -365,7 +386,7 @@ $(document).ready(function(){
             console.log('Booking data:');
             console.dir(bookingData);
             console.log('total cost:');
-            calculateData();
+            calculateData(getLocation);
         } else if (emailInput.validity.valid === false
             && nameInput.validity.valid 
             && inputAdults
@@ -404,7 +425,7 @@ $(document).ready(function(){
     }
     
     // Calculate booking data
-    function calculateData(){
+    function calculateData(getLocation){
         var breakfast;
         if (bookingData.breakfast === true){
             var breakfast = 10;
@@ -413,19 +434,19 @@ $(document).ready(function(){
         }
         var totalCost = ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * data.hotel.price) + ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * breakfast);
         console.log(totalCost);
-        displayData(totalCost);
+        displayData(totalCost, getLocation);
     }
     
     // Write booking data into the dom
-    function displayData(totalCost){
+    function displayData(totalCost, getLocation){
         var arrayNo = bookingData.arrayNumber;
-        modalTitle[2].innerHTML = locations.queenstown[arrayNo].title;
-        modalImg[2].innerHTML = locations.queenstown[arrayNo].img;
+        modalTitle[2].innerHTML = getLocation[arrayNo].title;
+        modalImg[2].innerHTML = getLocation[arrayNo].img;
         spanTotalNights.textContent = bookingData.stayDuration;
         spanTotalAdults.textContent = bookingData.totalAdults;
         spanTotalChildren.textContent = bookingData.totalChildren;
-        modalPrice[2].textContent = locations.queenstown[arrayNo].price;
-        modalPrice[3].textContent = locations.queenstown[arrayNo].price;
+        modalPrice[2].textContent = getLocation[arrayNo].price;
+        modalPrice[3].textContent = getLocation[arrayNo].price;
         if (bookingData.breakfast){
             spanBreakfastOpt.textContent = '+ $10 breakfast per person';
         } else{
