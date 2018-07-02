@@ -13,8 +13,8 @@ $(document).ready(function(){
     
     // CONTENT CONTAINERS
     
-    // Anchor for creating thumbnails
-    var thumbnailAnchor =   document.getElementsByClassName('opts-fltr-ctnr')[0];
+    // Container for creating thumbnails
+    var thumbnailsBox = document.getElementById('thumbnailsBox');
     // Thumbnail containers
     var thumbnailImg =      document.getElementsByClassName('image-ctnr');
     var thumbnailTitle =    document.getElementsByClassName('thumbnail-title');
@@ -78,6 +78,7 @@ $(document).ready(function(){
             uppercaseValue == 'THE REMARKS' ||
             uppercaseValue == 'CORONET PEAK' ){
             loadThumbnails(locations.queenstown);
+            initMap(168.697751, 45.026377);
             } else if (uppercaseValue == 'CHRISTCHURCH'||
                        uppercaseValue == 'CANTERBURY'||
                        uppercaseValue == 'MT HUTT' || 
@@ -90,6 +91,7 @@ $(document).ready(function(){
                        uppercaseValue == 'MOUNT OLYMPUS' ||
                        uppercaseValue == 'BROKEN RIVER'){
                 loadThumbnails(locations.christchurch);
+                initMap(172.493273, 43.538478);
             } else if (uppercaseValue == 'WHAKAPAPA' || 
                        uppercaseValue == 'RUAPEHU' || 
                        uppercaseValue == 'MOUNT RUAPEHU' || 
@@ -98,7 +100,8 @@ $(document).ready(function(){
                        uppercaseValue == 'OHAKUNE' || 
                        uppercaseValue == 'NATIONAL PARK' || 
                        uppercaseValue == 'TUROA'){
-                console.log('Whakapapa');
+                loadThumbnails(locations.whakapapa);
+                initMap(175.549994, 39.231289);
             } else {
                 console.log('No results');
             }
@@ -107,10 +110,15 @@ $(document).ready(function(){
     
     // Function that creates the thumbnails for the accomodation options
     function loadThumbnails(getLocation){
+        // Reset the thumbnails each time so they are replaced instead of added (if user makes more than one search)
+        thumbnailsBox.innerHTML = '<div id="thumbnailAnchor"></div>';
+        var thumbnailAnchor = document.getElementById('thumbnailAnchor');
+        console.log(thumbnailAnchor);
         for (var i = 0; i < getLocation.length; i++){
             // Creating the div to contain the thumbnail
             var thumbnailContainer = document.createElement('div');
             thumbnailContainer.setAttribute('class','thumbnail-ctnr');
+            console.log(thumbnailContainer.innerHTML);
             thumbnailContainer.innerHTML = '<div class="image-ctnr"></div><div class="centre-el-ctnr"><div class="thumbnail-title"></div><div class="txt-distance"><span class="distance-number"></span>km from Remarkables ski area</div><div class="star-ctnr"></div><button class="btn btn-modal view-details"  data-toggle="modal" data-target="#details">view details</button></div><div class="txt-price"><div>$<span class="price-number"></span> NZD</div><div>/ night</div></div><div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>';
             // Placing the code into the DOM
             thumbnailAnchor.after(thumbnailContainer);
@@ -463,20 +471,6 @@ $(document).ready(function(){
         $('.dropdown').toggleClass('dropup');
     });
     
-    // Toggle map and list view
-    $('.btn-map').click(function(){
-        $('#map').addClass('map-on');
-        $('.btn-map').addClass('v-active');
-        $('.vl').removeClass('v-active');
-        $('.list-view').addClass('lv-translate');
-    });
-    // Toggle map and list view
-    $('.vl').click(function(){
-        $('#map').removeClass('map-on');
-        $('.btn-map').removeClass('v-active');
-        $('.vl').addClass('v-active');
-        $('.list-view').removeClass('lv-translate');
-    });
     // Reservation confirmation animation
     $('#reserve-btn').click(function(){
         $('.confirmation-txt').show(500);
@@ -494,10 +488,27 @@ $(document).ready(function(){
 }); // END jquery doc.ready
 
 // Map box code
-mapboxgl.accessToken = 'pk.eyJ1IjoiaXpzaSIsImEiOiJjamkzbjQxMWQwMGFzM2tvNDM5NTB6cmlrIn0.a5L-XDDBNFQ-0BrqtQpNCg';
-var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-    center: [168.697751, -45.026377], // starting position [lng, lat]
-    zoom: 11 // starting zoom
-});
+function initMap(lng, lat){
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaXpzaSIsImEiOiJjamkzbjQxMWQwMGFzM2tvNDM5NTB6cmlrIn0.a5L-XDDBNFQ-0BrqtQpNCg';
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+        center: [lng, -lat], // starting position [lng, lat]
+        zoom: 11 // starting zoom
+    });
+    
+    // Toggle map and list view
+    $('.btn-map').click(function(){
+        $('#map').addClass('map-on');
+        $('.btn-map').addClass('v-active');
+        $('.vl').removeClass('v-active');
+        $('.list-view').addClass('lv-translate');
+    });
+    // Toggle map and list view
+    $('.vl').click(function(){
+        $('#map').removeClass('map-on');
+        $('.btn-map').removeClass('v-active');
+        $('.vl').addClass('v-active');
+        $('.list-view').removeClass('lv-translate');
+    });
+}
