@@ -465,25 +465,35 @@ $(document).ready(function(){
     
     // PAGE ANIMATIONS
     
-    // Toggle filtre view
-    $('#filtreToggle').click(function(){
-        $('.opts-fltr-ctnr').toggleClass('fltr-shut');
-        $('.dropdown').toggleClass('dropup');
-    });
-    
-    // Reservation confirmation animation
-    $('#reserve-btn').click(function(){
-        $('.confirmation-txt').show(500);
-        $(this).addClass('green-btn');
-        $(this).text('reserved');
-    });
-    // Reset reserve button to default when modal is closed
-    $('#confirmation').on('hidden.bs.modal', function () {
-        console.log('working');
-        $('.confirmation-txt').hide(500);
-        $('#reserve-btn').removeClass('green-btn');
-        $('#reserve-btn').text('reserve');
-    });
+    function animations(){
+        
+        $('#searchInput').focusin(function(){
+            console.log('working');
+            $('.footer').addClass('footer-hidden');
+            $('.footer').removeClass('footer');
+        });
+        
+        // Toggle filtre view
+        $('#filtreToggle').click(function(){
+            $('.opts-fltr-ctnr').toggleClass('fltr-shut');
+            $('.dropdown').toggleClass('dropup');
+        });
+
+        // Reservation confirmation animation
+        $('#reserve-btn').click(function(){
+            $('.confirmation-txt').show(500);
+            $(this).addClass('green-btn');
+            $(this).text('reserved');
+        });
+        // Reset reserve button to default when modal is closed
+        $('#confirmation').on('hidden.bs.modal', function () {
+            console.log('working');
+            $('.confirmation-txt').hide(500);
+            $('#reserve-btn').removeClass('green-btn');
+            $('#reserve-btn').text('reserve');
+        });
+    } animations();
+        
     
 }); // END jquery doc.ready
 
