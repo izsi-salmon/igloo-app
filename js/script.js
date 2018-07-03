@@ -469,8 +469,11 @@ $(document).ready(function(){
         
         $('#searchInput').focusin(function(){
             console.log('working');
-            $('.footer').addClass('footer-hidden');
-            $('.footer').removeClass('footer');
+            $('.footer').fadeOut(300);
+        });
+        $('#searchInput').focusout(function(){
+            console.log('working');
+            $('.footer').fadeIn(300);
         });
         
         // Toggle filtre view
