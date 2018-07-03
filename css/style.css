@@ -45,7 +45,7 @@ html {
 .backdrop {
   position: fixed;
   top: 100vh;
-  transition: top 1s ease-out; }
+  transition: top 0.5s ease-out; }
 
 .backdrop-on {
   background: #e7eef0;
