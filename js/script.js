@@ -463,11 +463,11 @@ $(document).ready(function(){
         spanTotalCost.textContent = totalCost;
     }
     
-    // PAGE ANIMATIONS
-    
+    // ANIMATIONS
     function animations(){
         
-        $('#searchInput').focusin(function(){
+        // PAGE TRANSITIONS
+        $('#searchInput').focus(function(){
             console.log('working');
             $('.footer').fadeOut(300);
         });
