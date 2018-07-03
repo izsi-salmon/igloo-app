@@ -468,10 +468,10 @@ $(document).ready(function(){
     function animations(){
         
         // PAGE TRANSITIONS
-        $('.search-bar').click(function(){
-            console.log('working');
-            $('.footer').fadeOut(300);
-        });
+//        $('.search-bar').click(function(){
+//            console.log('working');
+//            $('.footer').fadeOut(300);
+//        });
         
         $('#searchButton').click(function(){
             // Add new classes
