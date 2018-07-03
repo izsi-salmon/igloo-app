@@ -53,6 +53,7 @@ html{
     padding: 3%;
     position: absolute;
     width: 100%;
+    transition: all 1s ease-out;
 }
 
 .header-index{
@@ -70,19 +71,17 @@ html{
     }
 }
 
+.backdrop{
+    position: fixed;
+    top: 100vh;
+    transition: top 1s ease-out;
+}
+
 .backdrop-on{
     background: $grey-superLight;
-//    height: 75vh;
-    position: fixed;
         top: 7em;
         bottom: 0;
     width: 100%;
-    transition: max-height 0.5s ease-out;
-}
-
-.backdrop-off{
-    max-height: 0;
-    overflow: hidden;
 }
 
 .view-opt{
