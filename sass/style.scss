@@ -56,7 +56,6 @@ html{
 }
 
 .header-index{
-    min-height: 0;
     .logo{
         width: 30%;
     }
@@ -65,7 +64,7 @@ html{
 .header-p2{
     background-color: #97D9E1;
     background-image: linear-gradient(45deg, #97D9E1 0%, #D9AFD9 100%);
-    min-height: 25vh;
+    height: 7em;
     .logo{
         width: 20%;
     }
@@ -73,9 +72,9 @@ html{
 
 .backdrop-on{
     background: $grey-superLight;
-    height: 75vh;
-    max-height: 500px;
+//    height: 75vh;
     position: fixed;
+        top: 7em;
         bottom: 0;
     width: 100%;
     transition: max-height 0.5s ease-out;
@@ -119,8 +118,6 @@ html{
     height: 100%;
     padding: 3% 3% 15% 3%;
     overflow: scroll;
-    transform: translateX(0);
-    transition: transform 0.2s ease-in;
 }
 
 .lv-translate{
@@ -343,6 +340,7 @@ html{
         }
     }
     .sb-index{
+        transition: all 2s ease-out;
         input[type=text]{
             font-size: 1em;
         }
@@ -365,7 +363,8 @@ html{
 }
 
 .tc-p2{
-    top: 10%;
+    position: relative;
+    padding-top: 20%;
 }
 
 .flavour-text{

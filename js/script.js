@@ -477,11 +477,13 @@ $(document).ready(function(){
             $('.backdrop-off').addClass('backdrop-on');
             $('.header').addClass('header-p2');
             $('.top-content').addClass('tc-p2');
-            $('.top-content').addClass('tc-p2');
             $('.search-bar').addClass('sb-p2');
             $('.flavour-text').hide();
             // Remove old classes
             $('.backdrop-off').removeClass('backdrop-off');
+            $('.header').removeClass('header-index');
+            $('.top-content').removeClass('tc-index');
+            $('.search-bar').removeClass('sb-index');
         });
         
         // Toggle filtre view
