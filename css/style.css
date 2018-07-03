@@ -31,13 +31,15 @@ html {
   position: absolute;
   width: 100%; }
 
-.header-index .logo {
-  width: 30%; }
+.header-index {
+  min-height: 0; }
+  .header-index .logo {
+    width: 30%; }
 
 .header-p2 {
   background-color: #97D9E1;
   background-image: linear-gradient(45deg, #97D9E1 0%, #D9AFD9 100%);
-  height: 25vh; }
+  min-height: 25vh; }
   .header-p2 .logo {
     width: 20%; }
 
@@ -47,7 +49,8 @@ html {
   max-height: 500px;
   position: fixed;
   bottom: 0;
-  width: 100%; }
+  width: 100%;
+  transition: max-height 0.5s ease-out; }
 
 .backdrop-off {
   max-height: 0;
@@ -152,6 +155,11 @@ html {
 
 .fltr-shut {
   max-height: 0; }
+
+.no-results {
+  color: #7d7e7e;
+  font-size: 0.8em;
+  font-family: gothamLight; }
 
 .thumbnail-ctnr {
   background: #FFF;
@@ -280,10 +288,10 @@ html {
   margin-bottom: 24px; }
 
 .footer {
-  background-image: linear-gradient(10deg, rgba(163, 215, 223, 0.8) 15%, rgba(217, 199, 226, 0.8) 35%, rgba(0, 0, 0, 0) 81%);
+  background-image: linear-gradient(15deg, rgba(163, 215, 223, 0.8) 15%, rgba(217, 199, 226, 0.8) 35%, rgba(0, 0, 0, 0) 81%);
   position: fixed;
   bottom: 0;
-  padding: 50% 25% 8% 7%;
+  padding: 60% 25% 10% 7%;
   line-height: 100%;
   min-height: 0; }
   .footer .expl-text {
@@ -293,7 +301,7 @@ html {
   .footer .purenz-logo {
     width: 14%;
     position: fixed;
-    bottom: 5%;
+    bottom: 6%;
     right: 4%; }
 
 .modal .modal-content {

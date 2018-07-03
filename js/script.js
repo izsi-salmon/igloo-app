@@ -72,6 +72,7 @@ $(document).ready(function(){
         var searchInputValue = searchInput.value;
         var uppercaseValue = searchInputValue.toUpperCase();
         if (uppercaseValue == 'QUEENSTOWN' || 
+            uppercaseValue == 'WANAKA' ||
             uppercaseValue == 'CADRONA' || 
             uppercaseValue == 'REMARKABLES' || 
             uppercaseValue == 'THE REMARKABLES' ||
@@ -103,7 +104,7 @@ $(document).ready(function(){
                 loadThumbnails(locations.whakapapa);
                 initMap(175.549994, 39.231289);
             } else {
-                console.log('No results');
+                thumbnailsBox.innerHTML = '<span class="no-results">No location matched your search, please check your spelling and try again. Hint: Try searching by field name or nearest town, Eg. Queenstown.</span>'
             }
     }
     searchButton.addEventListener('click', search, false);
@@ -467,13 +468,21 @@ $(document).ready(function(){
     function animations(){
         
         // PAGE TRANSITIONS
-        $('#searchInput').focus(function(){
+        $('.search-bar').click(function(){
             console.log('working');
             $('.footer').fadeOut(300);
         });
-        $('#searchInput').focusout(function(){
-            console.log('working');
-            $('.footer').fadeIn(300);
+        
+        $('#searchButton').click(function(){
+            // Add new classes
+            $('.backdrop-off').addClass('backdrop-on');
+            $('.header').addClass('header-p2');
+            $('.top-content').addClass('tc-p2');
+            $('.top-content').addClass('tc-p2');
+            $('.search-bar').addClass('sb-p2');
+            $('.flavour-text').hide();
+            // Remove old classes
+            $('.backdrop-off').removeClass('backdrop-off');
         });
         
         // Toggle filtre view
