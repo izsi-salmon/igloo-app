@@ -46,10 +46,6 @@ $(document).ready(function(){
     // Input variables
     var checkInInput =   document.getElementsByClassName('check-in');
     var checkOutInput =  document.getElementsByClassName('check-out');
-//    var adultInput =     document.getElementsByClassName('inputAdult')[0];
-//    var childInput =     document.getElementsByClassName('inputChild')[0];
-//    var nameInput =      document.getElementsByClassName('input-name')[0];
-//    ;
     
     // Confirm button
     var confirmBtn =     document.getElementsByClassName('confirm-trigger')[0];
@@ -104,7 +100,7 @@ $(document).ready(function(){
                 loadThumbnails(locations.whakapapa);
                 initMap(175.549994, 39.231289);
             } else {
-                thumbnailsBox.innerHTML = '<span class="no-results">No location matched your search, please check your spelling and try again. Hint: Try searching by field name or nearest town, Eg. Queenstown.</span>'
+                thumbnailsBox.innerHTML = '<span class="no-results">No location matched your search, please check your spelling and try again. Hint: Try searching by field name or nearest town, Eg. Queenstown.</span>';
             }
     }
     searchButton.addEventListener('click', search, false);
@@ -114,12 +110,10 @@ $(document).ready(function(){
         // Reset the thumbnails each time so they are replaced instead of added (if user makes more than one search)
         thumbnailsBox.innerHTML = '<div id="thumbnailAnchor"></div>';
         var thumbnailAnchor = document.getElementById('thumbnailAnchor');
-        console.log(thumbnailAnchor);
         for (var i = 0; i < getLocation.length; i++){
             // Creating the div to contain the thumbnail
             var thumbnailContainer = document.createElement('div');
             thumbnailContainer.setAttribute('class','thumbnail-ctnr');
-            console.log(thumbnailContainer.innerHTML);
             thumbnailContainer.innerHTML = '<div class="image-ctnr"></div><div class="centre-el-ctnr"><div class="thumbnail-title"></div><div class="txt-distance"><span class="distance-number"></span>km from Remarkables ski area</div><div class="star-ctnr"></div><button class="btn btn-modal view-details"  data-toggle="modal" data-target="#details">view details</button></div><div class="txt-price"><div>$<span class="price-number"></span> NZD</div><div>/ night</div></div><div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>';
             // Placing the code into the DOM
             thumbnailAnchor.after(thumbnailContainer);
@@ -127,7 +121,7 @@ $(document).ready(function(){
             writeThumbnails(i, getLocation);
             setDetailButton(i, getLocation);
         }
-    }
+    } // Invoked at line 77,90,100
     
     // Function that writes thumbnail data
     function writeThumbnails(arrayNo, getLocation){
@@ -138,14 +132,14 @@ $(document).ready(function(){
         for (var i = 0; i < getLocation[arrayNo].stars; i++){
             thumbnailStars[0].innerHTML += elements.stars[arrayNo];
         }
-    }
+    } // Invoked at line 123
     
     // Function that sets relevant event listeners to each thumbnail button
     function setDetailButton(arrayNo, getLocation){ // by numbering the buttons we can target them one by one
         var detailsBtn = document.getElementsByClassName('view-details')[0];
         detailsBtn.addEventListener('click', function(){writeModal(arrayNo, getLocation);}, false);
         // This function gives a counter to the event listeners so they inject the corresponding data into the DOM
-    }
+    } // Invoked at line 124
     
     // Function that writes data into the modal depending on which option is clicked
     function writeModal(arrayNo, getLocation){
@@ -164,14 +158,14 @@ $(document).ready(function(){
             modalStars.innerHTML += elements.stars[arrayNo];
         }
         setBookingButton(arrayNo, getLocation);
-    }
+    } // Invoked at line 142
     
     /* Function that sets up booking button event listener with a relevant argument so
        when clicked it injects appropriate data into the booking modal*/
     function setBookingButton(arrayNo, getLocation){
         var bookingBtn = document.getElementsByClassName('book-now')[0];
         bookingBtn.addEventListener('click', function(){setUpBooking(arrayNo, getLocation);}, false);
-    }
+    } // Invoked at line 162
     
     // Function that sets up the booking modal
     function setUpBooking(arrayNo, getLocation){
@@ -225,7 +219,7 @@ $(document).ready(function(){
         // SET CONFIRM EVENT LISTENER
         confirmBtn.addEventListener('click', function(){confirmForm(emailInput, nameInput, arrayNo, getLocation);}, false);
         
-        }
+        } // Invoked at line 169
     
     // Function that initialises date picker plugin
     function initDatePickers(){
@@ -335,7 +329,7 @@ $(document).ready(function(){
                 }
             }
         });
-    }
+    } // Invoked at line 186
     
     // Group number validation
     function inputValidation(max, min){
@@ -367,7 +361,7 @@ $(document).ready(function(){
             bookingData.totalChildren = numChildren;
         }
         config.logic = logic;
-    }
+    } // Invoked at line 200
     
     // Email validation
     function emailValidation(emailInput){
@@ -376,7 +370,7 @@ $(document).ready(function(){
         } else{
             warningDiv[1].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please enter a valid email';
         }
-    }
+    } // Invoked at line 208
     
     // Confirm form
     function confirmForm(emailInput, nameInput, arrayNo, getLocation){
@@ -394,8 +388,7 @@ $(document).ready(function(){
             calcualteStayDuration();
             console.log('Booking data:');
             console.dir(bookingData);
-            console.log('total cost:');
-            calculateData(getLocation);
+            calculateData(arrayNo, getLocation);
         } else if (emailInput.validity.valid === false
             && nameInput.validity.valid 
             && inputAdults
@@ -412,9 +405,8 @@ $(document).ready(function(){
             confirmBtn.removeAttribute('data-dismiss');
             confirmBtn.removeAttribute('aria-label');
             warningDiv[1].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please complete all fields';
-            console.log('error');
         }
-    }
+    } // Invoked at line 222
     
     
     // Calculate nights of stay and store into booking obj
@@ -424,27 +416,26 @@ $(document).ready(function(){
         // Variable that converts the timestamp outputed by dateResult into days
         var resultConverted = Math.floor(dateResult / (1000 * 60 * 60 * 24));
         bookingData.stayDuration = resultConverted;
-    }
+    } // Invoked at line 390
     
      // Add breakfast option to booking data
     function breakfastBoolean(breakfastInput){
         if (breakfastInput.checked === true){
             bookingData.breakfast = true;
         }
-    }
+    } // Invoked at line 217
     
     // Calculate booking data
-    function calculateData(getLocation){
+    function calculateData(arrayNo, getLocation){
         var breakfast;
         if (bookingData.breakfast === true){
             var breakfast = 10;
         } else{
             var breakfast = 0;
         }
-        var totalCost = ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * data.hotel.price) + ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * breakfast);
-        console.log(totalCost);
+        var totalCost = ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * getLocation[arrayNo].price) + ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * breakfast);
         displayData(totalCost, getLocation);
-    }
+    } // Invoked at line 394
     
     // Write booking data into the dom
     function displayData(totalCost, getLocation){
@@ -462,7 +453,7 @@ $(document).ready(function(){
             spanBreakfastOpt.textContent = null;
         }
         spanTotalCost.textContent = totalCost;
-    }
+    } // Invoked at line 442
     
     // ANIMATIONS
     function animations(){
@@ -499,38 +490,36 @@ $(document).ready(function(){
         });
         // Reset reserve button to default when modal is closed
         $('#confirmation').on('hidden.bs.modal', function () {
-            console.log('working');
             $('.confirmation-txt').hide(500);
             $('#reserve-btn').removeClass('green-btn');
             $('#reserve-btn').text('reserve');
         });
     } animations();
-        
+    
+        // Map box code
+    function initMap(lng, lat){
+            mapboxgl.accessToken = 'pk.eyJ1IjoiaXpzaSIsImEiOiJjamkzbjQxMWQwMGFzM2tvNDM5NTB6cmlrIn0.a5L-XDDBNFQ-0BrqtQpNCg';
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+            center: [lng, -lat], // starting position [lng, lat]
+            zoom: 11 // starting zoom
+        }); // Invoked at line 78,91,101
+
+        // Toggle map and list view
+        $('.btn-map').click(function(){
+            $('#map').addClass('map-on');
+            $('.btn-map').addClass('v-active');
+            $('.vl').removeClass('v-active');
+            $('.list-view').addClass('lv-translate');
+        });
+        // Toggle map and list view
+        $('.vl').click(function(){
+            $('#map').removeClass('map-on');
+            $('.btn-map').removeClass('v-active');
+            $('.vl').addClass('v-active');
+            $('.list-view').removeClass('lv-translate');
+        });
+    }
     
 }); // END jquery doc.ready
-
-// Map box code
-function initMap(lng, lat){
-        mapboxgl.accessToken = 'pk.eyJ1IjoiaXpzaSIsImEiOiJjamkzbjQxMWQwMGFzM2tvNDM5NTB6cmlrIn0.a5L-XDDBNFQ-0BrqtQpNCg';
-    var map = new mapboxgl.Map({
-        container: 'map', // container id
-        style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-        center: [lng, -lat], // starting position [lng, lat]
-        zoom: 11 // starting zoom
-    });
-    
-    // Toggle map and list view
-    $('.btn-map').click(function(){
-        $('#map').addClass('map-on');
-        $('.btn-map').addClass('v-active');
-        $('.vl').removeClass('v-active');
-        $('.list-view').addClass('lv-translate');
-    });
-    // Toggle map and list view
-    $('.vl').click(function(){
-        $('#map').removeClass('map-on');
-        $('.btn-map').removeClass('v-active');
-        $('.vl').addClass('v-active');
-        $('.list-view').removeClass('lv-translate');
-    });
-}

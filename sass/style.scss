@@ -21,15 +21,7 @@ $green: #59b030;
 }
 
 html{
-//    background: url(../images/philipp-kammerer-266322-unsplash.jpg);
-//    background-size: cover;
-//    background-repeat: no-repeat;
-//    background-attachment: fixed;
-//    background-position: center;
     background: url(../images/philipp-kammerer_skier.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     height: 100%;
     overflow: hidden;
@@ -233,9 +225,6 @@ html{
         .thumbnail-title{
             font-family: "gothamBold";
             font-size: 0.7em;
-//            position: absolute;
-//                top: 6%;
-//                left: 105px;
             margin-bottom: 2px;
             text-transform: uppercase;
             width: 200px;
@@ -246,18 +235,12 @@ html{
             font-size: 0.6em;
             line-height: 10px;
             margin-bottom: 2px;
-//            position: absolute;
-//                top: 20%;
-//                left: 105px;
             width: 120px;
         }
         .star-ctnr{
             color: $yellow;
             font-size: 0.8em;
             margin-bottom: 2px;
-//            position: absolute;
-//                top: 40%;
-//                left: 105px;
         }
         .btn-modal{
             color: #FFF;
@@ -401,9 +384,7 @@ html{
     .modal-content{
         border: none;
         border-radius: 15px;
-//        max-height: 350px;
         padding: 3%;
-//        overflow: scroll;
         .modal-header-flex{
             display: flex;
             margin-bottom: 15px;
@@ -588,11 +569,3 @@ html{
 .green{
     color: $green !important;
 }
-
-
-
-
-
-
-
-
