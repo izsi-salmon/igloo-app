@@ -19,6 +19,7 @@ $(document).ready(function(){
     var thumbnailImg =      document.getElementsByClassName('image-ctnr');
     var thumbnailTitle =    document.getElementsByClassName('thumbnail-title');
     var thumbnailDistance = document.getElementsByClassName('distance-number');
+    var thumbnailField =    document.getElementsByClassName('skiarea-txt');
     var thumbnailPrice =    document.getElementsByClassName('price-number');
     var thumbnailStars =    document.getElementsByClassName('star-ctnr');
     
@@ -28,6 +29,7 @@ $(document).ready(function(){
     var modalImg =          document.getElementsByClassName('modal-img');
     var modalTitle =        document.getElementsByClassName('modal-title');
     var modalDistance =     document.getElementsByClassName('modal-distance')[0];
+    var modalField =        document.getElementsByClassName('modal-skiarea-txt');
     var modalPrice =        document.getElementsByClassName('modal-price');
     var modalStars =        document.getElementsByClassName('star-ctnr-modal')[0];
     var modalDescription =  document.getElementsByClassName('modal-dscptn')[0];
@@ -114,7 +116,7 @@ $(document).ready(function(){
             // Creating the div to contain the thumbnail
             var thumbnailContainer = document.createElement('div');
             thumbnailContainer.setAttribute('class','thumbnail-ctnr');
-            thumbnailContainer.innerHTML = '<div class="image-ctnr"></div><div class="centre-el-ctnr"><div class="thumbnail-title"></div><div class="txt-distance"><span class="distance-number"></span>km from Remarkables ski area</div><div class="star-ctnr"></div><button class="btn btn-modal view-details"  data-toggle="modal" data-target="#details">view details</button></div><div class="txt-price"><div>$<span class="price-number"></span> NZD</div><div>/ night</div></div><div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>';
+            thumbnailContainer.innerHTML = '<div class="image-ctnr"></div><div class="centre-el-ctnr"><div class="thumbnail-title"></div><div class="txt-distance"><span class="distance-number"></span>km from <span class="skiarea-txt"></span> ski area</div><div class="star-ctnr"></div><button class="btn btn-modal view-details"  data-toggle="modal" data-target="#details">view details</button></div><div class="txt-price"><div>$<span class="price-number"></span> NZD</div><div>/ night</div></div><div class="btn-map"><i class="fas fa-map-marker-alt"></i></div>';
             // Placing the code into the DOM
             thumbnailAnchor.after(thumbnailContainer);
             // Injecting relevant data into each thumbnail by using i as the argument
@@ -128,6 +130,7 @@ $(document).ready(function(){
         thumbnailImg[0].innerHTML = getLocation[arrayNo].img;
         thumbnailTitle[0].innerHTML = getLocation[arrayNo].title;
         thumbnailDistance[0].innerHTML = getLocation[arrayNo].distance;
+        thumbnailField[0].innerHTML = getLocation[arrayNo].field;
         thumbnailPrice[0].innerHTML = getLocation[arrayNo].price;
         for (var i = 0; i < getLocation[arrayNo].stars; i++){
             thumbnailStars[0].innerHTML += elements.stars[arrayNo];
@@ -146,6 +149,7 @@ $(document).ready(function(){
         modalImg[0].innerHTML = getLocation[arrayNo].img;
         modalTitle[0].innerHTML = getLocation[arrayNo].title;
         modalDistance.innerHTML = getLocation[arrayNo].distance;
+        modalField[0].innerHTML = getLocation[arrayNo].field;
         modalPrice[0].innerHTML = getLocation[arrayNo].price;
         modalDescription.innerHTML = getLocation[arrayNo].description;
         modalFeatures.innerHTML = '';
