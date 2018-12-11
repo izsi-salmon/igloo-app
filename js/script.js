@@ -1,18 +1,18 @@
 $(document).ready(function(){
-    
+
     // Data variables
     var config = {};
     var hotel = data.hotel;
     var hostel = data.hostel;
     var house = data.house;
     var motel = data.motel;
-    
+
     // Search bar
     var searchInput =  document.getElementById('searchInput');
     var searchButton = document.getElementById('searchButton');
-    
+
     // CONTENT CONTAINERS
-    
+
     // Container for creating thumbnails
     var thumbnailsBox = document.getElementById('thumbnailsBox');
     // Thumbnail containers
@@ -22,9 +22,9 @@ $(document).ready(function(){
     var thumbnailField =    document.getElementsByClassName('skiarea-txt');
     var thumbnailPrice =    document.getElementsByClassName('price-number');
     var thumbnailStars =    document.getElementsByClassName('star-ctnr');
-    
+
     // Modal containers
-    
+
     // Details modal
     var modalImg =          document.getElementsByClassName('modal-img');
     var modalTitle =        document.getElementsByClassName('modal-title');
@@ -44,35 +44,35 @@ $(document).ready(function(){
     var modalNameCtnr =     document.getElementsByClassName('name-ctnr')[0];
     var modalEmailCtnr =    document.getElementsByClassName('email-ctnr')[0];
     var modalExtrasCtnr =   document.getElementsByClassName('txt-extras')[0];
-        
+
     // Input variables
     var checkInInput =   document.getElementsByClassName('check-in');
     var checkOutInput =  document.getElementsByClassName('check-out');
-    
+
     // Confirm button
     var confirmBtn =     document.getElementsByClassName('confirm-trigger')[0];
-    
+
     // Variables to store user data
     var bookingDates = {};
     var bookingData = {};
-    
+
     // Dom elements to write data into
     var spanTotalNights =   document.getElementById('totalNights');
     var spanTotalAdults =   document.getElementById('totalAdults');
     var spanTotalChildren = document.getElementById('totalChildren');
     var spanBreakfastOpt =  document.getElementById('breakfastOpt');
     var spanTotalCost =     document.getElementById('priceTotal');
-    
+
     // ---------------------- END DOM QUIERIES ----------------------
-    
+
     // Function that initiates thumbnails after location search
     function search(){
         var searchInputValue = searchInput.value;
         var uppercaseValue = searchInputValue.toUpperCase();
-        if (uppercaseValue == 'QUEENSTOWN' || 
+        if (uppercaseValue == 'QUEENSTOWN' ||
             uppercaseValue == 'WANAKA' ||
-            uppercaseValue == 'CADRONA' || 
-            uppercaseValue == 'REMARKABLES' || 
+            uppercaseValue == 'CADRONA' ||
+            uppercaseValue == 'REMARKABLES' ||
             uppercaseValue == 'THE REMARKABLES' ||
             uppercaseValue == 'THE REMARKS' ||
             uppercaseValue == 'CORONET PEAK' ){
@@ -80,24 +80,24 @@ $(document).ready(function(){
             initMap(168.697751, 45.026377);
             } else if (uppercaseValue == 'CHRISTCHURCH'||
                        uppercaseValue == 'CANTERBURY'||
-                       uppercaseValue == 'MT HUTT' || 
-                       uppercaseValue == 'MOUNT HUTT' || 
-                       uppercaseValue == 'TEMPLE BASIN' || 
-                       uppercaseValue == 'ARTHUR\'S PASS' || 
-                       uppercaseValue == 'CHEESEMAN' || 
-                       uppercaseValue == 'PORTERS' || 
+                       uppercaseValue == 'MT HUTT' ||
+                       uppercaseValue == 'MOUNT HUTT' ||
+                       uppercaseValue == 'TEMPLE BASIN' ||
+                       uppercaseValue == 'ARTHUR\'S PASS' ||
+                       uppercaseValue == 'CHEESEMAN' ||
+                       uppercaseValue == 'PORTERS' ||
                        uppercaseValue == 'MT OLYMPUS' ||
                        uppercaseValue == 'MOUNT OLYMPUS' ||
                        uppercaseValue == 'BROKEN RIVER'){
                 loadThumbnails(locations.christchurch);
                 initMap(172.493273, 43.538478);
-            } else if (uppercaseValue == 'WHAKAPAPA' || 
-                       uppercaseValue == 'RUAPEHU' || 
-                       uppercaseValue == 'MOUNT RUAPEHU' || 
+            } else if (uppercaseValue == 'WHAKAPAPA' ||
+                       uppercaseValue == 'RUAPEHU' ||
+                       uppercaseValue == 'MOUNT RUAPEHU' ||
                        uppercaseValue == 'MT RUAPEHU' ||
-                       uppercaseValue == 'TONGARIRO' || 
-                       uppercaseValue == 'OHAKUNE' || 
-                       uppercaseValue == 'NATIONAL PARK' || 
+                       uppercaseValue == 'TONGARIRO' ||
+                       uppercaseValue == 'OHAKUNE' ||
+                       uppercaseValue == 'NATIONAL PARK' ||
                        uppercaseValue == 'TUROA'){
                 loadThumbnails(locations.whakapapa);
                 initMap(175.549994, 39.231289);
@@ -106,7 +106,7 @@ $(document).ready(function(){
             }
     }
     searchButton.addEventListener('click', search, false);
-    
+
     // Function that creates the thumbnails for the accomodation options
     function loadThumbnails(getLocation){
         // Reset the thumbnails each time so they are replaced instead of added (if user makes more than one search)
@@ -124,7 +124,7 @@ $(document).ready(function(){
             setDetailButton(i, getLocation);
         }
     } // Invoked at line 77,90,100
-    
+
     // Function that writes thumbnail data
     function writeThumbnails(arrayNo, getLocation){
         thumbnailImg[0].innerHTML = getLocation[arrayNo].img;
@@ -136,14 +136,14 @@ $(document).ready(function(){
             thumbnailStars[0].innerHTML += elements.stars[arrayNo];
         }
     } // Invoked at line 123
-    
+
     // Function that sets relevant event listeners to each thumbnail button
     function setDetailButton(arrayNo, getLocation){ // by numbering the buttons we can target them one by one
         var detailsBtn = document.getElementsByClassName('view-details')[0];
         detailsBtn.addEventListener('click', function(){writeModal(arrayNo, getLocation);}, false);
         // This function gives a counter to the event listeners so they inject the corresponding data into the DOM
     } // Invoked at line 124
-    
+
     // Function that writes data into the modal depending on which option is clicked
     function writeModal(arrayNo, getLocation){
         modalImg[0].innerHTML = getLocation[arrayNo].img;
@@ -163,21 +163,21 @@ $(document).ready(function(){
         }
         setBookingButton(arrayNo, getLocation);
     } // Invoked at line 142
-    
+
     /* Function that sets up booking button event listener with a relevant argument so
        when clicked it injects appropriate data into the booking modal*/
     function setBookingButton(arrayNo, getLocation){
         var bookingBtn = document.getElementsByClassName('book-now')[0];
         bookingBtn.addEventListener('click', function(){setUpBooking(arrayNo, getLocation);}, false);
     } // Invoked at line 162
-    
+
     // Function that sets up the booking modal
     function setUpBooking(arrayNo, getLocation){
         // Set identity
         modalTitle[1].innerHTML = getLocation[arrayNo].title;
         modalImg[1].innerHTML = getLocation[arrayNo].img;
         modalPrice[1].innerHTML = getLocation[arrayNo].price;
-        
+
         // SET UP DATE INPUTS
         // Set inputs to blank/default each time the loop runs
         modalCheckInCtnr.innerHTML = '<input type="text" class="check-in" required>';
@@ -186,7 +186,7 @@ $(document).ready(function(){
         checkInInput[0].classList.add('datepicker' + getLocation[arrayNo].type + 'In');
         checkOutInput[0].classList.add('datepicker' + getLocation[arrayNo].type + 'Out');
         initDatePickers();
-        
+
         // SET UP NUMBER INPUTS
         modalInputCtnr.setAttribute('class','form-flex');
         modalAdultCtnr.innerHTML = '<input type="number" class="inputAdult">';
@@ -200,7 +200,7 @@ $(document).ready(function(){
         var max = accomodationShortcut.maxCapacity;
         var min = accomodationShortcut.minCapacity;
         elElement.addEventListener('mouseleave', function(){inputValidation(max, min);}, false);
-        
+
         // SET UP TEXT INPUTS
         modalNameCtnr.innerHTML = '<input type="text" class="input-name" required>';
         modalEmailCtnr.innerHTML = '<input type="email" class="input-email" required>';
@@ -208,7 +208,7 @@ $(document).ready(function(){
         var emailInput = document.getElementsByClassName('input-email')[0];
         warningDiv[1].innerHTML = null;
         emailInput.addEventListener('mouseleave', function(){emailValidation(emailInput);}, false);
-        
+
         // SET BREAKFAST OPTION
         modalExtrasCtnr.innerHTML = '';
         bookingData.breakfast = false;
@@ -219,12 +219,12 @@ $(document).ready(function(){
                     confirmBtn.addEventListener('click', function(){breakfastBoolean(breakfastInput);}, false);
                 }
             }
-        
+
         // SET CONFIRM EVENT LISTENER
         confirmBtn.addEventListener('click', function(){confirmForm(emailInput, nameInput, arrayNo, getLocation);}, false);
-        
+
         } // Invoked at line 169
-    
+
     // Function that initialises date picker plugin
     function initDatePickers(){
         $('.datepickerhotelIn').pickadate({
@@ -242,7 +242,7 @@ $(document).ready(function(){
                         format: 'd/m/yyyy',
                         disable: [
                             true,
-                            [2018, 10, 21, 'inverted'],
+                            ['inverted'],
                             { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hotel.maxNights - 1) }
                         ],
                         onSet: function(context){
@@ -269,7 +269,7 @@ $(document).ready(function(){
                         format: 'd/m/yyyy',
                         disable: [
                             true,
-                            [2018, 10, 21, 'inverted'],
+                            ['inverted'],
                             { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+1)), to: (hostel.maxNights - 1) }
                         ],
                         onSet: function(context){
@@ -292,11 +292,12 @@ $(document).ready(function(){
                     var monthCheckIn = date.getMonth();
                     var yearCheckIn = date.getFullYear();
                     bookingDates.checkInDate = selectedDate;
+
                     $('.datepickermotelOut').pickadate({
                         format: 'd/m/yyyy',
                         disable: [
                             true,
-                            [2018, 10, 21, 'inverted'],
+                            ['inverted'],
                             { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+3)), to: (motel.maxNights - 3) }
                         ],
                         onSet: function(context){
@@ -323,7 +324,7 @@ $(document).ready(function(){
                         format: 'd/m/yyyy',
                         disable: [
                             true,
-                            [2018, 10, 21, 'inverted'],
+                            ['inverted'],
                             { from: new Date(yearCheckIn,monthCheckIn,(dayCheckIn+2)), to: (house.maxNights - 2)}
                         ],
                         onSet: function(context){
@@ -334,7 +335,7 @@ $(document).ready(function(){
             }
         });
     } // Invoked at line 186
-    
+
     // Group number validation
     function inputValidation(max, min){
         // Get the number from the user input
@@ -366,7 +367,7 @@ $(document).ready(function(){
         }
         config.logic = logic;
     } // Invoked at line 200
-    
+
     // Email validation
     function emailValidation(emailInput){
         if (emailInput.validity.valid){
@@ -375,14 +376,14 @@ $(document).ready(function(){
             warningDiv[1].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please enter a valid email';
         }
     } // Invoked at line 208
-    
+
     // Confirm form
     function confirmForm(emailInput, nameInput, arrayNo, getLocation){
         var inputAdults = config.logic;
         if (emailInput.validity.valid
-            && nameInput.validity.valid 
+            && nameInput.validity.valid
             && inputAdults
-            && checkOutInput[0].value 
+            && checkOutInput[0].value
             && checkInInput[0].value){
             confirmBtn.setAttribute('data-toggle','modal');
             confirmBtn.setAttribute('data-target','#confirmation');
@@ -390,13 +391,11 @@ $(document).ready(function(){
             confirmBtn.setAttribute('aria-label','Close');
             bookingData.arrayNumber = arrayNo;
             calcualteStayDuration();
-            console.log('Booking data:');
-            console.dir(bookingData);
             calculateData(arrayNo, getLocation);
         } else if (emailInput.validity.valid === false
-            && nameInput.validity.valid 
+            && nameInput.validity.valid
             && inputAdults
-            && checkOutInput[0].value 
+            && checkOutInput[0].value
             && checkInInput[0].value){
             confirmBtn.removeAttribute('data-toggle');
             confirmBtn.removeAttribute('data-target');
@@ -411,8 +410,8 @@ $(document).ready(function(){
             warningDiv[1].innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please complete all fields';
         }
     } // Invoked at line 222
-    
-    
+
+
     // Calculate nights of stay and store into booking obj
     function calcualteStayDuration(){
         // Variable that minuses the stored inputed time stamps from each other to find their difference
@@ -421,14 +420,14 @@ $(document).ready(function(){
         var resultConverted = Math.floor(dateResult / (1000 * 60 * 60 * 24));
         bookingData.stayDuration = resultConverted;
     } // Invoked at line 390
-    
+
      // Add breakfast option to booking data
     function breakfastBoolean(breakfastInput){
         if (breakfastInput.checked === true){
             bookingData.breakfast = true;
         }
     } // Invoked at line 217
-    
+
     // Calculate booking data
     function calculateData(arrayNo, getLocation){
         var breakfast;
@@ -440,7 +439,7 @@ $(document).ready(function(){
         var totalCost = ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * getLocation[arrayNo].price) + ((bookingData.totalAdults + bookingData.totalChildren) * bookingData.stayDuration * breakfast);
         displayData(totalCost, getLocation);
     } // Invoked at line 394
-    
+
     // Write booking data into the dom
     function displayData(totalCost, getLocation){
         var arrayNo = bookingData.arrayNumber;
@@ -458,15 +457,15 @@ $(document).ready(function(){
         }
         spanTotalCost.textContent = totalCost;
     } // Invoked at line 442
-    
+
     // ANIMATIONS
     function animations(){
-        
+
         // PAGE TRANSITIONS
         $('.search-bar').click(function(){
             $('.footer').fadeOut(300);
         });
-        
+
         $('#searchButton').click(function(){
             // Add new classes
             $('.backdrop').addClass('backdrop-on');
@@ -479,7 +478,7 @@ $(document).ready(function(){
             $('.top-content').removeClass('tc-index');
             $('.search-bar').removeClass('sb-index');
         });
-        
+
         // Toggle filtre view
         $('#filtreToggle').click(function(){
             $('.opts-fltr-ctnr').toggleClass('fltr-shut');
@@ -499,7 +498,7 @@ $(document).ready(function(){
             $('#reserve-btn').text('reserve');
         });
     } animations();
-    
+
         // Map box code
     function initMap(lng, lat){
             mapboxgl.accessToken = 'pk.eyJ1IjoiaXpzaSIsImEiOiJjamkzbjQxMWQwMGFzM2tvNDM5NTB6cmlrIn0.a5L-XDDBNFQ-0BrqtQpNCg';
@@ -525,5 +524,5 @@ $(document).ready(function(){
             $('.list-view').removeClass('lv-translate');
         });
     }
-    
+
 }); // END jquery doc.ready
